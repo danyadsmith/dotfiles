@@ -48,8 +48,7 @@ set colorcolumn=70                " Show Ruler
 set laststatus=2                  " Configure Vim-Airline
 set textwidth=70                  " Set Wrap Width
 set noshowmode                    " Hide Duplicate Mode Identifier
-
-
+set clipboard=unnamedplus         " Copy to system clipboard
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -82,13 +81,13 @@ let base16colorspace=256
 colorscheme base16-chalk
 "colorscheme base16-grayscale-dark
 "colorscheme base16-irblack
+"colorscheme crunchbang
 "colorscheme petrel
 "colorscheme base16-pop
-"colorscheme base16-solar-flare
+"colorscheme base16-solarflare
 "colorscheme stormpetrel
 
 " Light Colorschemes
 
 "colorscheme greygull
 "colorscheme seagull
-
