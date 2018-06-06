@@ -36,6 +36,7 @@ call plug#end()
 
 " CONFIGURE VIM
 
+set nocompatible
 set termguicolors
 syntax enable                     " Enable Syntax Highlighting
 set tabstop=2                     " Number of Visual Spaces Per Tab
@@ -44,9 +45,9 @@ set shiftwidth=2
 set expandtab                     " Tabs are Spaces
 set number                        " Show Line Numbers
 set relativenumber                " Show Relative Line Numbers
-set colorcolumn=70                " Show Ruler
+set colorcolumn=80                " Show Ruler
 set laststatus=2                  " Configure Vim-Airline
-set textwidth=70                  " Set Wrap Width
+set textwidth=80                  " Set Wrap Width
 set noshowmode                    " Hide Duplicate Mode Identifier
 set clipboard=unnamedplus         " Copy to system clipboard
 
@@ -68,6 +69,13 @@ let g:lightline = {
 if !has('gui_running')
   set t_Co=256
 endif
+
+" Open Help Files in Vertical Pane
+
+augroup helpfiles
+  au!
+  au BufRead,BufEnter */doc/* wincmd L
+augroup END
 
 " BASE-16 COLORSCHEME CONFIGURATION
 
