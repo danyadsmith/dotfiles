@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/danyadsmith/Sites/Training/FrontendMasters/01_JavaScriptFundamentalsToFunctional/Assignments/functionalJS'
-let g:netrw_dirhist_2='/Users/danyadsmith/Sites/Training/FrontendMasters/01_JavaScriptFundamentalsToFunctional/Assignments/functionalJS/callbacks'
-let g:netrw_dirhist_3='/Users/danyadsmith/Sites/Training/FrontendMasters/01_JavaScriptFundamentalsToFunctional'
-let g:netrw_dirhist_4='/Users/danyadsmith/Sites/Training/FrontendMasters/01_JavaScriptFundamentalsToFunctional/Assignments'
-let g:netrw_dirhist_5='/Users/danyadsmith/Sites/Training/FrontendMasters/01_JavaScriptFundamentalsToFunctional/Assignments/functionalJS'
-let g:netrw_dirhist_6='/Users/danyadsmith/Sites/Training/FrontendMasters/01_JavaScriptFundamentalsToFunctional/Assignments/functionalJS/closures'
