@@ -1,9 +1,9 @@
 #!/bin/sh
-# INSTALL DEFAULT PLUGINS FOR VIM/nVIM
+# INSTALL DEFAULT PLUGINS and COLORSCHEMES FOR VIM/nVIM
 
 SCRIPT_NAME="get-vim-plugins.sh"
 SCRIPT_AUTHOR="Danya D. Smith"
-SCRIPT_UPDATED="Tuesday, 26 June 2018 at 10:14 PM"
+SCRIPT_UPDATED="Friday, 29 June 2018 at 07:04 PM"
 
 echo "Executing: $SCRIPT_NAME"
 echo "By: $SCRIPT_AUTHOR"
@@ -32,4 +32,25 @@ git clone https://github.com/itchyny/lightline.vim
 echo "Installing Plugin: vim-sensible"
 git clone https://github.com/tpope/vim-sensible.git
 
-echo "Finished installing plugins."
+echo "Installing Colorscheme: material.vim"
+git clone https://github.com/kaicataldo/material.vim
+
+echo "Installing Colorscheme: plain"
+git clone https://github.com/andreypopp/vim-colors-plain
+
+echo "Installing Colorscheme: lucaroix"
+git clone https://github.com/miconda/lucariox.vim
+
+echo "Installing Colorscheme: stellarized"
+git clone https://github.com/nightsense/stellarized
+
+echo "Installing Colorscheme: simplify"
+git clone https://github.com/nightsense/simplifysimplify
+
+echo "Installing Colorscheme: cobalt2"
+git clone https://github.com/herrbischoff/cobalt2.vim
+
+echo "Installing Colorscheme: snow"
+git clone https://github.com/nightsense/snow
+
+echo "Finished installing plugins and colorschemes."
