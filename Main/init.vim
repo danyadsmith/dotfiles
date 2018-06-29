@@ -148,7 +148,7 @@ endif
 " NVIM CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')  
-  let $nvim_tui_enable_true_color=1 
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
 endif
 
 
@@ -188,4 +188,5 @@ let &t_ei = "\<esc>[2 q"
 let mapleader = "\<space>"
 nmap <leader>ev :e $MYVIMRC<cr>
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
+
 
