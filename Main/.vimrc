@@ -1,59 +1,173 @@
-" PLUG PACKAGE MANAGER SETUP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             ''
+"                     \\  //  ||  '||),,(|,  '||''| .|'',
+"                      \\//   ||   || || ||   ||    ||
+"                  ..   \/   .||. .||    ||. .||.   `|..'
+"
+"                      vim configuration file (.vimrc)
+"
+"
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LOAD PLUGINS VIA PATHOGEN
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('ivim')
+  runtime bundle/vim-pathogen/autoload/pathogen.vim
+endif
+execute pathogen#infect()
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET COLORSCHEME
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Available Highlight Colors:
+" Black, Gray, Grey, LightGray, LightGrey, DarkGray, DarkGrey, White
+" Red, LightRed, DarkRed, Yellow, LightYellow, DarkYellow, Brown
+" Green, LightGreen, DarkGreen, Cyan, LightCyan, DarkCyan
+" Blue, LightBlue, DarkBlue, Magenta, LightMagenta, DarkMagenta
+
+" OVERRIDE HIGHLIGHTS:
+if has('autocmd')
+  augroup coloroverride
+    autocmd!
+    " Override Line Number Color:   
+    "autocmd ColorScheme * highlight LineNr ctermfg=Gray guifg=Gray
+    " Override Cursor Line Number Color:
+    autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black gui=none
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=LightRed gui=none
+  augroup END
 endif
 
-call plug#begin('~/.vim/bundle')
-  Plug 'junegunn/vim-plug'
-call plug#end()
+"colorscheme base16-atelier-cave        " black
+"colorscheme base16-atelier-sulphurpool " blue
+"colorscheme base16-black-metal-venom   " black
+colorscheme base16-chalk               " dark gray
+"colorscheme base16-circus              " dark gray
+"colorscheme base16-grayscale-dark      " black
+"colorscheme base16-harmonic-dark       " dark blue
+"colorscheme base16-irblack             " black
+"colorscheme base16-materia             " dark teal
+"colorscheme base16-monokai             " dark brown
+"colorscheme base16-nord                " blue
+"colorscheme base16-railscasts          " dark gray
+"colorscheme base16-solarflare          " blue
+"colorscheme base16-tomorrow-night      " black
+"colorscheme cobalt2                    " blue
+"colorscheme lucariox                   " dark blue
+"colorscheme material                   " dark teal
+"colorscheme plain                      " dark gray
+"colorscheme simplifysimplify-dark      " dark gray
+"colorscheme snow                       " dark blue
+"colorscheme stellarized_dark           " dark blue
 
-" Install Packages
 
-call plug#begin('~/.vim/bundle')
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SYNTAX HIGHLIGHTING
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable                           " enable syntax highlighting
+filetype on                             " automatically detect file type
+filetype plugin on                      " auto load filetype plugins
+filetype indent on                      " auto load file indent settings
 
-  " Color Schemes
-  Plug 'nightsense/vim-crunchbang'
-  Plug 'nightsense/seabird'
-  Plug 'chriskempson/base16-vim'
 
-  " Text Editing and Expansion 
-  Plug 'mattn/emmet-vim'
-  Plug 'tpope/vim-surround'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TAB VS. SPACE CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tabstop=2                           " number of visual spaces per tab
+set softtabstop=2                       " number of spaces in tab when editing
+set shiftwidth=2                        " number of spaces to indent/unindent
+set expandtab                           " tabs are spaces
 
-  " Git
-  Plug 'airblade/vim-gitgutter'
-  Plug 'tpope/vim-fugitive'
-  Plug 'itchyny/vim-gitbranch'
 
-  " UI Enhancements
-  Plug 'itchyny/lightline.vim'
-  Plug 'majutsushi/tagbar'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LINE NUMBER CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set number                              " show line numbers
+set relativenumber                      " show relative line numbers
+augroup numbertoggle                    " auto toggle line numbers by mode
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup end
 
-call plug#end()
 
-" CONFIGURE VIM
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TEXT WIDTH, RULE & WORD WRAP CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set colorcolumn=80                      " show ruler
+set textwidth=80                        " set wrap width
+set wrap                                " word wrap visually
+set linebreak                           " only break lines when pressing Enter
+set nolist
+set formatoptions+=t
 
-set nocompatible
-set termguicolors
-syntax enable                     " Enable Syntax Highlighting
-set tabstop=2                     " Number of Visual Spaces Per Tab
-set softtabstop=2                 " Number of Spaces in Tab when Editing
-set shiftwidth=2
-set expandtab                     " Tabs are Spaces
-set number                        " Show Line Numbers
-set relativenumber                " Show Relative Line Numbers
-set colorcolumn=80                " Show Ruler
-set laststatus=2                  " Configure Vim-Airline
-set textwidth=80                  " Set Wrap Width
-set noshowmode                    " Hide Duplicate Mode Identifier
-set clipboard=unnamedplus         " Copy to system clipboard
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SEARCH CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hlsearch                            " highlight search results
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DEFAULT FILE ENCODING
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set termencoding=utf8                   " set default encoding to utf-8
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CLIPBOARD CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set clipboard=unnamed                   " yank to os clipboard
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HELP CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup helpfiles
+  au!
+  au BufRead,BufEnter */doc/* wincmd L
+augroup end
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COLOR CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let base16colorspace=256
+
+if !has('gui_running')
+  set t_Co=256
+  set termguicolors
+  set background=dark
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GUI CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('gui_running')
+  set guifont=CamingoCodeRegular.ttf:h17
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NVIM CONFIGURATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('nvim')  
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-LIGHTLINE CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noshowmode                          " hide duplicate mode identifier
+set laststatus=2                        " configure vim-airline
+
+" Uncomment to Set Middle Status Bar Color to Colorscheme Background
+"let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+"let s:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'None' ] ]
+"let s:palette.inactive.middle = s:palette.normal.middle
+"let s:palette.tabline.middle = s:palette.normal.middle
 
 let g:lightline = {
   \ 'colorscheme': 'powerline',
@@ -66,36 +180,32 @@ let g:lightline = {
   \ },
   \ }
 
-if !has('gui_running')
-  set t_Co=256
-endif
 
-" Open Help Files in Vertical Pane
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOMIZE CURSORS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let &t_SI = "\<esc>[6 q"
+let &t_SR = "\<esc>[4 q"
+let &t_EI = "\<esc>[2 q"
 
-augroup helpfiles
-  au!
-  au BufRead,BufEnter */doc/* wincmd L
-augroup END
 
-" BASE-16 COLORSCHEME CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM KEY MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <buffer> <silent> k gk
+noremap <buffer> <silent> j gj
+noremap <buffer> <silent> 0 g0
+noremap <buffer> <silent> $ g$
+onoremap <silent> j gj
+onoremap <silent> k gk
 
-let base16colorspace=256
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LEADER MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = "\<space>"
+nmap <leader>ev :e $MYVIMRC<cr>
+nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
+nmap <leader>sp :setlocal spell<cr>
+nmap <leader>ns :setlocal nospell<cr>
 
-" SET COLORSCHEME
 
-" Dark Colorschemes
-
-"colorscheme base16-bright
-colorscheme base16-chalk
-"colorscheme base16-grayscale-dark
-"colorscheme base16-irblack
-"colorscheme crunchbang
-"colorscheme petrel
-"colorscheme base16-pop
-"colorscheme base16-solarflare
-"colorscheme stormpetrel
-
-" Light Colorschemes
-
-"colorscheme greygull
-"colorscheme seagull
