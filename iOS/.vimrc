@@ -33,15 +33,16 @@ if has('autocmd')
     " Override Line Number Color:   
     "autocmd ColorScheme * highlight LineNr ctermfg=Gray guifg=Gray
     " Override Cursor Line Number Color:
-    autocmd ColorScheme * highlight CursorLineNr ctermfg=LightRed guifg=LightRed gui=none
+    autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black gui=none
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=LightRed gui=none
   augroup END
 endif
 
 "colorscheme base16-atelier-cave        " black
 "colorscheme base16-atelier-sulphurpool " blue
 "colorscheme base16-black-metal-venom   " black
-"colorscheme base16-chalk               " dark gray
-colorscheme base16-circus              " dark gray
+colorscheme base16-chalk               " dark gray
+"colorscheme base16-circus              " dark gray
 "colorscheme base16-grayscale-dark      " black
 "colorscheme base16-harmonic-dark       " dark blue
 "colorscheme base16-irblack             " black
@@ -157,6 +158,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set noshowmode                          " hide duplicate mode identifier
 set laststatus=2                        " configure vim-airline
+
+" Uncomment to Set Middle Status Bar Color to Colorscheme Background
+"let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+"let s:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'None' ] ]
+"let s:palette.inactive.middle = s:palette.normal.middle
+"let s:palette.tabline.middle = s:palette.normal.middle
+
 let g:lightline = {
   \ 'colorscheme': 'powerline',
   \ 'active': {
@@ -172,9 +180,9 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let &t_si = "\<esc>[6 q"
-let &t_sr = "\<esc>[4 q"
-let &t_ei = "\<esc>[2 q"
+let &t_SI = "\<esc>[6 q"
+let &t_SR = "\<esc>[4 q"
+let &t_EI = "\<esc>[2 q"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,4 +196,6 @@ let &t_ei = "\<esc>[2 q"
 let mapleader = "\<space>"
 nmap <leader>ev :e $MYVIMRC<cr>
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
+nmap <leader>sp :setlocal spell<cr>
+nmap <leader>ns :setlocal nospell<cr>
 
