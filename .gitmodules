@@ -13,3 +13,24 @@
 [submodule "iOS/.vim/bundle/ctrlp.vim"]
 	path = iOS/.vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "iOS/.vim/bundle/cobalt2.vim"]
+	path = iOS/.vim/bundle/cobalt2.vim
+	url = https://github.com/herrbischoff/cobalt2.vim
+[submodule "iOS/.vim/bundle/lucariox.vim"]
+	path = iOS/.vim/bundle/lucariox.vim
+	url = https://github.com/miconda/lucariox.vim
+[submodule "iOS/.vim/bundle/material.vim"]
+	path = iOS/.vim/bundle/material.vim
+	url = https://github.com/kaicataldo/material.vim
+[submodule "iOS/.vim/bundle/simplifysimplify"]
+	path = iOS/.vim/bundle/simplifysimplify
+	url = https://github.com/nightsense/simplifysimplify
+[submodule "iOS/.vim/bundle/snow"]
+	path = iOS/.vim/bundle/snow
+	url = https://github.com/nightsense/snow
+[submodule "iOS/.vim/bundle/stellarized"]
+	path = iOS/.vim/bundle/stellarized
+	url = https://github.com/nightsense/stellarized
+[submodule "iOS/.vim/bundle/vim-colors-plain"]
+	path = iOS/.vim/bundle/vim-colors-plain
+	url = https://github.com/andreypopp/vim-colors-plain
