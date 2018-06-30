@@ -92,10 +92,14 @@ augroup end
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TEXT WIDTH AND RULE CUSTOMIZATIONS
+" TEXT WIDTH, RULE & WORD WRAP CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set colorcolumn=80                      " show ruler
 set textwidth=80                        " set wrap width
+set wrap                                " word wrap visually
+set linebreak                           " only break lines when pressing Enter
+set nolist
+set formatoptions+=t
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,7 +192,12 @@ let &t_EI = "\<esc>[2 q"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+noremap <buffer> <silent> k gk
+noremap <buffer> <silent> j gj
+noremap <buffer> <silent> 0 g0
+noremap <buffer> <silent> $ g$
+onoremap <silent> j gj
+onoremap <silent> k gk
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
@@ -198,4 +207,5 @@ nmap <leader>ev :e $MYVIMRC<cr>
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
 nmap <leader>sp :setlocal spell<cr>
 nmap <leader>ns :setlocal nospell<cr>
+
 
