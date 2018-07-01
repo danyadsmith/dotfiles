@@ -31,7 +31,8 @@ if has('autocmd')
   augroup coloroverride
     autocmd!
     " Override Line Number Color:   
-    "autocmd ColorScheme * highlight LineNr ctermfg=Gray guifg=Gray
+    "autocmd ColorScheme * highlight LineNr ctermfg=White guifg=White
+    "autocmd ColorScheme * highlight LineNr ctermbg=DarkGray guibg=DarkGray
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black gui=none
     autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=LightRed gui=none
@@ -62,26 +63,23 @@ colorscheme base16-chalk               " dark gray
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SYNTAX HIGHLIGHTING
+" CUSTOMIZATIONS FOR PROGRAMMERS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax Highlighting
 syntax enable                           " enable syntax highlighting
 filetype on                             " automatically detect file type
 filetype plugin on                      " auto load filetype plugins
 filetype indent on                      " auto load file indent settings
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TAB VS. SPACE CUSTOMIZATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tab vs. Space Customizations
 set tabstop=2                           " number of visual spaces per tab
 set softtabstop=2                       " number of spaces in tab when editing
 set shiftwidth=2                        " number of spaces to indent/unindent
 set expandtab                           " tabs are spaces
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LINE NUMBER CUSTOMIZATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Line Number Customizations
 set number                              " show line numbers
 set relativenumber                      " show relative line numbers
 augroup numbertoggle                    " auto toggle line numbers by mode
@@ -91,10 +89,8 @@ augroup numbertoggle                    " auto toggle line numbers by mode
 augroup end
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TEXT WIDTH, RULE & WORD WRAP CUSTOMIZATIONS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set colorcolumn=80                      " show ruler
+" Text Width, Rule & Word Wrap Customizations
+set colorcolumn=80                      " show ruler at column 80
 set textwidth=80                        " set wrap width
 set wrap                                " word wrap visually
 set linebreak                           " only break lines when pressing Enter
@@ -102,10 +98,15 @@ set nolist
 set formatoptions+=t
 
 
+" Bracket and Block Customizations
+set showmatch                           " Highighlight matching () {} [] 
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch                            " highlight search results
+set noincsearch                         " do not highlight incremental search
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,6 +193,7 @@ let &t_EI = "\<esc>[2 q"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Allow Use of j k $ and 0 to navigate wrapped lines
 noremap <buffer> <silent> k gk
 noremap <buffer> <silent> j gj
 noremap <buffer> <silent> 0 g0
@@ -199,19 +201,30 @@ noremap <buffer> <silent> $ g$
 onoremap <silent> j gj
 onoremap <silent> k gk
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<space>"
-"    <space>ev                         " edit .vimrc
+
+"    <space>ev                         
+"    edit .vimrc
 nmap <leader>ev :e $MYVIMRC<cr>
-"    <space>so                         " source .vimrc (reload settings)
+
+"    <space>so                         
+"    save & source .vimrc (reload settings in current vim session)
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
-"    <space>sp                         " spell check on
+
+"    <space>sp                         
+"    spell check on
 nmap <leader>sp :setlocal spell<cr>
-"    <space>ns                         " spell check off
+
+"    <space>ns                         
+"    spell check off (no spelling)
 nmap <leader>ns :setlocal nospell<cr>
-"    <space>wc                         " calculate and display word count
+
+"    <space>wc                         
+"    display word count
 nmap <leader>wc g<C-g>
 
 
