@@ -203,9 +203,16 @@ onoremap <silent> k gk
 " LEADER MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<space>"
+"    <space>ev                         " edit .vimrc
 nmap <leader>ev :e $MYVIMRC<cr>
+"    <space>so                         " source .vimrc (reload settings)
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
+"    <space>sp                         " spell check on
 nmap <leader>sp :setlocal spell<cr>
+"    <space>ns                         " spell check off
 nmap <leader>ns :setlocal nospell<cr>
+"    <space>wc                         " calculate and display word count
+nmap <leader>wc g<C-g>
+
 
 
