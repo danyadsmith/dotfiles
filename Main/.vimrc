@@ -227,5 +227,3 @@ nmap <leader>ns :setlocal nospell<cr>
 "    display word count
 nmap <leader>wc g<C-g>
 
-
-
