@@ -115,6 +115,7 @@ set formatoptions+=t
 " Bracket and Block Customizations
 set showmatch                           " Highighlight matching () {} [] 
 
+  
 " Invisible Character Customizations
 set listchars=tab:▸\ ,eol:¬,space:·︎
 
