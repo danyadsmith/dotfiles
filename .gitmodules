@@ -34,3 +34,9 @@
 [submodule "iOS/.vim/bundle/vim-colors-plain"]
 	path = iOS/.vim/bundle/vim-colors-plain
 	url = https://github.com/andreypopp/vim-colors-plain
+[submodule "iOS/.vim/bundle/gruvbox"]
+	path = iOS/.vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox
+[submodule "iOS/.vim/bundle/tender.vim"]
+	path = iOS/.vim/bundle/tender.vim
+	url = https://github.com/jacoborus/tender.vim
