@@ -53,4 +53,10 @@ git clone https://github.com/herrbischoff/cobalt2.vim
 echo "Installing Colorscheme: snow"
 git clone https://github.com/nightsense/snow
 
+echo "Installing Colorscheme: gruvbox"
+git clone https://github.com/morhetz/gruvbox
+
+echo "Installing Colorscheme: tender"
+git clone https://github.com/jacoborus/tender.vim
+
 echo "Finished installing plugins and colorschemes."

@@ -31,11 +31,13 @@ if has('autocmd')
   augroup coloroverride
     autocmd!
     " Override Line Number Color:   
-    autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#666666
+    autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
     autocmd ColorScheme * highlight LineNr ctermbg=DarkGray guibg=#222222
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black gui=none
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=LightRed gui=none
+    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#da3435 gui=none  "solarized red
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7 gui=none  "pink
+    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#58a6ce gui=none  "light blue
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#4a4a4a
     autocmd ColorScheme * highlight SpecialKey guifg=#4a4a4a
@@ -53,7 +55,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83 
 endif
 
-"colorscheme base16-atelier-cave        " black
+"colorscheme base16-atelier-cave        " dark navy 
 "colorscheme base16-atelier-sulphurpool " blue
 "colorscheme base16-black-metal-venom   " black
 colorscheme base16-chalk               " dark gray
@@ -68,13 +70,14 @@ colorscheme base16-chalk               " dark gray
 "colorscheme base16-solarflare          " blue
 "colorscheme base16-tomorrow-night      " black
 "colorscheme cobalt2                    " blue
+"colorscheme gruvbox                    " brown/manila
 "colorscheme lucariox                   " dark blue
 "colorscheme material                   " dark teal
 "colorscheme plain                      " dark gray
 "colorscheme simplifysimplify-dark      " dark gray
 "colorscheme snow                       " dark blue
 "colorscheme stellarized_dark           " dark blue
-
+"colorscheme tender                      " dark gray
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZATIONS FOR PROGRAMMERS
@@ -138,6 +141,8 @@ set termencoding=utf8                   " set default encoding to utf-8
 
 " Do not tab-complete these file types or folders 
 set wildignore+=.DS_Store               " ignore MacOS system files/folders 
+set wildignore+=.suo,.csproj,.sln       " ignore Visual Studio files
+set wildignore+=.cache
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CLIPBOARD CUSTOMIZATIONS
@@ -165,6 +170,9 @@ if !has('gui_running')
   set background=dark
 endif
 
+if has('termguicolors')
+  set termguicolors
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI CONFIGURATIONS
@@ -263,4 +271,5 @@ nmap <leader>si :set list!<cr>
 "    <space>cc
 "    ctrl-p clear cache
 nmap <leader>cc :CtrlPClearCache<cr>
+
 
