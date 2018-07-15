@@ -120,6 +120,10 @@ set showmatch                           " Highighlight matching () {} []
 set listchars=tab:▸\ ,eol:¬,space:·︎
 
 
+" Matchit 
+runtime macros/matchit.vim
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -256,4 +260,7 @@ nmap <leader>wc g<C-g>
 "    show invisible characters
 nmap <leader>si :set list!<cr>
 
+"    <space>cc
+"    ctrl-p clear cache
+nmap <leader>cc :CtrlPClearCache<cr>
 
