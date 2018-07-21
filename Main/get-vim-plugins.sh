@@ -29,6 +29,9 @@ git clone https://github.com/airblade/vim-gitgutter
 echo "Installing Plugin: lightline"
 git clone https://github.com/itchyny/lightline.vim
 
+echo "Installing Plugin: vim-markdown-enhancements"
+git clone https://github.com/mattly/vim-markdown-enhancements
+
 echo "Installing Plugin: vim-sensible"
 git clone https://github.com/tpope/vim-sensible.git
 
@@ -58,5 +61,8 @@ git clone https://github.com/morhetz/gruvbox
 
 echo "Installing Colorscheme: tender"
 git clone https://github.com/jacoborus/tender.vim
+
+echo "Installing Colorscheme: xoria256"
+git clone https://github.com/vim-scripts/xoria256.vim.git
 
 echo "Finished installing plugins and colorschemes."
