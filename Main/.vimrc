@@ -30,7 +30,7 @@ execute pathogen#infect()
 if has('autocmd')
   augroup coloroverride
     autocmd!
-    " Override Line Number Color:   
+    " Override Line Number Color:
     autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
     autocmd ColorScheme * highlight LineNr ctermbg=DarkGray guibg=#222222
     " Override Cursor Line Number Color:
@@ -39,23 +39,27 @@ if has('autocmd')
     autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7 gui=none  "pink
     "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#58a6ce gui=none  "light blue
     " Override Invisibles Color:
-    autocmd ColorScheme * highlight NonText guifg=#4a4a4a
-    autocmd ColorScheme * highlight SpecialKey guifg=#4a4a4a
+    autocmd ColorScheme * highlight NonText guifg=#3a3a3a
+    autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
+    autocmd ColorScheme * highlight NonText guibg=none
+    autocmd ColorScheme * highlight SpecialKey guibg=none
     " Override Comments Color:
     "autocmd ColorScheme * highlight Comment NONE guifg=#3D7BE6 " cobalt2
     "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn guibg=#222222
-    autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628 
+    autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
     autocmd ColorScheme * highlight GitGutterAdd guibg=#222222
-    autocmd ColorScheme * highlight GitGutterDelete guifg=#ff0000 
+    autocmd ColorScheme * highlight GitGutterDelete guifg=#ff0000
     autocmd ColorScheme * highlight GitGutterDelete guibg=#222222
-    autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8 
+    autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
     autocmd ColorScheme * highlight GitGutterChange guibg=#222222
-    autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83 
+    autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
+    " Override ColorColumn Color:
+    autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
 endif
 
-"colorscheme base16-atelier-cave        " dark navy 
+"colorscheme base16-atelier-cave        " dark navy
 "colorscheme base16-atelier-sulphurpool " blue
 "colorscheme base16-black-metal-venom   " black
 colorscheme base16-chalk               " dark gray
@@ -77,7 +81,9 @@ colorscheme base16-chalk               " dark gray
 "colorscheme simplifysimplify-dark      " dark gray
 "colorscheme snow                       " dark blue
 "colorscheme stellarized_dark           " dark blue
-"colorscheme tender                      " dark gray
+"colorscheme tender                     " dark gray
+"colorscheme xoria256                   " black
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZATIONS FOR PROGRAMMERS
@@ -116,14 +122,14 @@ set formatoptions+=t
 
 
 " Bracket and Block Customizations
-set showmatch                           " Highighlight matching () {} [] 
+set showmatch                           " Highighlight matching () {} []
 
-  
+
 " Invisible Character Customizations
 set listchars=tab:▸\ ,eol:¬,space:·︎
 
 
-" Matchit 
+" Matchit
 runtime macros/matchit.vim
 
 
@@ -139,8 +145,8 @@ set noincsearch                         " do not highlight incremental search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termencoding=utf8                   " set default encoding to utf-8
 
-" Do not tab-complete these file types or folders 
-set wildignore+=.DS_Store               " ignore MacOS system files/folders 
+" Do not tab-complete these file types or folders
+set wildignore+=.DS_Store               " ignore MacOS system files/folders
 set wildignore+=.suo,.csproj,.sln       " ignore Visual Studio files
 set wildignore+=.cache
 
@@ -185,7 +191,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NVIM CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')  
+if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
@@ -228,6 +234,22 @@ let &t_EI = "\<esc>[2 q"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUNCTIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Allow Use of j k $ and 0 to navigate wrapped lines
@@ -238,6 +260,9 @@ noremap <buffer> <silent> $ g$
 onoremap <silent> j gj
 onoremap <silent> k gk
 
+" Use the Tab key to navigate between tabs
+nmap <Tab> gt
+nmap <A-Tab> gT
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
@@ -268,8 +293,28 @@ nmap <leader>wc g<C-g>
 "    show invisible characters
 nmap <leader>si :set list!<cr>
 
+"    <space>c
+"    center text on line (align center)
+nmap <leader>ac :center<cr>
+
+"    <space>p
+"    ctrl-p
+nmap <leader>cp :CtrlP<cr>
+
 "    <space>cc
 "    ctrl-p clear cache
 nmap <leader>cc :CtrlPClearCache<cr>
+
+"    <space>ct
+"    ctrl-p search tags
+nmap <leader>. :CtrlPTag<cr>
+
+"    <space>$
+"    remove trailing whitespace from end of lines
+nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
+
+"    <space>equals
+"    reindent file
+nmap <leader>= :call Preserve("normal gg=G")<CR>
 
 
