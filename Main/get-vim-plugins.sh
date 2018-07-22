@@ -35,6 +35,9 @@ git clone https://github.com/mattly/vim-markdown-enhancements
 echo "Installing Plugin: vim-sensible"
 git clone https://github.com/tpope/vim-sensible.git
 
+echo "Installing Plugin: vimwiki"
+git clone https://github.com/vimwiki/vimwiki
+
 echo "Installing Colorscheme: material.vim"
 git clone https://github.com/kaicataldo/material.vim
 
