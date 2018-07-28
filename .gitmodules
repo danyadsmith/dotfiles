@@ -40,3 +40,12 @@
 [submodule "iOS/.vim/bundle/tender.vim"]
 	path = iOS/.vim/bundle/tender.vim
 	url = https://github.com/jacoborus/tender.vim
+[submodule "iOS/.vim/bundle/tabular"]
+	path = iOS/.vim/bundle/tabular
+	url = git@github.com:godlygeek/tabular.git
+[submodule "iOS/.vim/bundle/vim-coloresque"]
+	path = iOS/.vim/bundle/vim-coloresque
+	url = git@github.com:Marslo/vim-coloresque.git
+[submodule "iOS/.vim/bundle/vim-markdown-enhancements"]
+	path = iOS/.vim/bundle/vim-markdown-enhancements
+	url = git@github.com:mattly/vim-markdown-enhancements.git
