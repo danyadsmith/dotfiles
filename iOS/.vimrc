@@ -16,9 +16,8 @@ if has('ivim')
 endif
 execute pathogen#infect()
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SET COLORSCHEME
+" OVERRIDE HIGHLIGHTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Available Highlight Colors:
 " Black, Gray, Grey, LightGray, LightGrey, DarkGray, DarkGrey, White
@@ -30,54 +29,76 @@ execute pathogen#infect()
 if has('autocmd')
   augroup coloroverride
     autocmd!
-    " Override Line Number Color:   
+    " Override Line Number Color:
     autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
     autocmd ColorScheme * highlight LineNr ctermbg=DarkGray guibg=#222222
     " Override Cursor Line Number Color:
-    autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black gui=none
-    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#da3435 gui=none  "solarized red
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7 gui=none  "pink
-    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#58a6ce gui=none  "light blue
+    autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
+    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#da3435 "solarized red
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7  "pink
+    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#58a6ce "light blue
     " Override Invisibles Color:
-    autocmd ColorScheme * highlight NonText guifg=#4a4a4a
-    autocmd ColorScheme * highlight SpecialKey guifg=#4a4a4a
+    autocmd ColorScheme * highlight NonText guifg=#3a3a3a
+    autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
+    "autocmd ColorScheme * highlight NonText guibg=none
+    "autocmd ColorScheme * highlight SpecialKey guibg=none
     " Override Comments Color:
     "autocmd ColorScheme * highlight Comment NONE guifg=#3D7BE6 " cobalt2
     "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn guibg=#222222
-    autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628 
+    autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
     autocmd ColorScheme * highlight GitGutterAdd guibg=#222222
-    autocmd ColorScheme * highlight GitGutterDelete guifg=#ff0000 
+    autocmd ColorScheme * highlight GitGutterDelete guifg=#ff0000
     autocmd ColorScheme * highlight GitGutterDelete guibg=#222222
-    autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8 
+    autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
     autocmd ColorScheme * highlight GitGutterChange guibg=#222222
-    autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83 
+    autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
+    " Override CriticMarkup Colors:
+    autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
+    " Override ColorColumn Color:
+    autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
 endif
 
-"colorscheme base16-atelier-cave        " black
-"colorscheme base16-atelier-sulphurpool " blue
-"colorscheme base16-black-metal-venom   " black
-colorscheme base16-chalk               " dark gray
-"colorscheme base16-circus              " dark gray
-"colorscheme base16-grayscale-dark      " black
-"colorscheme base16-harmonic-dark       " dark blue
-"colorscheme base16-irblack             " black
-"colorscheme base16-materia             " dark teal
-"colorscheme base16-monokai             " dark brown
-"colorscheme base16-nord                " blue
-"colorscheme base16-railscasts          " dark gray
-"colorscheme base16-solarflare          " blue
-"colorscheme base16-tomorrow-night      " black
-"colorscheme cobalt2                    " blue
-"colorscheme gruvbox                    " brown/manila
-"colorscheme lucariox                   " dark blue
-"colorscheme material                   " dark teal
-"colorscheme plain                      " dark gray
-"colorscheme simplifysimplify-dark      " dark gray
-"colorscheme snow                       " dark blue
-"colorscheme stellarized_dark           " dark blue
-"colorscheme tender                      " dark gray
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET COLORSCHEME
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COLORSCHEMES WITH BLUE BACKGROUNDS
+" ----------------------------------
+"colorscheme base16-atelier-cave
+"colorscheme base16-atelier-sulphurpool
+"colorscheme base16-harmonic-dark
+"colorscheme base16-nord
+"colorscheme base16-solarflare
+"colorscheme cobalt2
+"colorscheme lucariox
+"colorscheme snow
+"colorscheme stellarized_dark
+
+" COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
+" ------------------------------------------------
+"colorscheme base16-black-metal-venom
+colorscheme base16-chalk
+"colorscheme base16-circus
+"colorscheme base16-grayscale-dark
+"colorscheme base16-irblack
+"colorscheme base16-railscasts
+"colorscheme base16-tomorrow-night
+"colorscheme plain
+"colorscheme simplifysimplify-dark
+"colorscheme tender
+"colorscheme xoria256
+
+" COLORSCHEMES WITH BROWN BACKGROUNDS
+" -----------------------------------
+"colorscheme base16-monokai
+"colorscheme gruvbox
+
+" COLORSCHEMES WITH TEAL BACKGROUNDS
+" ----------------------------------
+"colorscheme base16-materia
+"colorscheme material
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZATIONS FOR PROGRAMMERS
@@ -116,14 +137,14 @@ set formatoptions+=t
 
 
 " Bracket and Block Customizations
-set showmatch                           " Highighlight matching () {} [] 
+set showmatch                           " Highighlight matching () {} []
 
-  
+
 " Invisible Character Customizations
 set listchars=tab:▸\ ,eol:¬,space:·︎
 
 
-" Matchit 
+" Matchit
 runtime macros/matchit.vim
 
 
@@ -139,8 +160,8 @@ set noincsearch                         " do not highlight incremental search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termencoding=utf8                   " set default encoding to utf-8
 
-" Do not tab-complete these file types or folders 
-set wildignore+=.DS_Store               " ignore MacOS system files/folders 
+" Do not tab-complete these file types or folders
+set wildignore+=.DS_Store               " ignore MacOS system files/folders
 set wildignore+=.suo,.csproj,.sln       " ignore Visual Studio files
 set wildignore+=.cache
 
@@ -178,14 +199,14 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=CamingoCodeRegular:h17
+  set guifont=PragmataPro-Regular:h16
 endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NVIM CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')  
+if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
@@ -220,6 +241,11 @@ let g:lightline = {
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIMWIKI CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let &t_SI = "\<esc>[6 q"
@@ -228,15 +254,42 @@ let &t_EI = "\<esc>[2 q"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUNCTIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Allow Use of j k $ and 0 to navigate wrapped lines
-noremap <buffer> <silent> k gk
-noremap <buffer> <silent> j gj
-noremap <buffer> <silent> 0 g0
-noremap <buffer> <silent> $ g$
-onoremap <silent> j gj
-onoremap <silent> k gk
+" Allow Use of <Command> + j k $ and 0 to navigate wrapped lines
+vmap <D-j> gj
+vmap <D-k> gk
+vmap <D-4> g$
+vmap <D-6> g^
+vmap <D-0> g0
+nmap <D-j> gj
+nmap <D-k> gk
+nmap <D-4> g$
+nmap <D-6> g^
+nmap <D-0> g0
+
+" Use the Tab key to navigate between tabs
+nmap <Tab> gt
+nmap <A-Tab> gT
+
+" Change the working directory to the current file directory
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,7 +299,7 @@ let mapleader = "\<space>"
 
 "    <space>ev
 "    edit .vimrc
-nmap <leader>ev :e $MYVIMRC<cr>
+nmap <leader>vrc :e $MYVIMRC<cr>
 
 "    <space>so
 "    save & source .vimrc (reload settings in current vim session)
@@ -268,8 +321,53 @@ nmap <leader>wc g<C-g>
 "    show invisible characters
 nmap <leader>si :set list!<cr>
 
+"    <space>ac
+"    center text on line (align center)
+nmap <leader>ac :center<cr>
+
+"    <space>al
+"    shift text left on line (align left)
+nmap <leader>al :left<cr>
+
+"    <space>ar
+"    shift text right on line (align right)
+nmap <leader>ar :right<cr>
+
+"    <space>cp
+"    ctrl-p
+nmap <leader>cp :CtrlP<cr>
+
 "    <space>cc
 "    ctrl-p clear cache
 nmap <leader>cc :CtrlPClearCache<cr>
+
+"    <space>ct
+"    ctrl-p search tags
+nmap <leader>. :CtrlPTag<cr>
+
+"    <space>$
+"    remove trailing whitespace from end of lines
+nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
+
+"    <space>=
+"    reindent file
+nmap <leader>= :call Preserve("normal gg=G")<CR>
+
+"    <space>ew
+"    Edit in new window
+map  <leader>ew :e %%
+
+"    <space>es
+"    Edit in new horizontal split
+map  <leader>es :sp %%
+
+"    <space>ev
+"    Edit in new vertical split
+map  <leader>ev :vsp %%
+
+"    <space>et
+"    Edit in new tab
+map  <leader>et :tabe %%
+
 
 
