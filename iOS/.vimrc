@@ -17,9 +17,9 @@ endif
 execute pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OVERRIDE HIGHLIGHTS
+" HIGHLIGHT OVERRIDES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Available Highlight Colors:
+" Available Highlight Color Keywords:
 " Black, Gray, Grey, LightGray, LightGrey, DarkGray, DarkGrey, White
 " Red, LightRed, DarkRed, Yellow, LightYellow, DarkYellow, Brown
 " Green, LightGreen, DarkGreen, Cyan, LightCyan, DarkCyan
@@ -32,19 +32,18 @@ if has('autocmd')
     " Override Line Number Color:
     autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
     autocmd ColorScheme * highlight LineNr ctermbg=DarkGray guibg=#222222
+
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
-    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#da3435 "solarized red
     autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7  "pink
-    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#58a6ce "light blue
+
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
     autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
-    "autocmd ColorScheme * highlight NonText guibg=none
-    "autocmd ColorScheme * highlight SpecialKey guibg=none
+
     " Override Comments Color:
-    "autocmd ColorScheme * highlight Comment NONE guifg=#3D7BE6 " cobalt2
     "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
+    
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn guibg=#222222
     autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
@@ -54,8 +53,10 @@ if has('autocmd')
     autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
     autocmd ColorScheme * highlight GitGutterChange guibg=#222222
     autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
+    
     " Override CriticMarkup Colors:
     autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
+
     " Override ColorColumn Color:
     autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
 endif
@@ -63,6 +64,18 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SET COLORSCHEME
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
+" ------------------------------------------------
+colorscheme base16-chalk
+"colorscheme base16-circus
+"colorscheme base16-default-dark
+"colorscheme base16-grayscale-dark
+"colorscheme base16-irblack
+"colorscheme base16-railscasts
+"colorscheme base16-tomorrow-night
+
+
 " COLORSCHEMES WITH BLUE BACKGROUNDS
 " ----------------------------------
 "colorscheme base16-atelier-cave
@@ -70,34 +83,16 @@ endif
 "colorscheme base16-harmonic-dark
 "colorscheme base16-nord
 "colorscheme base16-solarflare
-"colorscheme cobalt2
-"colorscheme lucariox
-"colorscheme snow
-"colorscheme stellarized_dark
 
-" COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
-" ------------------------------------------------
-"colorscheme base16-black-metal-venom
-colorscheme base16-chalk
-"colorscheme base16-circus
-"colorscheme base16-grayscale-dark
-"colorscheme base16-irblack
-"colorscheme base16-railscasts
-"colorscheme base16-tomorrow-night
-"colorscheme plain
-"colorscheme simplifysimplify-dark
-"colorscheme tender
-"colorscheme xoria256
 
 " COLORSCHEMES WITH BROWN BACKGROUNDS
 " -----------------------------------
 "colorscheme base16-monokai
-"colorscheme gruvbox
+
 
 " COLORSCHEMES WITH TEAL BACKGROUNDS
 " ----------------------------------
 "colorscheme base16-materia
-"colorscheme material
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -297,7 +292,7 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<space>"
 
-"    <space>ev
+"    <space>vrc
 "    edit .vimrc
 nmap <leader>vrc :e $MYVIMRC<cr>
 
