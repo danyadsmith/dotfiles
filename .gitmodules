@@ -19,12 +19,12 @@
 [submodule "iOS/.vim/bundle/vim-markdown-enhancements"]
 	path = iOS/.vim/bundle/vim-markdown-enhancements
 	url = git@github.com:mattly/vim-markdown-enhancements.git
-[submodule ".iOS/.vim/bundle/vim-repeat"]
-	path = .iOS/.vim/bundle/vim-repeat
+[submodule "iOS/.vim/bundle/vim-repeat"]
+	path = iOS/.vim/bundle/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
-[submodule ".iOS/.vim/bundle/vim-surround"]
-	path = .iOS/.vim/bundle/vim-surround
+[submodule "iOS/.vim/bundle/vim-surround"]
+	path = iOS/.vim/bundle/vim-surround
 	url = git@github.com:tpope/vim-surround.git
-[submodule ".iOS/.vim/bundle/emmet-vim"]
-	path = .iOS/.vim/bundle/emmet-vim
+[submodule "iOS/.vim/bundle/emmet-vim"]
+	path = iOS/.vim/bundle/emmet-vim
 	url = git@github.com:mattn/emmet-vim.git
