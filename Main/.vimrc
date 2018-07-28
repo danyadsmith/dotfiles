@@ -35,7 +35,7 @@ if has('autocmd')
 
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7  "pink
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7
 
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
@@ -43,7 +43,7 @@ if has('autocmd')
 
     " Override Comments Color:
     "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
-    
+
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn guibg=#222222
     autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
@@ -53,7 +53,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
     autocmd ColorScheme * highlight GitGutterChange guibg=#222222
     autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
-    
+
     " Override CriticMarkup Colors:
     autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
 
@@ -68,11 +68,8 @@ endif
 " COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
 " ------------------------------------------------
 colorscheme base16-chalk
-"colorscheme base16-circus
 "colorscheme base16-default-dark
 "colorscheme base16-grayscale-dark
-"colorscheme base16-irblack
-"colorscheme base16-railscasts
 "colorscheme base16-tomorrow-night
 
 
@@ -238,7 +235,18 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIMWIKI CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{
+  \ 'path': '~/vimwiki/',
+  \ 'syntax': 'markdown',
+  \ 'template_path': '~/vimwiki/templates',
+  \ 'template_default': 'default',
+  \ 'template_ext': '.tpl',
+  \ 'ext': '.md'}]
+
+if has('autocmd')
+  autocmd FileType vimwiki set syntax=markdown
+endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
@@ -283,7 +291,7 @@ nmap <D-0> g0
 nmap <Tab> gt
 nmap <A-Tab> gT
 
-" Add the path to the current file directory to a command
+" Change the working directory to the current file directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
 
@@ -363,6 +371,5 @@ map  <leader>ev :vsp %%
 "    <space>et
 "    Edit in new tab
 map  <leader>et :tabe %%
-
 
 
