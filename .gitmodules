@@ -28,3 +28,9 @@
 [submodule "iOS/.vim/bundle/emmet-vim"]
 	path = iOS/.vim/bundle/emmet-vim
 	url = git@github.com:mattn/emmet-vim.git
+[submodule "iOS/.vim/bundle/vimwiki"]
+	path = iOS/.vim/bundle/vimwiki
+	url = git@github.com:vimwiki/vimwiki.git
+[submodule "iOS/.vim/bundle/calendar.vim"]
+	path = iOS/.vim/bundle/calendar.vim
+	url = git@github.com:itchyny/calendar.vim.git
