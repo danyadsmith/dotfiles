@@ -16,11 +16,10 @@ if has('ivim')
 endif
 execute pathogen#infect()
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SET COLORSCHEME
+" HIGHLIGHT OVERRIDES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Available Highlight Colors:
+" Available Highlight Color Keywords:
 " Black, Gray, Grey, LightGray, LightGrey, DarkGray, DarkGrey, White
 " Red, LightRed, DarkRed, Yellow, LightYellow, DarkYellow, Brown
 " Green, LightGreen, DarkGreen, Cyan, LightCyan, DarkCyan
@@ -33,19 +32,18 @@ if has('autocmd')
     " Override Line Number Color:
     autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
     autocmd ColorScheme * highlight LineNr ctermbg=DarkGray guibg=#222222
+
     " Override Cursor Line Number Color:
-    autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black gui=none
-    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#da3435 gui=none  "solarized red
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7 gui=none  "pink
-    "autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#58a6ce gui=none  "light blue
+    autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7  "pink
+
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
     autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
-    autocmd ColorScheme * highlight NonText guibg=none
-    autocmd ColorScheme * highlight SpecialKey guibg=none
+
     " Override Comments Color:
-    "autocmd ColorScheme * highlight Comment NONE guifg=#3D7BE6 " cobalt2
     "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
+    
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn guibg=#222222
     autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
@@ -55,34 +53,46 @@ if has('autocmd')
     autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
     autocmd ColorScheme * highlight GitGutterChange guibg=#222222
     autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
+    
+    " Override CriticMarkup Colors:
+    autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
+
     " Override ColorColumn Color:
     autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
 endif
 
-"colorscheme base16-atelier-cave        " dark navy
-"colorscheme base16-atelier-sulphurpool " blue
-"colorscheme base16-black-metal-venom   " black
-colorscheme base16-chalk               " dark gray
-"colorscheme base16-circus              " dark gray
-"colorscheme base16-grayscale-dark      " black
-"colorscheme base16-harmonic-dark       " dark blue
-"colorscheme base16-irblack             " black
-"colorscheme base16-materia             " dark teal
-"colorscheme base16-monokai             " dark brown
-"colorscheme base16-nord                " blue
-"colorscheme base16-railscasts          " dark gray
-"colorscheme base16-solarflare          " blue
-"colorscheme base16-tomorrow-night      " black
-"colorscheme cobalt2                    " blue
-"colorscheme gruvbox                    " brown/manila
-"colorscheme lucariox                   " dark blue
-"colorscheme material                   " dark teal
-"colorscheme plain                      " dark gray
-"colorscheme simplifysimplify-dark      " dark gray
-"colorscheme snow                       " dark blue
-"colorscheme stellarized_dark           " dark blue
-"colorscheme tender                     " dark gray
-"colorscheme xoria256                   " black
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET COLORSCHEME
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
+" ------------------------------------------------
+colorscheme base16-chalk
+"colorscheme base16-circus
+"colorscheme base16-default-dark
+"colorscheme base16-grayscale-dark
+"colorscheme base16-irblack
+"colorscheme base16-railscasts
+"colorscheme base16-tomorrow-night
+
+
+" COLORSCHEMES WITH BLUE BACKGROUNDS
+" ----------------------------------
+"colorscheme base16-atelier-cave
+"colorscheme base16-atelier-sulphurpool
+"colorscheme base16-harmonic-dark
+"colorscheme base16-nord
+"colorscheme base16-solarflare
+
+
+" COLORSCHEMES WITH BROWN BACKGROUNDS
+" -----------------------------------
+"colorscheme base16-monokai
+
+
+" COLORSCHEMES WITH TEAL BACKGROUNDS
+" ----------------------------------
+"colorscheme base16-materia
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -184,7 +194,7 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=CamingoCodeRegular:h17
+  set guifont=PragmataProRegular:h16
 endif
 
 
@@ -230,7 +240,6 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -258,26 +267,34 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Allow Use of j k $ and 0 to navigate wrapped lines
-noremap <buffer> <silent> k gk
-noremap <buffer> <silent> j gj
-noremap <buffer> <silent> 0 g0
-noremap <buffer> <silent> $ g$
-onoremap <silent> j gj
-onoremap <silent> k gk
+" Allow Use of <Command> + j k $ and 0 to navigate wrapped lines
+vmap <D-j> gj
+vmap <D-k> gk
+vmap <D-4> g$
+vmap <D-6> g^
+vmap <D-0> g0
+nmap <D-j> gj
+nmap <D-k> gk
+nmap <D-4> g$
+nmap <D-6> g^
+nmap <D-0> g0
 
 " Use the Tab key to navigate between tabs
 nmap <Tab> gt
 nmap <A-Tab> gT
+
+" Add the path to the current file directory to a command
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<space>"
 
-"    <space>ev
+"    <space>vrc
 "    edit .vimrc
-nmap <leader>ev :e $MYVIMRC<cr>
+nmap <leader>vrc :e $MYVIMRC<cr>
 
 "    <space>so
 "    save & source .vimrc (reload settings in current vim session)
@@ -299,11 +316,19 @@ nmap <leader>wc g<C-g>
 "    show invisible characters
 nmap <leader>si :set list!<cr>
 
-"    <space>c
+"    <space>ac
 "    center text on line (align center)
 nmap <leader>ac :center<cr>
 
-"    <space>p
+"    <space>al
+"    shift text left on line (align left)
+nmap <leader>al :left<cr>
+
+"    <space>ar
+"    shift text right on line (align right)
+nmap <leader>ar :right<cr>
+
+"    <space>cp
 "    ctrl-p
 nmap <leader>cp :CtrlP<cr>
 
@@ -319,8 +344,25 @@ nmap <leader>. :CtrlPTag<cr>
 "    remove trailing whitespace from end of lines
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
 
-"    <space>equals
+"    <space>=
 "    reindent file
 nmap <leader>= :call Preserve("normal gg=G")<CR>
+
+"    <space>ew
+"    Edit in new window
+map  <leader>ew :e %%
+
+"    <space>es
+"    Edit in new horizontal split
+map  <leader>es :sp %%
+
+"    <space>ev
+"    Edit in new vertical split
+map  <leader>ev :vsp %%
+
+"    <space>et
+"    Edit in new tab
+map  <leader>et :tabe %%
+
 
 
