@@ -17,6 +17,9 @@ echo "Cloning Plugins into ~/.vim/bundle"
 echo "Installing Plugin: base16-vim"
 git clone https://github.com/chriskempson/base16-vim
 
+echo "Installing Plugin: calendar.vim"
+git clone https://github.com/itchyny/calendar.vim
+
 echo "Installing Plugin: vim-fugitive"
 git clone https://github.com/tpope/vim-fugitive
 
@@ -35,37 +38,10 @@ git clone https://github.com/mattly/vim-markdown-enhancements
 echo "Installing Plugin: vim-sensible"
 git clone https://github.com/tpope/vim-sensible.git
 
+echo "Installing Plugin: tabular"
+git clone https://github.com/godlygeek/tabular
+
 echo "Installing Plugin: vimwiki"
 git clone https://github.com/vimwiki/vimwiki
-
-echo "Installing Colorscheme: material.vim"
-git clone https://github.com/kaicataldo/material.vim
-
-echo "Installing Colorscheme: plain"
-git clone https://github.com/andreypopp/vim-colors-plain
-
-echo "Installing Colorscheme: lucaroix"
-git clone https://github.com/miconda/lucariox.vim
-
-echo "Installing Colorscheme: stellarized"
-git clone https://github.com/nightsense/stellarized
-
-echo "Installing Colorscheme: simplify"
-git clone https://github.com/nightsense/simplifysimplify
-
-echo "Installing Colorscheme: cobalt2"
-git clone https://github.com/herrbischoff/cobalt2.vim
-
-echo "Installing Colorscheme: snow"
-git clone https://github.com/nightsense/snow
-
-echo "Installing Colorscheme: gruvbox"
-git clone https://github.com/morhetz/gruvbox
-
-echo "Installing Colorscheme: tender"
-git clone https://github.com/jacoborus/tender.vim
-
-echo "Installing Colorscheme: xoria256"
-git clone https://github.com/vim-scripts/xoria256.vim.git
 
 echo "Finished installing plugins and colorschemes."
