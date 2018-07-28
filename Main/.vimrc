@@ -194,7 +194,7 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataProRegular:h16
+  set guifont=PragmataPro-Regular:h16
 endif
 
 
