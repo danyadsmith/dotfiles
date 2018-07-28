@@ -68,11 +68,8 @@ endif
 " COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
 " ------------------------------------------------
 colorscheme base16-chalk
-"colorscheme base16-circus
 "colorscheme base16-default-dark
 "colorscheme base16-grayscale-dark
-"colorscheme base16-irblack
-"colorscheme base16-railscasts
 "colorscheme base16-tomorrow-night
 
 
@@ -238,7 +235,18 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIMWIKI CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{
+  \ 'path': '~/vimwiki/',
+  \ 'syntax': 'markdown', 
+  \ 'template_path': '~/vimwiki/templates',
+  \ 'template_default': 'default',
+  \ 'template_ext': '.tpl',
+  \ 'ext': '.md'}]
+
+if has('autocmd')
+  autocmd FileType vimwiki set syntax=markdown
+endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
@@ -363,6 +371,5 @@ map  <leader>ev :vsp %%
 "    <space>et
 "    Edit in new tab
 map  <leader>et :tabe %%
-
 
 
