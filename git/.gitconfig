@@ -1,0 +1,36 @@
+[user]
+	name = Danya D. Smith
+	email = danyadsmith@gmail.com
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[core]
+	editor = nvim
+	autocrlf = false
+	safecrlf = true
+	excludesfile = ~/.gitignore_global
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[color]
+	ui = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[push]
+	default = simple
+[github]
+	user = danyadsmith
+[ghi]
+	token = !security find-internet-password -a danyadsmith -s github.com -l 'ghi token' -w
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  type = cat-file -t
+  dump = cat-file -p
+  hist = log --graph --pretty=format:'%C(magenta)%h%Creset  %C(yellow)%ad%Creset%C(white) %s%C(cyan)%d%Creset %Creset%Cgreen(%cr)%Creset [%C(blue)%an%Creset]' --date=short
