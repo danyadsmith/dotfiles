@@ -34,3 +34,18 @@
 [submodule "iOS/.vim/bundle/calendar.vim"]
 	path = iOS/.vim/bundle/calendar.vim
 	url = git@github.com:itchyny/calendar.vim.git
+[submodule "iOS/.vim/bundle/tlib_vim"]
+	path = iOS/.vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "iOS/.vim/bundle/vim-addon-mw-utils"]
+	path = iOS/.vim/bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim-snipmate"]
+	path = iOS/.vim/bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "iOS/.vim/bundle/vim-snippets"]
+	path = iOS/.vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "iOS/.vim/bundle/vim-snipmate"]
+	path = iOS/.vim/bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
