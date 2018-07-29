@@ -46,3 +46,48 @@
 [submodule "vim/iOS/.vim/bundle/my-vim-snippets"]
 	path = vim/iOS/.vim/bundle/my-vim-snippets
 	url = https://github.com/danyadsmith/my-vim-snippets.git
+[submodule "vim/iOS/.vim/bundle/base-16-vim"]
+	path = vim/iOS/.vim/bundle/base-16-vim
+	url = https://github.com/chriskempson/base16-vim
+[submodule "vim/iOS/.vim/bundle/lightline.vim"]
+	path = vim/iOS/.vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/iOS/.vim/bundle/vim-pathogen"]
+	path = vim/iOS/.vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vim/iOS/.vim/bundle/ctrlp.vim"]
+	path = vim/iOS/.vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim/iOS/.vim/bundle/tabular"]
+	path = vim/iOS/.vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/iOS/.vim/bundle/vim-coloresque"]
+	path = vim/iOS/.vim/bundle/vim-coloresque
+	url = https://github.com/Marslo/vim-coloresque.git
+[submodule "vim/iOS/.vim/bundle/vim-markdown-enhancements"]
+	path = vim/iOS/.vim/bundle/vim-markdown-enhancements
+	url = https://github.com/mattly/vim-markdown-enhancements.git
+[submodule "vim/iOS/.vim/bundle/vim-repeat"]
+	path = vim/iOS/.vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/iOS/.vim/bundle/vim-surround"]
+	path = vim/iOS/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/iOS/.vim/bundle/emmet-vim"]
+	path = vim/iOS/.vim/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim/iOS/.vim/bundle/vimwiki"]
+	path = vim/iOS/.vim/bundle/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+[submodule "vim/iOS/.vim/bundle/calendar.vim"]
+	path = vim/iOS/.vim/bundle/calendar.vim
+	url = https://github.com/itchyny/calendar.vim.git
+[submodule "vim/iOS/.vim/bundle/tlib_vim"]
+	path = vim/iOS/.vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/iOS/.vim/bundle/vim-addon-mw-utils"]
+	path = vim/iOS/.vim/bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/iOS/.vim/bundle/vim-snipmate"]
+	path = vim/iOS/.vim/bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
