@@ -12,28 +12,28 @@
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "iOS/.vim/bundle/tabular"]
 	path = vim/iOS/.vim/bundle/tabular
-	url = git@github.com:godlygeek/tabular.git
+	url = https://github.com/godlygeek/tabular.git
 [submodule "iOS/.vim/bundle/vim-coloresque"]
 	path = vim/iOS/.vim/bundle/vim-coloresque
-	url = git@github.com:Marslo/vim-coloresque.git
+	url = https://github.com/Marslo/vim-coloresque.git
 [submodule "iOS/.vim/bundle/vim-markdown-enhancements"]
 	path = vim/iOS/.vim/bundle/vim-markdown-enhancements
-	url = git@github.com:mattly/vim-markdown-enhancements.git
+	url = https://github.com/mattly/vim-markdown-enhancements.git
 [submodule "iOS/.vim/bundle/vim-repeat"]
 	path = vim/iOS/.vim/bundle/vim-repeat
-	url = git@github.com:tpope/vim-repeat.git
+	url = https://github.com/tpope/vim-repeat.git
 [submodule "iOS/.vim/bundle/vim-surround"]
 	path = vim/iOS/.vim/bundle/vim-surround
-	url = git@github.com:tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "iOS/.vim/bundle/emmet-vim"]
 	path = vim/iOS/.vim/bundle/emmet-vim
-	url = git@github.com:mattn/emmet-vim.git
+	url = https://github.com/mattn/emmet-vim.git
 [submodule "iOS/.vim/bundle/vimwiki"]
 	path = vim/iOS/.vim/bundle/vimwiki
-	url = git@github.com:vimwiki/vimwiki.git
+	url = https://github.com/vimwiki/vimwiki.git
 [submodule "iOS/.vim/bundle/calendar.vim"]
 	path = vim/iOS/.vim/bundle/calendar.vim
-	url = git@github.com:itchyny/calendar.vim.git
+	url = https://github.com/itchyny/calendar.vim.git
 [submodule "iOS/.vim/bundle/tlib_vim"]
 	path = vim/iOS/.vim/bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
@@ -45,4 +45,4 @@
 	url = https://github.com/garbas/vim-snipmate.git
 [submodule "vim/iOS/.vim/bundle/my-vim-snippets"]
 	path = vim/iOS/.vim/bundle/my-vim-snippets
-	url = git@github.com:danyadsmith/my-vim-snippets.git
+	url = https://github.com/danyadsmith/my-vim-snippets.git
