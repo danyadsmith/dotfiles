@@ -59,6 +59,16 @@ if has('autocmd')
 
     " Override ColorColumn Color:
     autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
+
+    " Override HTML Syntax Colors:
+    autocmd ColorScheme * highlight htmlTag guifg=#31aed8
+    autocmd ColorScheme * highlight htmlTagName guifg=#31aed8
+    autocmd ColorScheme * highlight htmlEndTag guifg=#31a3d8
+    autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
+    autocmd ColorScheme * highlight htmlString guifg=#d9d5c1 "f5f2c1
+    autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
+    "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -69,7 +79,9 @@ endif
 " ------------------------------------------------
 colorscheme base16-chalk
 "colorscheme base16-default-dark
+"colorscheme base16-google-dark
 "colorscheme base16-grayscale-dark
+"colorscheme base16-onedark
 "colorscheme base16-tomorrow-night
 
 
@@ -84,12 +96,15 @@ colorscheme base16-chalk
 
 " COLORSCHEMES WITH BROWN BACKGROUNDS
 " -----------------------------------
+"colorscheme base16-darktooth
+"colorscheme base16-gruvbox-dark-hard
 "colorscheme base16-monokai
 
 
 " COLORSCHEMES WITH TEAL BACKGROUNDS
 " ----------------------------------
 "colorscheme base16-materia
+"colorscheme base16-solarized-dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -394,5 +409,6 @@ map  <leader>ev :vsp %%
 "    <space>et
 "    Edit in new tab
 map  <leader>et :tabe %%
+
 
 

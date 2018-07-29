@@ -35,7 +35,7 @@ if has('autocmd')
 
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7  "pink
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7
 
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
@@ -43,7 +43,7 @@ if has('autocmd')
 
     " Override Comments Color:
     "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
-    
+
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn guibg=#222222
     autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
@@ -53,12 +53,22 @@ if has('autocmd')
     autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
     autocmd ColorScheme * highlight GitGutterChange guibg=#222222
     autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
-    
+
     " Override CriticMarkup Colors:
     autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
 
     " Override ColorColumn Color:
     autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
+
+    " Override HTML Syntax Colors:
+    autocmd ColorScheme * highlight htmlTag guifg=#31aed8
+    autocmd ColorScheme * highlight htmlTagName guifg=#31aed8
+    autocmd ColorScheme * highlight htmlEndTag guifg=#31a3d8
+    autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
+    autocmd ColorScheme * highlight htmlString guifg=#d9d5c1 "f5f2c1
+    autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
+    "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -69,7 +79,9 @@ endif
 " ------------------------------------------------
 colorscheme base16-chalk
 "colorscheme base16-default-dark
+"colorscheme base16-google-dark
 "colorscheme base16-grayscale-dark
+"colorscheme base16-onedark
 "colorscheme base16-tomorrow-night
 
 
@@ -84,12 +96,15 @@ colorscheme base16-chalk
 
 " COLORSCHEMES WITH BROWN BACKGROUNDS
 " -----------------------------------
+"colorscheme base16-darktooth
+"colorscheme base16-gruvbox-dark-hard
 "colorscheme base16-monokai
 
 
 " COLORSCHEMES WITH TEAL BACKGROUNDS
 " ----------------------------------
 "colorscheme base16-materia
+"colorscheme base16-solarized-dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -133,7 +148,7 @@ set showmatch                           " Highighlight matching () {} []
 
 
 " Invisible Character Customizations
-set listchars=tab:▸\ ,eol:¬,space:·︎
+set listchars=tab:▸\ ,eol:¬,space:·
 
 
 " Matchit
@@ -162,6 +177,17 @@ set wildignore+=.cache
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set clipboard=unnamed                   " yank to os clipboard
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SPELL CHECK OVERRIDES 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set spelllang=en_us
+if has('nvim')
+  autocmd ColorScheme * hi SpellBad cterm=underline guifg=#FB9FB1
+  autocmd ColorScheme * hi SpellCap guifg=#70C2EF
+  autocmd ColorScheme * hi SpellLocal guifg=#ACC267
+  autocmd ColorScheme * hi SpellRare guifg=#DDB26F
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " HELP CUSTOMIZATIONS
@@ -237,7 +263,7 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_list = [{
   \ 'path': '~/vimwiki/',
-  \ 'syntax': 'markdown', 
+  \ 'syntax': 'markdown',
   \ 'template_path': '~/vimwiki/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.tpl',
@@ -316,6 +342,18 @@ nmap <leader>sp :setlocal spell<cr>
 "    spell check off (no spelling)
 nmap <leader>ns :setlocal nospell<cr>
 
+"    <space>pw
+"    jump to previous misspelled word
+nmap <leader>pw [s
+
+"    <space>pn
+"    jump to next misspelled word
+nmap <leader>nw ]s
+
+"    <space>cs
+"    correct spelling
+nmap <leader>cs 1z=
+
 "    <space>wc
 "    display word count
 nmap <leader>wc g<C-g>
@@ -371,5 +409,6 @@ map  <leader>ev :vsp %%
 "    <space>et
 "    Edit in new tab
 map  <leader>et :tabe %%
+
 
 
