@@ -133,7 +133,7 @@ set showmatch                           " Highighlight matching () {} []
 
 
 " Invisible Character Customizations
-set listchars=tab:▸\ ,eol:¬,space:·︎
+set listchars=tab:▸\ ,eol:¬,space:·
 
 
 " Matchit
@@ -162,6 +162,17 @@ set wildignore+=.cache
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set clipboard=unnamed                   " yank to os clipboard
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SPELL CHECK OVERRIDES 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set spelllang=en_us
+if has('nvim')
+  autocmd ColorScheme * hi SpellBad cterm=underline guifg=#FB9FB1
+  autocmd ColorScheme * hi SpellCap guifg=#70C2EF
+  autocmd ColorScheme * hi SpellLocal guifg=#ACC267
+  autocmd ColorScheme * hi SpellRare guifg=#DDB26F
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " HELP CUSTOMIZATIONS
@@ -315,6 +326,18 @@ nmap <leader>sp :setlocal spell<cr>
 "    <space>ns
 "    spell check off (no spelling)
 nmap <leader>ns :setlocal nospell<cr>
+
+"    <space>pw
+"    jump to previous misspelled word
+nmap <leader>pw [s
+
+"    <space>pn
+"    jump to next misspelled word
+nmap <leader>nw ]s
+
+"    <space>cs
+"    correct spelling
+nmap <leader>cs 1z=
 
 "    <space>wc
 "    display word count
