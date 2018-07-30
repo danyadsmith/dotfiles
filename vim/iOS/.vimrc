@@ -63,14 +63,14 @@ if has('autocmd')
     " Override HTML Syntax Colors:
     autocmd ColorScheme * highlight htmlTag guifg=#31aed8
     autocmd ColorScheme * highlight htmlTagName guifg=#31aed8
-    autocmd ColorScheme * highlight htmlEndTag guifg=#31a3d8
+    autocmd ColorScheme * highlight htmlEndTag guifg=#31aed8
     autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
-    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
+    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
-    "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
     autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
-    autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
+    " Override Markdown Syntax Colors:
+    autocmd ColorScheme * highlight markdownListMarker guifg=#e8508a
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -275,6 +275,8 @@ if has('autocmd')
   autocmd FileType vimwiki set syntax=markdown
 endif
 
+:let g:vimwiki_table_mappings = 0
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
@@ -299,6 +301,14 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
+function! EnableSnippets()
+  iunmap <buffer> <Tab>
+endfunction
+
+function! EnableVimWiki()
+  inoremap <expr> <buffer> <Tab> vimwiki#tbl#kbd_tab()
+  inoremap <expr> <buffer> <S-Tab> vimwiki#tbl#kbd_shift_tab()
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
@@ -348,7 +358,7 @@ nmap <leader>ns :setlocal nospell<cr>
 "    jump to previous misspelled word
 nmap <leader>pw [s
 
-"    <space>pn
+"    <space>pw
 "    jump to next misspelled word
 nmap <leader>nw ]s
 
@@ -412,5 +422,12 @@ map  <leader>ev :vsp %%
 "    Edit in new tab
 map  <leader>et :tabe %%
 
+"    <space>evw
+"    Enable VimWiki Tab Bindings
+map  <leader>evw :call EnableVimWiki()<CR>
+
+"    <space>esn
+"    Enable SnipMate Snippets
+map  <leader>esn :call EnableSnippets()<CR>
 
 
