@@ -63,14 +63,14 @@ if has('autocmd')
     " Override HTML Syntax Colors:
     autocmd ColorScheme * highlight htmlTag guifg=#31aed8
     autocmd ColorScheme * highlight htmlTagName guifg=#31aed8
-    autocmd ColorScheme * highlight htmlEndTag guifg=#31a3d8
+    autocmd ColorScheme * highlight htmlEndTag guifg=#31aed8
     autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
-    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
+    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
-    "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
     autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
-    autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
+    " Override Markdown Syntax Colors:
+    autocmd ColorScheme * highlight markdownListMarker guifg=#e8508a
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -277,6 +277,13 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOMIZE VIM-MINISNIP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:minisnip_dir = './.vim/bundle/my-vim-snippets:./minisnip/'
+let g:minisnip_trigger = '<C-j>'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let &t_SI = "\<esc>[6 q"
@@ -348,7 +355,7 @@ nmap <leader>ns :setlocal nospell<cr>
 "    jump to previous misspelled word
 nmap <leader>pw [s
 
-"    <space>pn
+"    <space>nw
 "    jump to next misspelled word
 nmap <leader>nw ]s
 
@@ -411,6 +418,5 @@ map  <leader>ev :vsp %%
 "    <space>et
 "    Edit in new tab
 map  <leader>et :tabe %%
-
 
 
