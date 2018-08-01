@@ -53,15 +53,13 @@ git clone https://github.com/godlygeek/tabular
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: SnipMate"
-git clone https://github.com/tomtom/tlib_vim.git
-git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
-git clone https://github.com/garbas/vim-snipmate.git
+echo "Installing Plugin: vim-coloresque"
+git clone https://github.com/Marslo/vim-coloresque.git
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: vim-coloresque"
-git clone https://github.com/Marslo/vim-coloresque.git
+echo "Installing Plugin: vim-commentary"
+git clone https://github.com/tpope/vim-commentary
 echo "========================================================================="
 echo ""
 
@@ -87,6 +85,11 @@ echo ""
 
 echo "Installing Plugin: vim-marked"
 git clone https://github.com/itspriddle/vim-marked.git 
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: vim-minisnip"
+git clone https://github.com/joereynolds/vim-minisnip
 echo "========================================================================="
 echo ""
 
