@@ -275,7 +275,12 @@ if has('autocmd')
   autocmd FileType vimwiki set syntax=markdown
 endif
 
-:let g:vimwiki_table_mappings = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOMIZE VIM-MINISNIP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:minisnip_dir = './.vim/bundle/my-vim-snippets:./minisnip/'
+let g:minisnip_trigger = '<C-j>'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -301,14 +306,6 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-function! EnableSnippets()
-  iunmap <buffer> <Tab>
-endfunction
-
-function! EnableVimWiki()
-  inoremap <expr> <buffer> <Tab> vimwiki#tbl#kbd_tab()
-  inoremap <expr> <buffer> <S-Tab> vimwiki#tbl#kbd_shift_tab()
-endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
@@ -421,13 +418,5 @@ map  <leader>ev :vsp %%
 "    <space>et
 "    Edit in new tab
 map  <leader>et :tabe %%
-
-"    <space>evw
-"    Enable VimWiki Tab Bindings
-map  <leader>evw :call EnableVimWiki()<CR>
-
-"    <space>esn
-"    Enable SnipMate Snippets
-map  <leader>esn :call EnableSnippets()<CR>
 
 
