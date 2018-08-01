@@ -76,3 +76,6 @@
 [submodule "vim/iOS/.vim/bundle/vim-minisnip"]
 	path = vim/iOS/.vim/bundle/vim-minisnip
 	url = https://github.com/joereynolds/vim-minisnip.git
+[submodule "vim/iOS/.vim/bundle/vim-commentary"]
+	path = vim/iOS/.vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git

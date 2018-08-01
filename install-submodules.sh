@@ -47,14 +47,8 @@ git submodule add https://github.com/vimwiki/vimwiki.git vim/iOS/.vim/bundle/vim
 echo "Installing Submodule: calendar.vim"
 git submodule add https://github.com/itchyny/calendar.vim.git vim/iOS/.vim/bundle/calendar.vim
 
-echo "Installing Submodule: tlib_vim"
-git submodule add https://github.com/tomtom/tlib_vim.git vim/iOS/.vim/bundle/tlib_vim
-
-echo "Installing Submodule: vim-addon-mw-utils"
-git submodule add https://github.com/MarcWeber/vim-addon-mw-utils.git vim/iOS/.vim/bundle/vim-addon-mw-utils
-
-echo "Installing Submodule: vim-snipmate"
-git submodule add https://github.com/garbas/vim-snipmate.git vim/iOS/.vim/bundle/vim-snipmate
+echo "Installing Submodule: vim.commentary"
+git submodule add https://github.com/tpope/vim-commentary.git vim/iOS/.vim/bundle/vim-commentary
 
 echo "Installing Submodule: my-vim-snippets"
 git submodule add https://github.com/danyadsmith/my-vim-snippets.git vim/iOS/.vim/bundle/my-vim-snippets
