@@ -63,14 +63,14 @@ if has('autocmd')
     " Override HTML Syntax Colors:
     autocmd ColorScheme * highlight htmlTag guifg=#31aed8
     autocmd ColorScheme * highlight htmlTagName guifg=#31aed8
-    autocmd ColorScheme * highlight htmlEndTag guifg=#31aed8
+    autocmd ColorScheme * highlight htmlEndTag guifg=#31a3d8
     autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
-    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 
+    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
+    "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
     autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
+    autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
-    " Override Markdown Syntax Colors:
-    autocmd ColorScheme * highlight markdownListMarker guifg=#e8508a
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -277,11 +277,17 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CUSTOMIZE VIM-MINISNIP
+" VIM-MINISNIP CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:minisnip_dir = './.vim/bundle/my-vim-snippets:./minisnip/'
-let g:minisnip_trigger = '<C-j>'
+if has('win32') || has('win64') || has('dos')
+  " Set Snippet Locations in Windows Environment
+  let g:minisnip_dir = 'c:\Users\dsmith04\.vim\bundle\my-vim-snippets\snippets\'
+else
+  " Set Snippet Locations in *NIX Environments
+  let g:minisnip_dir = '~/.vim/bundle/my-vim-snippets/snippets/:~/minisnip/'
+endif
 
+let g:minisnip_trigger = "<C-j>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
@@ -355,7 +361,7 @@ nmap <leader>ns :setlocal nospell<cr>
 "    jump to previous misspelled word
 nmap <leader>pw [s
 
-"    <space>nw
+"    <space>pn
 "    jump to next misspelled word
 nmap <leader>nw ]s
 
