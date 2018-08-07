@@ -21,7 +21,7 @@ ZSH_THEME="danya"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
-DISABLE_LS_COLORS="true"
+# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -86,26 +86,33 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-###############################################################################
-#  LOAD ALL CUSTOMIZATIONS FROM ~/.profile                                    #
-###############################################################################
+################################################################################
+#  LOAD ALL CUSTOMIZATIONS FROM ~/.profile
+################################################################################
 if [ -f ~/.profile ]; then
 	source ~/.profile
 fi
 
-#############################################################################################################
-#  COLORS                                                                                                   #
-#############################################################################################################
+################################################################################
+#  COLORS
+################################################################################
 
 export CLICOLOR=1
 export LSCOLORS=exfxcxdxbxagadabBbacad
 export GREP_COLOR='1;32;49'
 export TERM=xterm-256color
 
-#############################################################################################################
-#  HISTORY CUSTOMIZATIONS                                                                                   #
-#############################################################################################################
+################################################################################
+#  HISTORY CUSTOMIZATIONS
+################################################################################
 
  export HISTCONTROL=ignoreboth			# ignoredups:ignorespace
  export HISTSIZE=500
 
+################################################################################
+# Base16 Shell
+################################################################################
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
