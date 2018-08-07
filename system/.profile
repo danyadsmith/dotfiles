@@ -24,6 +24,7 @@ PATH=/Users/danyadsmith/npm/bin:$PATH
 PATH=/Users/danyadsmith/.rbenv/shims:$PATH
 PATH=/usr/local/bin/yarn:$PATH
 PATH=/usr/local/bin/mosh-server:$PATH
+PATH=/Applications/MacVim.app/Contents/bin:$PATH
 
 export PATH
 
@@ -128,7 +129,7 @@ alias t4='tree -L 4 -C -I node_modules --dirsfirst'
 alias emacs='emacs --no-window-system'
 
 # vim
-alias vim=nvim
+#alias vim=nvim
 alias vim.config='vim ~/.config/nvim/init.vim'
 alias vimdiff='nvim -d'
 export EDITOR=nvim
