@@ -16,6 +16,7 @@ if has('ivim')
 endif
 execute pathogen#infect()
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " HIGHLIGHT OVERRIDES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -31,11 +32,11 @@ if has('autocmd')
     autocmd!
     " Override Line Number Color:
     autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
-    autocmd ColorScheme * highlight LineNr ctermbg=DarkGray guibg=#222222
+    autocmd ColorScheme * highlight LineNr ctermbg=Black guibg=#222222
 
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=LightRed guibg=#ff75a7
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=DarkCyan guibg=#ff75a7
 
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
@@ -45,14 +46,15 @@ if has('autocmd')
     "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
 
     " Override GitGutter Colors:
-    autocmd ColorScheme * highlight SignColumn guibg=#222222
+    autocmd ColorScheme * highlight SignColumn ctermbg=Black guibg=#222222
     autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
-    autocmd ColorScheme * highlight GitGutterAdd guibg=#222222
+    autocmd ColorScheme * highlight GitGutterAdd ctermbg=Black guibg=#222222
     autocmd ColorScheme * highlight GitGutterDelete guifg=#ff0000
-    autocmd ColorScheme * highlight GitGutterDelete guibg=#222222
+    autocmd ColorScheme * highlight GitGutterDelete ctermbg=Black guibg=#222222
     autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
-    autocmd ColorScheme * highlight GitGutterChange guibg=#222222
+    autocmd ColorScheme * highlight GitGutterChange ctermbg=Black guibg=#222222
     autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
+    autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=Black guibg=#222222 
 
     " Override CriticMarkup Colors:
     autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
@@ -149,12 +151,16 @@ set formatoptions+=t
 set showmatch                           " Highighlight matching () {} []
 
 
-" Invisible Character Customizations
+" Show Invisible Character Customizations
 set listchars=tab:▸\ ,eol:¬,space:·
 
 
-" Matchit
-runtime macros/matchit.vim
+" Enable the Matchit Plugin
+runtime macros/matchit.vim              " :help matchit
+
+
+" Create or Update Tags
+command! MakeTags !ctags -R .
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -169,11 +175,16 @@ set noincsearch                         " do not highlight incremental search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termencoding=utf8                   " set default encoding to utf-8
 
-" Do not tab-complete these file types or folders
-set wildignore+=.DS_Store               " ignore MacOS system files/folders
-set wildignore+=.suo,.csproj,.sln       " ignore Visual Studio files
-set wildignore+=.cache
+set path+=**
 
+set wildmenu                            " enhanced command-line completion
+set wildignore+=.DS_Store               " ignore MacOS system files/folders
+set wildignore+=.suo                    " ignore Visual Studio files
+set wildignore+=.cache                  
+
+" Customize the NETRW File Browser
+let g:netrw_liststyle=3                 " Open netwr in tree view
+    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CLIPBOARD CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -219,7 +230,7 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro-Regular:h16
+  set guifont=PragmataPro:h14
 endif
 
 
