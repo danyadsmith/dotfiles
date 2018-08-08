@@ -15,16 +15,17 @@ PATH=/usr/local/bin:$PATH
 PATH=/usr/local/Cellar/nano/2.4.0/bin:$PATH
 PATH=$HOME/.node/bin:$PATH
 PATH=/usr/bin/compass:$PATH
-PATH=/Users/danyadsmith/.npm_packages/bin:$PATH
+PATH=~/.npm_packages/bin:$PATH
 PATH=$HOME/.rbenv/shims:$PATH
 PATH=/usr/local/heroku/bin:$PATH
 PATH=$HOME/.node_modules_global/bin:$PATH
-PATH=/Users/danyadsmith/npm:$PATH
-PATH=/Users/danyadsmith/npm/bin:$PATH
-PATH=/Users/danyadsmith/.rbenv/shims:$PATH
+PATH=~/npm:$PATH
+PATH=~/npm/bin:$PATH
+PATH=~/.rbenv/shims:$PATH
 PATH=/usr/local/bin/yarn:$PATH
 PATH=/usr/local/bin/mosh-server:$PATH
 PATH=/Applications/MacVim.app/Contents/bin:$PATH
+PATH=~/Development/Configuration/dotfiles/scripts:$PATH
 
 export PATH
 
@@ -63,7 +64,7 @@ alias books=' training; cd Books;'
 alias lynda=' web; cd Training/Lynda'
 alias oreilly=' web; cd Training/OReilly'
 alias pluralsight=' web; cd Training/Pluralsight'
-alias ibooks='cd /Users/danyadsmith/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks'
+alias ibooks='cd ~/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks'
 
 # clear scrollback
 alias cls="osascript -e 'if application \"iTerm\" is frontmost then tell application \"System Events\" to keystroke \"k\" using command down'"
@@ -194,7 +195,7 @@ alias babelize='babel . --out-dir compiled --presets=es2015,react --ignore=node_
 alias pbcpwd='pbcopy < pwd'
 
 # Desktop Background
-alias refresh-desktop="osascript /Users/danyadsmith/Development/Scripts/setDesktopBackground.scpt"
+alias refresh-desktop="osascript ~/Development/Scripts/setDesktopBackground.scpt"
 
 # Empty Trash
 alias empty-trash='sudo rm -rf ~/.Trash'
@@ -203,7 +204,7 @@ alias empty-trash='sudo rm -rf ~/.Trash'
 alias grep='grep --color=auto'
 
 # MongoDB
-alias start-mongo='mongod --fork --logpath /Users/danyadsmith/logs/mongo/mongodb.log --logappend'
+alias start-mongo='mongod --fork --logpath ~/logs/mongo/mongodb.log --logappend'
 
 # Multimarkdown
 alias mmd-batch='find . -name "*.mmd" -print0 | xargs -0 -n1 -I {} multimarkdown --batch {} > {}.html'
