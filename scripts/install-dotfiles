@@ -1,0 +1,48 @@
+#!/bin/sh
+# Create Symlinks for Dotfiles under Source Control
+
+SCRIPT_NAME="symlink_sys_files.sh"
+SCRIPT_AUTHOR="Danya D. Smith"
+SCRIPT_UPDATED="Friday 17 August 2018 @ 6:54 PM"
+
+echo "Executing: $SCRIPT_NAME"
+echo "By: $SCRIPT_AUTHOR"
+echo "Last Updated: $SCRIPT_UPDATED"
+
+echo "Adding .bash_profile"
+trash ~/.bash_profile
+ln -s ~/Development/Configuration/dotfiles/system/.bash_profile ~/.bash_profile
+
+echo "Adding .bashrc"
+trash ~/.bashrc
+ln -s ~/Development/Configuration/dotfiles/system/.bashrc ~/.bashrc
+
+echo "Adding .profile"
+trash ~/.profile
+ln -s ~/Development/Configuration/dotfiles/system/.profile ~/.profile
+
+echo "Adding .tmux.conf"
+trash ~/.tmux.conf
+ln -s ~/Development/Configuration/dotfiles/system/.tmux.conf ~/.tmux.conf
+
+echo "Adding .zshrc"
+trash ~/.zshrc
+ln -s ~/Development/Configuration/dotfiles/system/.zshrc ~/.zshrc
+
+echo "Adding danya.zsh-theme"
+trash ~/.oh-my-zsh/themes/danya.zsh-theme
+ln -s ~/Development/Configuration/dotfiles/system/danya.zsh-theme ~/.oh-my-zsh/themes/danya.zsh-theme
+
+echo "Adding .gitconfig"
+trash ~/.gitconfig
+ln -s ~/Development/Configuration/dotfiles/git/.gitconfig ~/.gitconfig
+
+echo "Adding .gitignore_global"
+trash ~/.gitignore_global
+ln -s ~/Development/Configuration/dotfiles/git/.gitignore_global ~/.gitignore_global
+
+echo "Adding motd"
+sudo rm -rf /etc/motd
+sudo ln -s ~/Development/Configuration/dotfiles/system/motd /etc/motd
+
+
