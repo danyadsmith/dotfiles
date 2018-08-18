@@ -34,3 +34,5 @@
   type = cat-file -t
   dump = cat-file -p
   hist = log --graph --pretty=format:'%C(magenta)%h%Creset  %C(yellow)%ad%Creset%C(white) %s%C(cyan)%d%Creset %Creset%Cgreen(%cr)%Creset [%C(blue)%an%Creset]' --date=short
+[pager]
+	branch = false
