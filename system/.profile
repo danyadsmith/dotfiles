@@ -74,6 +74,9 @@ alias clear="osascript -e 'if application \"iTerm\" is frontmost then tell appli
 # ctags
 alias ctags="`brew --prefix`/bin/ctags"
 
+# diff
+alias diff='colordiff'
+
 # disown
 alias d='disown'
 
