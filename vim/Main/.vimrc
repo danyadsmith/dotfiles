@@ -73,6 +73,11 @@ if has('autocmd')
     autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
     autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
+    " Override XML Syntax Colors:
+    autocmd ColorScheme * highlight xmlTag guifg=#31aed8
+    autocmd ColorScheme * highlight xmlTagName guifg=#31aed8
+    autocmd ColorScheme * highlight xmlEndTag guifg=#31aed8
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
