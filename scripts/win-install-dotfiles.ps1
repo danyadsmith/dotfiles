@@ -22,7 +22,7 @@ New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles
 
 echo "Adding .gitconfig"
 Remove-Item -path C:\Users\DSmith04\.gitconfig
-New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitconfig -path C:\Users\DSmith04\.gitconfig
+New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitconfig -path C:\Users\DSmith04\.gitconfig-work
 
 echo "Adding .gitignore_global"
 Remove-Item -path C:\Users\DSmith04\.gitignore_global
