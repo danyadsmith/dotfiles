@@ -73,9 +73,6 @@
 [submodule "vim/iOS/.vim/bundle/calendar.vim"]
 	path = vim/iOS/.vim/bundle/calendar.vim
 	url = https://github.com/itchyny/calendar.vim.git
-[submodule "vim/iOS/.vim/bundle/vim-minisnip"]
-	path = vim/iOS/.vim/bundle/vim-minisnip
-	url = https://github.com/joereynolds/vim-minisnip.git
 [submodule "vim/iOS/.vim/bundle/vim-commentary"]
 	path = vim/iOS/.vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
