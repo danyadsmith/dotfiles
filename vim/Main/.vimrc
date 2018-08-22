@@ -80,6 +80,7 @@ if has('autocmd')
 
 endif
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SET COLORSCHEME
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -328,6 +329,13 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
@@ -350,6 +358,8 @@ nmap <A-Tab> gT
 
 " Change the working directory to the current file directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -441,4 +451,6 @@ map  <leader>ev :vsp %%
 "    Edit in new tab
 map  <leader>et :tabe %%
 
-
+"    <space>ss
+"    Show highlighting groups for the word beneath the cursor
+nmap <leader>ss :call SynStack()<CR>

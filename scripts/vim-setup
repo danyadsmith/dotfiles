@@ -122,12 +122,16 @@ echo ""
 
 echo "Finished installing plugins and colorschemes."
 
+echo "Creating Directory: ~/.vim/colors"
+mkdir ~/.vim/colors
+ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/demo_light.vim ~/.vim/colors/demo_light.vim
+
 echo "Configuring NeoVim"
 trash ~/.config/nvim/init.vim
 ln -s ~/Development/Configuration/dotfiles/vim/Main/.vimrc ~/.config/nvim/init.vim
 trash ~/.config/nvim/ginit.vim
 ln -s ~/Development/Configuration/dotfiles/vim/Main/ginit.vim ~/.config/nvim/ginit.vim
-ln -s ~/.vim/bundle ~/.config/nvim/bundle
-ln -s ~/.vim/autoload ~/.config/nvim/autoload
+ln -s ~/.vim/bundle ~/.config/nvim/
+ln -s ~/.vim/autoload ~/.config/nvim/
 
 
