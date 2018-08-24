@@ -184,9 +184,15 @@ set termencoding=utf8                   " set default encoding to utf-8
 set path+=**
 
 set wildmenu                            " enhanced command-line completion
-set wildignore+=.DS_Store               " ignore MacOS system files/folders
-set wildignore+=.suo                    " ignore Visual Studio files
-set wildignore+=.cache                  
+set wildignore+=*/.DS_Store/*           " ignore MacOS system files/folders
+set wildignore+=*\\.DS_Store\\*         " ignore MacOS system files/folders
+set wildignore+=*/.suo/*                " ignore Visual Studio files
+set wildignore+=*\\.suo\\*              " ignore Visual Studio files
+set wildignore+=*/.cache/*                 
+set wildignore+=*/.Trash/*              " ignore Trash directories
+set wildignore+=*/.npm/*                " ignore NPM
+set wildignore+=*/.git/*                " ignore Git
+set wildignore+=*/node_modules/*        " ignore node_modules
 
 " Customize the NETRW File Browser
 let g:netrw_liststyle=3                 " Open netwr in tree view
