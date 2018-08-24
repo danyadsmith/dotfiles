@@ -86,3 +86,6 @@ jspm_packages
 
 # Wallaby.js
 wallaby.js
+
+# Vim Swap Files
+*.swp
