@@ -1,7 +1,7 @@
 " Vim color file
 " Converted from Textmate theme Another Kolor (Light) using Coloration v0.4.0 (http://github.com/sickill/coloration)
 
-set background=dark
+set background=light
 highlight clear
 
 if exists("syntax_on")
@@ -27,7 +27,7 @@ hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=un
 hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Folded ctermfg=181 ctermbg=188 cterm=NONE guifg=#c8c2b2 guibg=#e4e0d7 gui=NONE
 
-hi Normal ctermfg=243 ctermbg=188 cterm=NONE guifg=#777777 guibg=#e4e0d7 gui=NONE
+hi Normal ctermfg=237 ctermbg=223 cterm=NONE guifg=#777777 guibg=#e4e0d7 gui=NONE
 hi Boolean ctermfg=96 ctermbg=NONE cterm=NONE guifg=#94539a guibg=NONE gui=NONE
 hi Character ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Comment ctermfg=181 ctermbg=NONE cterm=NONE guifg=#c8c2b2 guibg=NONE gui=NONE
