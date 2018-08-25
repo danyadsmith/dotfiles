@@ -70,7 +70,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
     "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
-    autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
+    "autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
     autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
     " Override XML Syntax Colors:
@@ -87,7 +87,8 @@ endif
 
 " COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
 " ------------------------------------------------
-colorscheme base16-chalk
+colorscheme anotherkolor-dark
+"colorscheme base16-chalk
 "colorscheme base16-default-dark
 "colorscheme base16-google-dark
 "colorscheme base16-grayscale-dark
