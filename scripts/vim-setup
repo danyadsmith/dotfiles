@@ -65,6 +65,11 @@ git clone https://github.com/godlygeek/tabular
 echo "========================================================================="
 echo ""
 
+echo "Installing Plugin: TagHighlight"
+git clone https://github.com/vim-scripts/TagHighlight
+echo "========================================================================="
+echo ""
+
 echo "Installing Plugin: vim-coloresque"
 git clone https://github.com/Marslo/vim-coloresque.git
 echo "========================================================================="
@@ -72,6 +77,11 @@ echo ""
 
 echo "Installing Plugin: vim-commentary"
 git clone https://github.com/tpope/vim-commentary
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: vim-csharp"
+git clone https://github.com/OrangeT/vim-csharp.git
 echo "========================================================================="
 echo ""
 
@@ -87,6 +97,16 @@ echo ""
 
 echo "Installing Plugin: vim-gitgutter"
 git clone https://github.com/airblade/vim-gitgutter
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: vim-HiLinkTrace"
+git clone https://github.com/gerw/vim-HiLinkTrace.git
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: vim-javascript"
+git clone https://github.com/pangloss/vim-javascript.git
 echo "========================================================================="
 echo ""
 
@@ -125,8 +145,8 @@ echo "Finished installing plugins and colorschemes."
 echo "Creating Directory: ~/.vim/colors"
 mkdir ~/.vim/colors
 ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/demo_light.vim ~/.vim/colors/demo_light.vim
-ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/anotherkolor_dark.vim ~/.vim/colors/anotherkolor_dark.vim
-ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/anotherkolor_light.vim ~/.vim/colors/anotherkolor_light.vim
+ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/anotherkolor-dark.vim ~/.vim/colors/anotherkolor-dark.vim
+ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/anotherkolor-dark.vim ~/.vim/colors/anotherkolor-dark.vim
 
 echo "Configuring NeoVim"
 trash ~/.config/nvim/init.vim
@@ -135,5 +155,6 @@ trash ~/.config/nvim/ginit.vim
 ln -s ~/Development/Configuration/dotfiles/vim/Main/ginit.vim ~/.config/nvim/ginit.vim
 ln -s ~/.vim/bundle ~/.config/nvim/
 ln -s ~/.vim/autoload ~/.config/nvim/
+ln -s ~/.vim/colors ~/.config/nvim/
 
 
