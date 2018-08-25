@@ -76,3 +76,15 @@
 [submodule "vim/iOS/.vim/bundle/vim-commentary"]
 	path = vim/iOS/.vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/iOS/.vim/bundle/vim-csharp"]
+	path = vim/iOS/.vim/bundle/vim-csharp
+	url = https://github.com/OrangeT/vim-csharp.git
+[submodule "vim/iOS/.vim/bundle/vim-javascript"]
+	path = vim/iOS/.vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/iOS/.vim/bundle/vim-unimpaired"]
+	path = vim/iOS/.vim/bundle/vim-unimpaired
+	url = http://github.com/tpope/vim-unimpaired.git
+[submodule "vim/iOS/.vim/bundle/TagHighlight"]
+	path = vim/iOS/.vim/bundle/TagHighlight
+	url = https://github.com/vim-scripts/TagHighlight.git

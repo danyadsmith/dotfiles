@@ -52,3 +52,17 @@ git submodule add https://github.com/tpope/vim-commentary.git vim/iOS/.vim/bundl
 
 echo "Installing Submodule: my-vim-snippets"
 git submodule add https://github.com/danyadsmith/my-vim-snippets.git vim/iOS/.vim/bundle/my-vim-snippets
+
+echo "Installing Submodule: vim-csharp"
+git submodule add https://github.com/OrangeT/vim-csharp.git vim/iOS/.vim/bundle/vim-csharp
+
+echo "Installing Submodule: vim-javascript"
+git submodule add https://github.com/pangloss/vim-javascript.git vim/iOS/.vim/bundle/vim-javascript
+
+echo "Installing Submodule: vim-unimpaired"
+git submodule add http://github.com/tpope/vim-unimpaired.git vim/iOS/.vim/bundle/vim-unimpaired
+
+echo "Installing Submodule: TagHighlight"
+git submodule add https://github.com/vim-scripts/TagHighlight.git
+vim/iOS/.vim/bundle/TagHighlight
+

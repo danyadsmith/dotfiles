@@ -367,7 +367,8 @@ nmap <A-Tab> gT
 " Change the working directory to the current file directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
-
+" Visually selec the text that was last edited/pasted
+nmap gV `[v`]
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

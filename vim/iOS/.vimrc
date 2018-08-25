@@ -70,7 +70,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
     "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
-    autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
+    "autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
     autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
     " Override XML Syntax Colors:
@@ -80,13 +80,15 @@ if has('autocmd')
 
 endif
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SET COLORSCHEME
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
 " ------------------------------------------------
-colorscheme base16-chalk
+colorscheme anotherkolor-dark
+"colorscheme base16-chalk
 "colorscheme base16-default-dark
 "colorscheme base16-google-dark
 "colorscheme base16-grayscale-dark
@@ -183,9 +185,15 @@ set termencoding=utf8                   " set default encoding to utf-8
 set path+=**
 
 set wildmenu                            " enhanced command-line completion
-set wildignore+=.DS_Store               " ignore MacOS system files/folders
-set wildignore+=.suo                    " ignore Visual Studio files
-set wildignore+=.cache                  
+set wildignore+=*/.DS_Store/*           " ignore MacOS system files/folders
+set wildignore+=*\\.DS_Store\\*         " ignore MacOS system files/folders
+set wildignore+=*/.suo/*                " ignore Visual Studio files
+set wildignore+=*\\.suo\\*              " ignore Visual Studio files
+set wildignore+=*/.cache/*                 
+set wildignore+=*/.Trash/*              " ignore Trash directories
+set wildignore+=*/.npm/*                " ignore NPM
+set wildignore+=*/.git/*                " ignore Git
+set wildignore+=*/node_modules/*        " ignore node_modules
 
 " Customize the NETRW File Browser
 let g:netrw_liststyle=3                 " Open netwr in tree view
@@ -250,7 +258,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRL-P CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'rw'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-LIGHTLINE CONFIGURATION
@@ -328,6 +337,13 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
@@ -350,6 +366,9 @@ nmap <A-Tab> gT
 
 " Change the working directory to the current file directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+
+" Visually selec the text that was last edited/pasted
+nmap gV `[v`]
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -441,4 +460,6 @@ map  <leader>ev :vsp %%
 "    Edit in new tab
 map  <leader>et :tabe %%
 
-
+"    <space>ss
+"    Show highlighting groups for the word beneath the cursor
+nmap <leader>ss :call SynStack()<CR>
