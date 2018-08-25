@@ -135,6 +135,11 @@ git clone https://github.com/tpope/vim-surround.git
 echo "========================================================================="
 echo ""
 
+echo "Installing Plugin: vim-unimpaired"
+git clone http://github.com/tpope/vim-unimpaired.git
+echo "========================================================================="
+echo ""
+
 echo "Installing Plugin: vimwiki"
 git clone https://github.com/vimwiki/vimwiki
 echo "========================================================================="
