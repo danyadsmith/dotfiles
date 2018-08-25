@@ -43,3 +43,6 @@
 [submodule "vim/iOS/.vim/bundle/TagHighlight"]
 	path = vim/iOS/.vim/bundle/TagHighlight
 	url = https://github.com/vim-scripts/TagHighlight.git
+[submodule "vim/iOS/.vim/bundle/vim-anotherkolor"]
+	path = vim/iOS/.vim/bundle/vim-anotherkolor
+	url = https://github.com/danyadsmith/vim-anotherkolor.git

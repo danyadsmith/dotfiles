@@ -65,3 +65,5 @@ git submodule add http://github.com/tpope/vim-unimpaired.git vim/iOS/.vim/bundle
 echo "Installing Submodule: TagHighlight"
 git submodule add https://github.com/vim-scripts/TagHighlight.git vim/iOS/.vim/bundle/TagHighlight
 
+echo "Installing Submodule: vim-anotherkolor"
+git submodule add https://github.com/danyadsmith/vim-anotherkolor.git vim/iOS/.vim/bundle/vim-anotherkolor

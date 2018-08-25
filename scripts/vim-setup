@@ -71,6 +71,11 @@ echo "========================================================================="
 echo ""
 
 echo "Installing Plugin: vim-coloresque"
+git clone https://github.com/danyadsmith/vim-anotherkolor.git
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: vim-coloresque"
 git clone https://github.com/Marslo/vim-coloresque.git
 echo "========================================================================="
 echo ""
@@ -150,8 +155,6 @@ echo "Finished installing plugins and colorschemes."
 echo "Creating Directory: ~/.vim/colors"
 mkdir ~/.vim/colors
 ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/demo_light.vim ~/.vim/colors/demo_light.vim
-ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/anotherkolor-dark.vim ~/.vim/colors/anotherkolor-dark.vim
-ln -s ~/Development/Configuration/dotfiles/vim/Main/colors/anotherkolor-dark.vim ~/.vim/colors/anotherkolor-dark.vim
 
 echo "Configuring NeoVim"
 trash ~/.config/nvim/init.vim
