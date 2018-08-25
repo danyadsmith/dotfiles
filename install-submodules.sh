@@ -63,6 +63,5 @@ echo "Installing Submodule: vim-unimpaired"
 git submodule add http://github.com/tpope/vim-unimpaired.git vim/iOS/.vim/bundle/vim-unimpaired
 
 echo "Installing Submodule: TagHighlight"
-git submodule add https://github.com/vim-scripts/TagHighlight.git
-vim/iOS/.vim/bundle/TagHighlight
+git submodule add https://github.com/vim-scripts/TagHighlight.git vim/iOS/.vim/bundle/TagHighlight
 
