@@ -10,7 +10,7 @@ endif
 
 let g:colors_name = "Another Kolor (Light)"
 
-hi Cursor ctermfg=188 ctermbg=168 cterm=NONE guifg=#e4e0d7 guibg=#e5349b gui=NONE
+hi Cursor ctermfg=188 ctermbg=168 cterm=NONE guifg=#ffffd7 guibg=#e5349b gui=NONE
 hi Visual ctermfg=NONE ctermbg=187 cterm=NONE guifg=NONE guibg=#cfc8b9 gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=188 cterm=NONE guifg=NONE guibg=#d9d6cd gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=188 cterm=NONE guifg=NONE guibg=#d9d6cd gui=NONE
@@ -22,12 +22,12 @@ hi StatusLine ctermfg=243 ctermbg=181 cterm=bold guifg=#777777 guibg=#c4c2bb gui
 hi StatusLineNC ctermfg=243 ctermbg=181 cterm=NONE guifg=#777777 guibg=#c4c2bb gui=NONE
 hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=187 cterm=NONE guifg=NONE guibg=#cfc8b9 gui=NONE
-hi IncSearch ctermfg=188 ctermbg=101 cterm=NONE guifg=#e4e0d7 guibg=#9b8e6d gui=NONE
+hi IncSearch ctermfg=188 ctermbg=101 cterm=NONE guifg=#ffffd7 guibg=#9b8e6d gui=NONE
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi Folded ctermfg=181 ctermbg=188 cterm=NONE guifg=#c8c2b2 guibg=#e4e0d7 gui=NONE
+hi Folded ctermfg=181 ctermbg=188 cterm=NONE guifg=#c8c2b2 guibg=#ffffd7 gui=NONE
 
-hi Normal ctermfg=237 ctermbg=223 cterm=NONE guifg=#777777 guibg=#e4e0d7 gui=NONE
+hi Normal ctermfg=237 ctermbg=223 cterm=NONE guifg=#777777 guibg=#ffffd7 gui=NONE
 hi Boolean ctermfg=96 ctermbg=NONE cterm=NONE guifg=#94539a guibg=NONE gui=NONE
 hi Character ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Comment ctermfg=181 ctermbg=NONE cterm=NONE guifg=#c8c2b2 guibg=NONE gui=NONE
