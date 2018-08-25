@@ -89,3 +89,7 @@ wallaby.js
 
 # Vim Swap Files
 *.swp
+
+# Exhuberant CTags
+tags
+types_cs.taghl
