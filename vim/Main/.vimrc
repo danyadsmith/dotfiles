@@ -69,8 +69,6 @@ if has('autocmd')
     autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
     autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
-    "autocmd ColorScheme * highlight htmlLink guifg=#ffaf44
-    "autocmd ColorScheme * highlight htmlTitle guifg=#c02b83
     autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
     " Override XML Syntax Colors:
@@ -126,7 +124,7 @@ syntax enable                           " enable syntax highlighting
 filetype on                             " automatically detect file type
 filetype plugin on                      " auto load filetype plugins
 filetype indent on                      " auto load file indent settings
-
+set redrawtime=5000                     " time allowed to redraw syntax coloring
 
 " Tab vs. Space Customizations
 set tabstop=2                           " number of visual spaces per tab
@@ -197,7 +195,27 @@ set wildignore+=*/node_modules/*        " ignore node_modules
 
 " Customize the NETRW File Browser
 let g:netrw_liststyle=3                 " Open netwr in tree view
-    
+autocmd FileType netrw setl bufhidden=wipe
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MOUSE and TRACKPAD CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=nicr
+map <ScrollWheelUp> <nop>
+map <S-ScrollWheelUp> <nop>
+map <C-ScrollWheelUp> <nop>
+map <ScrollWheelDown> <nop>
+map <S-ScrollWheelDown> <nop>
+map <C-ScrollWheelDown> <nop>
+map <ScrollWheelLeft> <nop>
+map <S-ScrollWheelLeft> <nop>
+map <C-ScrollWheelLeft> <nop>
+map <ScrollWheelRight> <nop>
+map <S-ScrollWheelRight> <nop>
+map <C-ScrollWheelRight> <nop>   
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CLIPBOARD CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -259,7 +277,7 @@ endif
 " CTRL-P CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_working_path_mode = 'r'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-LIGHTLINE CONFIGURATION
