@@ -150,6 +150,16 @@ git clone https://github.com/vimwiki/vimwiki
 echo "========================================================================="
 echo ""
 
+echo "Installing Plugin: typescript-vim"
+git clone https://github.com/leafgarland/typescript-vim.git
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: vim-json"
+git clone https://github.com/elzr/vim-json.git
+echo "========================================================================="
+echo ""
+
 echo "Finished installing plugins and colorschemes."
 echo ""
 
