@@ -46,3 +46,6 @@
 [submodule "vim/iOS/.vim/bundle/vim-anotherkolor"]
 	path = vim/iOS/.vim/bundle/vim-anotherkolor
 	url = https://github.com/danyadsmith/vim-anotherkolor.git
+[submodule "vim/iOS/.vim/bundle/vim-minisnip"]
+	path = vim/iOS/.vim/bundle/vim-minisnip
+	url = https://github.com/KeyboardFire/vim-minisnip

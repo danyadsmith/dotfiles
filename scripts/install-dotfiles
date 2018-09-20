@@ -41,6 +41,10 @@ echo "Adding .gitignore_global"
 trash ~/.gitignore_global
 ln -s ~/Development/Configuration/dotfiles/git/.gitignore_global ~/.gitignore_global
 
+echo "Adding .gitmessage"
+trash ~/.gitmessage
+ln -s ~/Development/Configuration/dotfiles/git/.gitmessage ~/.gitmessage
+
 echo "Adding motd"
 sudo rm -rf /etc/motd
 sudo ln -s ~/Development/Configuration/dotfiles/system/motd /etc/motd
