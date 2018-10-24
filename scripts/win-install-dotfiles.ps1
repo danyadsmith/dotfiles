@@ -9,23 +9,23 @@ echo "By: $SCRIPT_AUTHOR"
 echo "Last Updated: $SCRIPT_UPDATED"
 
 echo "Adding .bash_profile"
-Remove-Item -path C:\Users\DSmith04\.bash_profile
+try { Remove-Item -path C:\Users\DSmith04\.bash_profile } catch {}
 New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\system\.bash_profile -path C:\Users\DSmith04\.bash_profile
 
 echo "Adding .bashrc"
-Remove-Item -path C:\Users\DSmith04\.bashrc
+try { Remove-Item -path C:\Users\DSmith04\.bashrc } catch {}
 New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\system\.bashrc -path C:\Users\DSmith04\.bashrc
 
 echo "Adding .profile"
-Remove-Item -path C:\Users\DSmith04\.profile
+try { Remove-Item -path C:\Users\DSmith04\.profile } catch {}
 New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\system\.profile -path C:\Users\DSmith04\.profile
 
 echo "Adding .gitconfig"
-Remove-Item -path C:\Users\DSmith04\.gitconfig
-New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitconfig -path C:\Users\DSmith04\.gitconfig-work
+try { Remove-Item -path C:\Users\DSmith04\.gitconfig } catch {}
+New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitconfig-work -path C:\Users\DSmith04\.gitconfig
 
 echo "Adding .gitignore_global"
-Remove-Item -path C:\Users\DSmith04\.gitignore_global
+try { Remove-Item -path C:\Users\DSmith04\.gitignore_global } catch {}
 New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitignore_global -path C:\Users\DSmith04\.gitignore_global
 
 
