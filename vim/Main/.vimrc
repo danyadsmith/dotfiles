@@ -174,6 +174,8 @@ command! MakeTags !ctags -R .
 set hlsearch                            " highlight search results
 set noincsearch                         " do not highlight incremental search
 
+" Search for visually-selected text 
+vnoremap // y/<C-r>=escape(@",'/\')<CR><CR> 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
