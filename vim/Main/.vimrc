@@ -145,11 +145,13 @@ augroup end
 
 " Text Width, Rule & Word Wrap Customizations
 set colorcolumn=81                      " show ruler at column 81
-set textwidth=80                        " set wrap width
+set textwidth=0                         " set wrap width
 set wrap                                " word wrap visually
 set linebreak                           " only break lines when pressing Enter
 set nolist
-set formatoptions+=t
+"set formatoptions+=t                   " auto wrap lines
+set formatoptions-=t                    " don't auto wrap lines
+set showbreak=--⊳                       " prefix wrapped lines
 
 
 " Bracket and Block Customizations
