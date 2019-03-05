@@ -14,6 +14,7 @@
 if has('ivim')
   runtime bundle/vim-pathogen/autoload/pathogen.vim
 endif
+set runtimepath+=$HOME/vimfiles
 execute pathogen#infect()
 
 
@@ -153,13 +154,12 @@ set nolist
 set formatoptions-=t                    " don't auto wrap lines
 set showbreak=--⊳                       " prefix wrapped lines
 
-
 " Bracket and Block Customizations
 set showmatch                           " Highighlight matching () {} []
 
 
 " Show Invisible Character Customizations
-set listchars=tab:▸\ ,eol:¬,space:·
+set listchars=tab:▸\ ,eol:¬,space:∙
 
 
 " Enable the Matchit Plugin
@@ -182,6 +182,7 @@ vnoremap // y/<C-r>=escape(@",'/\')<CR><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf8
 set termencoding=utf8                   " set default encoding to utf-8
 
 set path+=**
@@ -249,12 +250,25 @@ augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let base16colorspace=256
+"let base16colorspace=256
 
 if !has('gui_running')
+  set term=xterm
   set t_Co=256
   set termguicolors
   set background=dark
+endif
+
+if !empty($CONEMUBUILD)
+  set term=xterm
+  set t_Co=256
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
+  set termencoding=utf-8
+  set fileencoding=utf-8
+  set nocompatible
+  inoremap <Char-0x07F> <BS>
+  nnoremap <Char-0x07F> <BS>
 endif
 
 if has('termguicolors')
@@ -265,7 +279,7 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro:h14
+  set guifont=PragmataPro Mono:h14
 endif
 
 
@@ -485,3 +499,4 @@ map  <leader>et :tabe %%
 "    <space>ss
 "    Show highlighting groups for the word beneath the cursor
 nmap <leader>ss :call SynStack()<CR>
+

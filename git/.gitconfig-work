@@ -6,7 +6,7 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [core]
-	editor = nvim
+	editor = vim
 	autocrlf = false
 	safecrlf = true
 	excludesfile = ~/.gitignore_global
