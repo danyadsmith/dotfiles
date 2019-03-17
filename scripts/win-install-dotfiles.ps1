@@ -28,4 +28,7 @@ echo "Adding .gitignore_global"
 try { Remove-Item -path C:\Users\DSmith04\.gitignore_global } catch {}
 New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitignore_global -path C:\Users\DSmith04\.gitignore_global
 
+echo "Adding .gitmessage"
+try { Remove-Item -path C:\Users\DSmith04\.gitmessage } catch {}
+New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitmessage -path C:\Users\DSmith04\.gitmessage
 

@@ -15,7 +15,16 @@ if has('ivim')
   runtime bundle/vim-pathogen/autoload/pathogen.vim
 endif
 set runtimepath+=$HOME/vimfiles
+
 execute pathogen#infect()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET ENCODING DEFAULTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
