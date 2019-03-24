@@ -291,13 +291,16 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro Mono:h14
+  set guifont=PragmataPro_Mono:h14
   set guioptions-=m                     " remove menu bar
   set guioptions-=T                     " remove toolbar
   set guioptions-=r                     " remove right-hand scroll bar
   set guioptions-=L                     " remove left-hand scroll bar
 endif
 
+if (has("win64") || has("win32") || has("win16") || has("dos"))
+  autocmd GUIEnter * simalt ~x
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NVIM CONFIGURATIONS

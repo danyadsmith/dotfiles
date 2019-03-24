@@ -13,6 +13,10 @@ echo "Adding .vimrc"
 trash ~/.vimrc
 ln -s ~/Development/Configuration/dotfiles/vim/Main/.vimrc ~/.vimrc
 
+echo "Adding .gvimrc"
+trash ~/.gvimrc
+ln -s ~/Development/Configuration/dotfiles/vim/Main/.gvimrc ~/.gvimrc
+
 echo "Creating Directory: ~/.vim/autoload"
 trash ~/.vim/autoload
 mkdir ~/.vim/autoload
@@ -22,6 +26,7 @@ echo "Creating Directory: ~/.vim/bundle"
 trash ~/.vim/bundle
 mkdir ~/.vim/bundle
 cd ~/.vim/bundle
+
 echo "========================================================================="
 echo ""
 
