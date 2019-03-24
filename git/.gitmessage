@@ -1,6 +1,6 @@
 
-# One line description in the imperative voice. Answers WHAT. 
-# A short paragraph describing why this change was made. Answers WHY. 
-# A list that describes HOW the commit addresses the issue
-# A link to the bug/issue in an issue tracking system 
 
+# A summary in the imperative voice (fix not fixes) < 50 chars that answers WHAT
+# A short paragraph describing WHY this change was made
+# A list that describes HOW the commit addresses the issue
+# A link to the bug/issue in an issue tracking system
