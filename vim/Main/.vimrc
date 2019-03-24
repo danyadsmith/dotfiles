@@ -179,6 +179,7 @@ set noincsearch                         " do not highlight incremental search
 " Search for visually-selected text 
 vnoremap // y/<C-r>=escape(@",'/\')<CR><CR> 
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -237,6 +238,7 @@ if has('nvim')
   autocmd ColorScheme * hi SpellRare guifg=#DDB26F
 endif
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " HELP CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -282,6 +284,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'r'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-LIGHTLINE CONFIGURATION
@@ -336,6 +339,7 @@ endif
 
 let g:minisnip_trigger = "<C-j>"
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -368,6 +372,13 @@ endfunc
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM DIGRAPHS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+silent! dig -. 8230 "U+2026=…  HORIZONTAL ELLIPSIS
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Allow Use of <Command> + j k $ and 0 to navigate wrapped lines
@@ -392,6 +403,8 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 " Visually selec the text that was last edited/pasted
 nmap gV `[v`]
 
+" Add Custom Digraphs
+silent! dig        -.        8230        "U+2026=…        HORIZONTAL ELLIPSIS 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
