@@ -28,4 +28,12 @@ echo "Adding .gitignore_global"
 try { Remove-Item -path C:\Users\DSmith04\.gitignore_global } catch {}
 New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitignore_global -path C:\Users\DSmith04\.gitignore_global
 
+echo "Adding .gitmessage"
+try { Remove-Item -path C:\Users\DSmith04\.gitmessage } catch {}
+New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\git\.gitmessage -path C:\Users\DSmith04\.gitmessage
+
+echo "Adding .vimrc for Vim Install"
+try { Remove-Item -path C:\"Program Files (x86)"\Vim\_vimrc } catch {}
+New-Item -itemtype symboliclink -target C:\Users\DSmith04\Source\Config\dotfiles\vim\Main\.vimrc -path C:\"Program Files (x86)"\Vim\_vimrc
+
 

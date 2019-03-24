@@ -14,7 +14,18 @@
 if has('ivim')
   runtime bundle/vim-pathogen/autoload/pathogen.vim
 endif
+
+set runtimepath+=$HOME/vimfiles
+
 execute pathogen#infect()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET ENCODING DEFAULTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -251,12 +262,25 @@ augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let base16colorspace=256
+"let base16colorspace=256
 
 if !has('gui_running')
+  set term=xterm
   set t_Co=256
   set termguicolors
   set background=dark
+endif
+
+if !empty($CONEMUBUILD)
+  set term=xterm
+  set t_Co=256
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
+  set termencoding=utf-8
+  set fileencoding=utf-8
+  set nocompatible
+  inoremap <Char-0x07F> <BS>
+  nnoremap <Char-0x07F> <BS>
 endif
 
 if has('termguicolors')
@@ -267,7 +291,11 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro:h14
+  set guifont=PragmataPro Mono:h14
+  set guioptions-=m                     " remove menu bar
+  set guioptions-=T                     " remove toolbar
+  set guioptions-=r                     " remove right-hand scroll bar
+  set guioptions-=L                     " remove left-hand scroll bar
 endif
 
 
@@ -403,8 +431,6 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 " Visually selec the text that was last edited/pasted
 nmap gV `[v`]
 
-" Add Custom Digraphs
-silent! dig        -.        8230        "U+2026=…        HORIZONTAL ELLIPSIS 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
@@ -498,3 +524,4 @@ map  <leader>et :tabe %%
 "    <space>ss
 "    Show highlighting groups for the word beneath the cursor
 nmap <leader>ss :call SynStack()<CR>
+

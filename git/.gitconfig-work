@@ -6,7 +6,7 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [core]
-	editor = nvim
+	editor = gvim
 	autocrlf = false
 	safecrlf = true
 	excludesfile = ~/.gitignore_global
@@ -34,3 +34,5 @@
   hist = log --graph --pretty=format:'%C(magenta)%h%Creset  %C(yellow)%ad%Creset%C(white) %s%C(cyan)%d%Creset %Creset%Cgreen(%cr)%Creset [%C(blue)%an%Creset]' --date=short
 [pager]
 	branch = false
+[commit]
+  template = ~/.gitmessage  
