@@ -1,16 +1,6 @@
 
-# One line description in the imperative voice. Answers WHAT. (e.g. Redirect user
-# to the requested page after login) 
+# One line description in the imperative voice. Answers WHAT. 
+# A short paragraph describing why this change was made. Answers WHY. 
+# A list that describes HOW the commit addresses the issue
+# A link to the bug/issue in an issue tracking system 
 
-# A link to the bug/issue in an issue tracking system (e.g.
-# https://github.com/danyadsmith/simple_cms/issues/1)
-
-# A short paragraph describing why this change was made. Answers WHY. (e.g. Users
-# were being redirected to the home page after login, which is less useful than
-# redirecting to the page they had originally requested before being redirected to
-# the login form.)
-
-# * A list that describes HOW the commit addresses the issue
-# * Documents side effects
-# * Store requested path in a session variable
-# * Redirect to the stored location after successfully logging in the user
