@@ -170,7 +170,7 @@ set showmatch                           " Highighlight matching () {} []
 
 
 " Show Invisible Character Customizations
-set listchars=tab:▸\ ,eol:¬,space:·
+set listchars=tab:▸\ ,eol:¬,space:∙
 
 
 " Enable the Matchit Plugin
@@ -179,6 +179,10 @@ runtime macros/matchit.vim              " :help matchit
 
 " Create or Update Tags
 command! MakeTags !ctags -R .
+
+
+" Add Additional Match Pairs
+set matchpairs+=<:>,«:»
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -190,10 +194,10 @@ set noincsearch                         " do not highlight incremental search
 " Search for visually-selected text 
 vnoremap // y/<C-r>=escape(@",'/\')<CR><CR> 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf8
 set termencoding=utf8                   " set default encoding to utf-8
 
 set path+=**
@@ -249,7 +253,6 @@ if has('nvim')
   autocmd ColorScheme * hi SpellRare guifg=#DDB26F
 endif
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " HELP CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -291,16 +294,14 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro_Mono:h14
+  set guifont=PragmataPro_Mono:h10      " set default font
   set guioptions-=m                     " remove menu bar
   set guioptions-=T                     " remove toolbar
   set guioptions-=r                     " remove right-hand scroll bar
   set guioptions-=L                     " remove left-hand scroll bar
+  au GUIEnter * simalt ~x
 endif
 
-if (has("win64") || has("win32") || has("win16") || has("dos"))
-  autocmd GUIEnter * simalt ~x
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NVIM CONFIGURATIONS
@@ -315,7 +316,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'r'
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-LIGHTLINE CONFIGURATION
@@ -362,14 +362,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('win32') || has('win64') || has('dos')
   " Set Snippet Locations in Windows Environment
-  let g:minisnip_dir = 'c:\Users\dsmith04\.vim\bundle\my-vim-snippets\snippets\'
+  let g:minisnip_dir = 'c:\Users\dsmith04\vimfiles\bundle\my-vim-snippets\snippets\'
 else
   " Set Snippet Locations in *NIX Environments
   let g:minisnip_dir = '~/.vim/bundle/my-vim-snippets/snippets/:~/minisnip/'
 endif
 
-let g:minisnip_trigger = "<C-j>"
-
+let g:minisnip_trigger = "<C-e>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS
@@ -400,13 +399,6 @@ function! SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CUSTOM DIGRAPHS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-silent! dig -. 8230 "U+2026=…  HORIZONTAL ELLIPSIS
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -499,10 +491,6 @@ nmap <leader>cc :CtrlPClearCache<cr>
 "    <space>ct
 "    ctrl-p search tags
 nmap <leader>. :CtrlPTag<cr>
-
-"    <space>dc
-"    set DrawIt default characters
-nmap <leader>dc :call SetDrawIt('│', '─', '┼', '╲', '╱', '╳', '*')
 
 "    <space>$
 "    remove trailing whitespace from end of lines
