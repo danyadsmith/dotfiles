@@ -368,7 +368,7 @@ else
   let g:minisnip_dir = '~/.vim/bundle/my-vim-snippets/snippets/:~/minisnip/'
 endif
 
-let g:minisnip_trigger = "<C-j>"
+let g:minisnip_trigger = '<C-e>'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -433,6 +433,12 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
 " Visually selec the text that was last edited/pasted
 nmap gV `[v`]
+
+" Add arrow key mapping to navigate help files
+nmap <silent> <RIGHT>        :cnext<CR>
+nmap <silent> <RIGHT><RIGHT> :cnfile<CR><C-G>
+nmap <silent> <LEFT>         :cprev<CR>
+nmap <silent> <LEFT><LEFT>   :cpfile<CR><C-G>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
