@@ -527,3 +527,7 @@ map  <leader>et :tabe %%
 "    Show highlighting groups for the word beneath the cursor
 nmap <leader>ss :call SynStack()<CR>
 
+"    <space>tc
+"    change line to title case
+nmap <leader>tc :call Preserve("s/\\<\\(\\w\\)\\(\\w*\\)\\>/\\u\\1\\L\\2/g")<CR>
+
