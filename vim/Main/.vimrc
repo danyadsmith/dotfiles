@@ -294,7 +294,7 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro_Mono:h10      " set default font
+  set guifont=PragmataPro_Mono:h11      " set default font
   set guioptions-=m                     " remove menu bar
   set guioptions-=T                     " remove toolbar
   set guioptions-=r                     " remove right-hand scroll bar
