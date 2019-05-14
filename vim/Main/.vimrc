@@ -499,6 +499,10 @@ nmap <leader>cc :CtrlPClearCache<cr>
 "    ctrl-p search tags
 nmap <leader>. :CtrlPTag<cr>
 
+"    <space>dc
+"    set DrawIt default characters
+nmap <leader>dc :call SetDrawIt('│', '─', '┼', '╲', '╱', '╳', '*')
+
 "    <space>$
 "    remove trailing whitespace from end of lines
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
