@@ -424,7 +424,7 @@ nmap <A-Tab> gT
 " Change the working directory to the current file directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
-" Visually selec the text that was last edited/pasted
+" Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
 " Add arrow key mapping to navigate help files
@@ -433,6 +433,13 @@ nmap <silent> <RIGHT><RIGHT> :cnfile<CR><C-G>
 nmap <silent> <LEFT>         :cprev<CR>
 nmap <silent> <LEFT><LEFT>   :cpfile<CR><C-G>
 
+" Move line key mappings
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
