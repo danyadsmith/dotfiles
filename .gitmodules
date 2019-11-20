@@ -1,0 +1,75 @@
+[submodule "vim/iOS/.vim/pack/plugins/start/base-16-vim"]
+	path = vim/iOS/.vim/pack/plugins/start/base-16-vim
+	url = https://github.com/chriskempson/base16-vim
+[submodule "vim/iOS/.vim/pack/plugins/start/lightline.vim"]
+	path = vim/iOS/.vim/pack/plugins/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-pathogen"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vim/iOS/.vim/pack/plugins/start/ctrlp.vim"]
+	path = vim/iOS/.vim/pack/plugins/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim/iOS/.vim/pack/plugins/start/tabular"]
+	path = vim/iOS/.vim/pack/plugins/start/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/iOS/.vim/pack/plugins/opt/vim-coloresque"]
+	path = vim/iOS/.vim/pack/plugins/opt/vim-coloresque
+	url = https://github.com/Marslo/vim-coloresque.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-markdown-enhancements"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-markdown-enhancements
+	url = https://github.com/danyadsmith/vim-markdown-enhancements.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-repeat"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-surround"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/iOS/.vim/pack/plugins/start/emmet-vim"]
+	path = vim/iOS/.vim/pack/plugins/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vimwiki"]
+	path = vim/iOS/.vim/pack/plugins/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+[submodule "vim/iOS/.vim/pack/plugins/start/calendar.vim"]
+	path = vim/iOS/.vim/pack/plugins/start/calendar.vim
+	url = https://github.com/itchyny/calendar.vim.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-commentary"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/iOS/.vim/pack/plugins/start/my-vim-snippets"]
+	path = vim/iOS/.vim/pack/plugins/start/my-vim-snippets
+	url = https://github.com/danyadsmith/my-vim-snippets.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-csharp"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-csharp
+	url = https://github.com/OrangeT/vim-csharp.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-javascript"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-unimpaired"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-unimpaired
+	url = http://github.com/tpope/vim-unimpaired.git
+[submodule "vim/iOS/.vim/pack/plugins/start/TagHighlight"]
+	path = vim/iOS/.vim/pack/plugins/start/TagHighlight
+	url = https://github.com/vim-scripts/TagHighlight.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-anotherkolor"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-anotherkolor
+	url = https://github.com/danyadsmith/vim-anotherkolor.git
+[submodule "vim/iOS/.vim/pack/plugins/start/DrawIt"]
+	path = vim/iOS/.vim/pack/plugins/start/DrawIt
+	url = https://github.com/vim-scripts/DrawIt.git
+[submodule "vim/iOS/.vim/pack/plugins/start/typescript-vim"]
+	path = vim/iOS/.vim/pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-HiLinkTrace"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-HiLinkTrace
+	url = https://github.com/gerw/vim-HiLinkTrace.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-js-pretty-template"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-js-pretty-template
+	url = https://github.com/Quramy/vim-js-pretty-template
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-json"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-json
+	url = https://github.com/elzr/vim-json.git
+[submodule "vim/iOS/.vim/pack/plugins/start/vim-minisnip"]
+	path = vim/iOS/.vim/pack/plugins/start/vim-minisnip
+	url = https://github.com/joereynolds/vim-minisnip.git
