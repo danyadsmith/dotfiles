@@ -11,12 +11,12 @@ echo "Last Updated: $SCRIPT_UPDATED"
 echo "========================================================================="
 echo ""
 
-echo "Creating Directory: ~/.vim/bundle"
-cd ~/.vim/bundle
+echo "Creating Directory: ~/.vim/pack/plugins/start"
+cd ~/.vim/pack/plugins/start
 echo "========================================================================="
 echo ""
 
-echo "Cloning Plugins into ~/.vim/bundle"
+echo "Cloning Plugins into ~/.vim/pack/plugins/start"
 
 echo "Installing Plugin: base16-vim"
 git clone https://github.com/chriskempson/base16-vim
@@ -53,11 +53,6 @@ git clone https://github.com/godlygeek/tabular
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: vim-coloresque"
-git clone https://github.com/Marslo/vim-coloresque.git
-echo "========================================================================="
-echo ""
-
 echo "Installing Plugin: vim-commentary"
 git clone https://github.com/tpope/vim-commentary
 echo "========================================================================="
@@ -79,7 +74,7 @@ echo "========================================================================="
 echo ""
 
 echo "Installing Plugin: vim-markdown-enhancements"
-git clone https://github.com/mattly/vim-markdown-enhancements
+git clone https://github.com/danyadsmith/vim-markdown-enhancements
 echo "========================================================================="
 echo ""
 
@@ -108,4 +103,16 @@ git clone https://github.com/vimwiki/vimwiki
 echo "========================================================================="
 echo ""
 
+echo "Creating Directory: ~/.vim/pack/plugins/opt"
+cd ~/.vim/pack/plugins/opt
+echo "========================================================================="
+echo ""
+
+echo "Cloning Plugins into ~/.vim/pack/plugins/opt"
+
+echo "Installing Plugin: vim-coloresque"
+git clone https://github.com/Marslo/vim-coloresque.git
+echo "========================================================================="
+
+echo ""
 echo "Finished installing plugins and colorschemes."
