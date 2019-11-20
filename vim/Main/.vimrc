@@ -9,7 +9,7 @@
 "
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SET WINDOWS RUNTIME PATH
+" ADD WINDOWS RUNTIME PATH
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath+=$HOME/vimfiles
 
@@ -47,8 +47,8 @@ if has('autocmd')
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
     autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
 
-    " Override Comments Color:
-    "autocmd ColorScheme * highlight Comment NONE guifg=#4a4a4a " default
+    " Override Comments Color: (Default Comments Color #3a3a3a)
+    autocmd ColorScheme * highlight Comment NONE guifg=#3a3a3a
 
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn ctermbg=Black guibg=#222222
@@ -62,7 +62,25 @@ if has('autocmd')
     autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=Black guibg=#222222 
 
     " Override CriticMarkup Colors:
+    autocmd ColorScheme * highlight mdCriticAdd guifg=#47a628
     autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
+    autocmd ColorScheme * highlight mdCriticAddStartMark guifg=#47a628
+    autocmd ColorScheme * highlight mdCriticAddEndMark guifg=#47a628
+    autocmd ColorScheme * highlight mdCriticDel guifg=#ff0000
+    autocmd ColorScheme * highlight mdCriticDeletion guifg=#4a4a4a
+    autocmd ColorScheme * highlight mdCriticDelStartMark guifg=#ff0000
+    autocmd ColorScheme * highlight mdCriticDelEndMark guifg=#ff0000
+    autocmd ColorScheme * highlight mdCriticSubRemove guifg=#4a4a4a
+    autocmd ColorScheme * highlight mdCriticSubStartMark guifg=#ff8000
+    autocmd ColorScheme * highlight mdCriticSubstitute guifg=#ff8000
+    autocmd ColorScheme * highlight mdCriticSubTransMark guifg=#ff8000
+    autocmd ColorScheme * highlight mdCriticSubEndMark guifg=#ff8000
+    autocmd ColorScheme * highlight mdCriticComment guifg=#aa66cc
+    autocmd ColorScheme * highlight mdCriticCommentStartMark guifg=#aa66cc
+    autocmd ColorScheme * highlight mdCriticCommentEndMark guifg=#aa66cc
+    autocmd ColorScheme * highlight mdCriticCom guifg=#aa66cc
+    autocmd ColorScheme * highlight mdCriticHighlight guifg=#ffc20a
+    autocmd ColorScheme * highlight mdCriticExtra guifg=#ffc20a
 
     " Override ColorColumn Color:
     autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
@@ -156,7 +174,7 @@ set linebreak                           " only break lines when pressing Enter
 set nolist
 "set formatoptions+=t                   " auto wrap lines
 set formatoptions-=t                    " don't auto wrap lines
-set showbreak=--⊳                       " prefix wrapped lines
+set showbreak=-⊳                       " prefix wrapped lines
 
 
 " Bracket and Block Customizations
@@ -288,12 +306,11 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro_Mono:h11      " set default font
+  set guifont=PragmataPro-Regular:h17   " set default font
   set guioptions-=m                     " remove menu bar
   set guioptions-=T                     " remove toolbar
   set guioptions-=r                     " remove right-hand scroll bar
   set guioptions-=L                     " remove left-hand scroll bar
-  au GUIEnter * simalt ~x
 endif
 
 
@@ -359,7 +376,7 @@ if has('win32') || has('win64') || has('dos')
   let g:minisnip_dir = 'c:\Users\dsmith04\vimfiles\bundle\my-vim-snippets\snippets\'
 else
   " Set Snippet Locations in *NIX Environments
-  let g:minisnip_dir = '~/.vim/bundle/my-vim-snippets/snippets/:~/minisnip/'
+  let g:minisnip_dir = '~/.vim/pack/plugins/start/my-vim-snippets/snippets/:~/minisnip/'
 endif
 
 let g:minisnip_trigger = '<C-e>'
@@ -418,7 +435,7 @@ nmap <A-Tab> gT
 " Change the working directory to the current file directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
-" Visually select the text that was last edited/pasted
+" Visually selec the text that was last edited/pasted
 nmap gV `[v`]
 
 " Add arrow key mapping to navigate help files
@@ -427,13 +444,6 @@ nmap <silent> <RIGHT><RIGHT> :cnfile<CR><C-G>
 nmap <silent> <LEFT>         :cprev<CR>
 nmap <silent> <LEFT><LEFT>   :cpfile<CR><C-G>
 
-" Move line key mappings
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
@@ -535,4 +545,3 @@ nmap <leader>ss :call SynStack()<CR>
 "    <space>tc
 "    change line to title case
 nmap <leader>tc :call Preserve("s/\\<\\(\\w\\)\\(\\w*\\)\\>/\\u\\1\\L\\2/g")<CR>
-
