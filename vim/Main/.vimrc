@@ -9,15 +9,9 @@
 "
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LOAD PLUGINS VIA PATHOGEN
+" SET WINDOWS RUNTIME PATH
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('ivim')
-  runtime bundle/vim-pathogen/autoload/pathogen.vim
-endif
-
 set runtimepath+=$HOME/vimfiles
-
-execute pathogen#infect()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
