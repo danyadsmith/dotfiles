@@ -67,3 +67,21 @@ git submodule add https://github.com/vim-scripts/TagHighlight.git vim/iOS/.vim/p
 
 echo "Installing Submodule: vim-anotherkolor"
 git submodule add https://github.com/danyadsmith/vim-anotherkolor.git vim/iOS/.vim/pack/plugins/start/vim-anotherkolor
+
+echo "Installing Submodule: DrawIt"
+git submodule add https://github.com/vim-scripts/DrawIt.git vim/iOS/.vim/pack/plugins/start/DrawIt
+
+echo "Installing Submodule: typescript-vim"
+git submodule add https://github.com/leafgarland/typescript-vim.git vim/iOS/.vim/pack/plugins/start/typescript-vim
+
+echo "Installing Submodule: vim-HiLinkTrace"
+git submodule add https://github.com/gerw/vim-HiLinkTrace.git vim/iOS/.vim/pack/plugins/start/vim-HiLinkTrace
+
+echo "Installing Submodule: vim-js-pretty-template"
+git submodule add	https://github.com/Quramy/vim-js-pretty-template vim/iOS/.vim/pack/plugins/start/vim-js-pretty-template
+
+echo "Installing Submodule: vim-json"
+git submodule add	https://github.com/elzr/vim-json.git vim/iOS/.vim/pack/plugins/start/vim-json
+
+echo "Installing Submodule: vim-minisnip"
+git submodule add https://github.com/joereynolds/vim-minisnip.git vim/iOS/.vim/pack/plugins/start/vim-minisnip
