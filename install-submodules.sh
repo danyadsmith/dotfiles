@@ -30,7 +30,7 @@ echo "Installing Submodule: vim-coloresque"
 git submodule add https://github.com/Marslo/vim-coloresque.git vim/iOS/.vim/pack/plugins/opt/vim-coloresque
 
 echo "Installing Submodule: vim-markdown-enhancements"
-git submodule add https://github.com/mattly/vim-markdown-enhancements.git vim/iOS/.vim/pack/plugins/start/vim-markdown-enhancements
+git submodule add https://github.com/danyadsmith/vim-markdown-enhancements.git vim/iOS/.vim/pack/plugins/start/vim-markdown-enhancements
 
 echo "Installing Submodule: vim-repeat"
 git submodule add https://github.com/tpope/vim-repeat.git vim/iOS/.vim/pack/plugins/start/vim-repeat
