@@ -35,20 +35,31 @@ set termencoding=utf-8
 if has('autocmd')
   augroup coloroverride
     autocmd!
-
+    " Override Line Number Color:
     autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
     autocmd ColorScheme * highlight LineNr ctermbg=Black guibg=#222222
 
+    " Override Cursor Color:
+    autocmd ColorScheme * highlight Cursor ctermfg=Black guifg=Black
+    autocmd ColorScheme * highlight Cursor ctermbg=190 guibg=#AFDF00
+
+    " Override Cursor Line Color:
+    autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
+
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=211 guibg=#ff87af
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=190 guibg=#AFDF00
+
+    " Override Visual Mode Highlighted Text Color:
+    autocmd ColorScheme * highlight Visual ctermfg=Black guifg=Black
+    autocmd ColorScheme * highlight Visual ctermbg=208   guibg=#ff8700
 
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
     autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
 
     " Override Comments Color: (Default Comments Color #3a3a3a)
-    autocmd ColorScheme * highlight Comment NONE guifg=#444444
+    autocmd ColorScheme * highlight Comment NONE guifg=#3a3a3a
 
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn ctermbg=Black guibg=#222222
@@ -59,7 +70,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
     autocmd ColorScheme * highlight GitGutterChange ctermbg=Black guibg=#222222
     autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
-    autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=Black guibg=#222222 
+    autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=Black guibg=#222222
 
     " Override CriticMarkup Colors:
     autocmd ColorScheme * highlight mdCriticAdd guifg=#47a628
@@ -67,10 +78,10 @@ if has('autocmd')
     autocmd ColorScheme * highlight mdCriticAddStartMark guifg=#47a628
     autocmd ColorScheme * highlight mdCriticAddEndMark guifg=#47a628
     autocmd ColorScheme * highlight mdCriticDel guifg=#ff0000
-    autocmd ColorScheme * highlight mdCriticDeletion guifg=#3a3a3a
+    autocmd ColorScheme * highlight mdCriticDeletion guifg=#4a4a4a
     autocmd ColorScheme * highlight mdCriticDelStartMark guifg=#ff0000
     autocmd ColorScheme * highlight mdCriticDelEndMark guifg=#ff0000
-    autocmd ColorScheme * highlight mdCriticSubRemove guifg=#3a3a3a
+    autocmd ColorScheme * highlight mdCriticSubRemove guifg=#4a4a4a
     autocmd ColorScheme * highlight mdCriticSubStartMark guifg=#ff8000
     autocmd ColorScheme * highlight mdCriticSubstitute guifg=#ff8000
     autocmd ColorScheme * highlight mdCriticSubTransMark guifg=#ff8000
@@ -174,7 +185,7 @@ set linebreak                           " only break lines when pressing Enter
 set nolist
 "set formatoptions+=t                   " auto wrap lines
 set formatoptions-=t                    " don't auto wrap lines
-set showbreak=-⊳                       " prefix wrapped lines
+set showbreak=└─⯈                       " prefix wrapped lines
 
 
 " Bracket and Block Customizations
@@ -203,8 +214,8 @@ set matchpairs+=<:>,«:»
 set hlsearch                            " highlight search results
 set noincsearch                         " do not highlight incremental search
 
-" Search for visually-selected text 
-vnoremap // y/<C-r>=escape(@",'/\')<CR><CR> 
+" Search for visually-selected text
+vnoremap // y/<C-r>=escape(@",'/\')<CR><CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
@@ -219,7 +230,7 @@ set wildignore+=*/.DS_Store/*           " ignore MacOS system files/folders
 set wildignore+=*\\.DS_Store\\*         " ignore MacOS system files/folders
 set wildignore+=*/.suo/*                " ignore Visual Studio files
 set wildignore+=*\\.suo\\*              " ignore Visual Studio files
-set wildignore+=*/.cache/*                 
+set wildignore+=*/.cache/*
 set wildignore+=*/.Trash/*              " ignore Trash directories
 set wildignore+=*/.npm/*                " ignore NPM
 set wildignore+=*/.git/*                " ignore Git
@@ -245,7 +256,7 @@ map <S-ScrollWheelLeft> <nop>
 map <C-ScrollWheelLeft> <nop>
 map <ScrollWheelRight> <nop>
 map <S-ScrollWheelRight> <nop>
-map <C-ScrollWheelRight> <nop>   
+map <C-ScrollWheelRight> <nop>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -255,7 +266,7 @@ set clipboard=unnamed                   " yank to os clipboard
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SPELL CHECK OVERRIDES 
+" SPELL CHECK OVERRIDES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spelllang=en_us
 if has('nvim')
@@ -269,21 +280,24 @@ endif
 " HELP CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup helpfiles
-  au!
-  au BufRead,BufEnter */doc/* wincmd L
+  autocmd!
+  autocmd BufRead,BufEnter */doc/* wincmd L
 augroup end
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let base16colorspace=256
+"let base16colorspace=256
 
 if !has('gui_running')
   set term=xterm
   set t_Co=256
+  set termguicolors
   set background=dark
   if !empty($CONEMUBUILD)
+    set term=xterm
+    set t_Co=256
     let &t_AB="\e[48;5;%dm"
     let &t_AF="\e[38;5;%dm"
     set termencoding=utf-8
@@ -302,7 +316,11 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=PragmataPro-Regular:h17   " set default font
+  set background=dark
+
+  set guifont=PragmataPro-Regular:h17   " set default font on iOS
+" set guifont=PragmataPro_Mono:h10      " set default font on computer
+
   set guioptions-=m                     " remove menu bar
   set guioptions-=T                     " remove toolbar
   set guioptions-=r                     " remove right-hand scroll bar
@@ -375,15 +393,9 @@ else
   let g:minisnip_dir = '~/.vim/pack/plugins/start/my-vim-snippets/snippets/:~/minisnip/'
 endif
 
+
+" Expand Snippet Keyboard Shortcut
 let g:minisnip_trigger = '<C-e>'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CUSTOMIZE CURSORS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let &t_SI = "\<esc>[6 q"
-let &t_SR = "\<esc>[4 q"
-let &t_EI = "\<esc>[2 q"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -406,8 +418,46 @@ function! SynStack()
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+endfunction
 
+function! SetNormalModeCursorLineNumber()
+  set updatetime=4000
+  highlight CursorLineNr ctermfg=Black guifg=Black
+  highlight CursorLineNr ctermbg=190 guibg=#AFDF00
+  highlight Cursor ctermfg=Black guifg=Black
+  highlight Cursor ctermbg=190 guibg=#AFDF00
+endfunction
+
+function! SetInsertModeCursorLineNumber()
+  highlight CursorLineNr ctermbg=24 guibg=#005f87
+  highlight CursorLineNr ctermfg=White guifg=White
+  highlight Cursor ctermfg=Black guifg=Black
+  highlight Cursor ctermbg=White guibg=White
+  set updatetime=0
+endfunction
+
+function! SetReplaceModeCursorLineNumber()
+  highlight CursorLineNr ctermbg=160   guibg=#d70000
+  highlight CursorLineNr ctermfg=White guifg=White
+  highlight Cursor ctermfg=NONE guifg=NONE
+  highlight Cursor ctermbg=160 guibg=#d70000
+  set updatetime=0
+endfunction
+
+function! SetVisualModeCursorLineNumber()
+  set updatetime=0
+  highlight CursorLineNr ctermfg=Black guifg=Black
+  highlight CursorLineNr ctermbg=208   guibg=#ff8700
+  return ''
+endfunction
+
+function! SetEditModeCursorLineNumber(mode)
+  if a:mode == 'i'
+    call SetInsertModeCursorLineNumber()
+  elseif a:mode == 'r'
+    call SetReplaceModeCursorLineNumber()
+  endif
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
@@ -431,7 +481,7 @@ nmap <A-Tab> gT
 " Change the working directory to the current file directory
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 
-" Visually selec the text that was last edited/pasted
+" Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
 " Add arrow key mapping to navigate help files
@@ -541,3 +591,28 @@ nmap <leader>ss :call SynStack()<CR>
 "    <space>tc
 "    change line to title case
 nmap <leader>tc :call Preserve("s/\\<\\(\\w\\)\\(\\w*\\)\\>/\\u\\1\\L\\2/g")<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOMIZE CURSORS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
+vnoremap <silent> <expr> <SID>SetVisualModeCLN SetVisualModeCursorLineNumber() 
+nnoremap <silent> <script> v v<SID>SetVisualModeCLN <right><left>
+nnoremap <silent> <script> V V<SID>SetVisualModeCLN <right><left>
+nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualModeCLN
+
+set cursorline
+
+if has('autocmd')
+  augroup cursorlinenrcolorswap
+    autocmd!
+    autocmd InsertEnter * call SetEditModeCursorLineNumber(v:insertmode)
+    autocmd InsertLeave * call SetNormalModeCursorLineNumber()
+    autocmd CursorHold * call SetNormalModeCursorLineNumber()
+  augroup end
+endif
+
