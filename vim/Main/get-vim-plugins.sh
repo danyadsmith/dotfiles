@@ -12,6 +12,8 @@ echo "========================================================================="
 echo ""
 
 echo "Creating Directory: ~/.vim/pack/plugins/start"
+trash ~/.vim/pack/
+mkdir ~/.vim/pack/plugins/start
 cd ~/.vim/pack/plugins/start
 echo "========================================================================="
 echo ""
@@ -104,6 +106,7 @@ echo "========================================================================="
 echo ""
 
 echo "Creating Directory: ~/.vim/pack/plugins/opt"
+mkdir ~/.vim/pack/plugins/opt
 cd ~/.vim/pack/plugins/opt
 echo "========================================================================="
 echo ""

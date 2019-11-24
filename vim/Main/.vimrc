@@ -35,20 +35,20 @@ set termencoding=utf-8
 if has('autocmd')
   augroup coloroverride
     autocmd!
-    " Override Line Number Color:
+
     autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
     autocmd ColorScheme * highlight LineNr ctermbg=Black guibg=#222222
 
     " Override Cursor Line Number Color:
     autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=DarkCyan guibg=#ff75a7
+    autocmd ColorScheme * highlight CursorLineNr ctermbg=211 guibg=#ff87af
 
     " Override Invisibles Color:
     autocmd ColorScheme * highlight NonText guifg=#3a3a3a
     autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
 
     " Override Comments Color: (Default Comments Color #3a3a3a)
-    autocmd ColorScheme * highlight Comment NONE guifg=#3a3a3a
+    autocmd ColorScheme * highlight Comment NONE guifg=#444444
 
     " Override GitGutter Colors:
     autocmd ColorScheme * highlight SignColumn ctermbg=Black guibg=#222222
@@ -67,10 +67,10 @@ if has('autocmd')
     autocmd ColorScheme * highlight mdCriticAddStartMark guifg=#47a628
     autocmd ColorScheme * highlight mdCriticAddEndMark guifg=#47a628
     autocmd ColorScheme * highlight mdCriticDel guifg=#ff0000
-    autocmd ColorScheme * highlight mdCriticDeletion guifg=#4a4a4a
+    autocmd ColorScheme * highlight mdCriticDeletion guifg=#3a3a3a
     autocmd ColorScheme * highlight mdCriticDelStartMark guifg=#ff0000
     autocmd ColorScheme * highlight mdCriticDelEndMark guifg=#ff0000
-    autocmd ColorScheme * highlight mdCriticSubRemove guifg=#4a4a4a
+    autocmd ColorScheme * highlight mdCriticSubRemove guifg=#3a3a3a
     autocmd ColorScheme * highlight mdCriticSubStartMark guifg=#ff8000
     autocmd ColorScheme * highlight mdCriticSubstitute guifg=#ff8000
     autocmd ColorScheme * highlight mdCriticSubTransMark guifg=#ff8000
@@ -277,25 +277,21 @@ augroup end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let base16colorspace=256
+" let base16colorspace=256
 
 if !has('gui_running')
   set term=xterm
   set t_Co=256
-  set termguicolors
   set background=dark
-endif
-
-if !empty($CONEMUBUILD)
-  set term=xterm
-  set t_Co=256
-  let &t_AB="\e[48;5;%dm"
-  let &t_AF="\e[38;5;%dm"
-  set termencoding=utf-8
-  set fileencoding=utf-8
-  set nocompatible
-  inoremap <Char-0x07F> <BS>
-  nnoremap <Char-0x07F> <BS>
+  if !empty($CONEMUBUILD)
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+    set termencoding=utf-8
+    set fileencoding=utf-8
+    set nocompatible
+    inoremap <Char-0x07F> <BS>
+    nnoremap <Char-0x07F> <BS>
+  endif
 endif
 
 if has('termguicolors')

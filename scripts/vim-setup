@@ -22,18 +22,21 @@ trash ~/.vim/autoload
 mkdir ~/.vim/autoload
 ln -s ~/Development/Configuration/dotfiles/vim/Main/pathogen.vim ~/.vim/autoload/pathogen.vim
 
-echo "Creating Directory: ~/.vim/bundle"
+echo "Deleting Directory: ~/.vim/bundle"
 trash ~/.vim/bundle
-mkdir ~/.vim/bundle
-cd ~/.vim/bundle
+
+echo "Creating Directory: ~/.vim/pack/plugins/start"
+mkdir ~/.vim/pack
+cd ~/.vim/pack
+mkdir plugins
+cd plugins
+mkdir start
+cd start
 
 echo "========================================================================="
 echo ""
 
-echo "Cloning Plugins into ~/.vim/bundle"
-
-echo "Installing Plugin: vim-pathogen"
-git clone https://github.com/tpope/vim-pathogen.git
+echo "Cloning Plugins into ~/.vim/pack/plugins/start"
 
 echo "Installing Plugin: base16-vim"
 git clone https://github.com/chriskempson/base16-vim
@@ -85,13 +88,8 @@ git clone https://github.com/leafgarland/typescript-vim
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: vim-coloresque"
+echo "Installing Plugin: vim-anotherkolor"
 git clone https://github.com/danyadsmith/vim-anotherkolor.git
-echo "========================================================================="
-echo ""
-
-echo "Installing Plugin: vim-coloresque"
-git clone https://github.com/Marslo/vim-coloresque.git
 echo "========================================================================="
 echo ""
 
@@ -177,6 +175,15 @@ echo ""
 
 echo "Installing Plugin: vim-json"
 git clone https://github.com/elzr/vim-json.git
+echo "========================================================================="
+echo ""
+echo "Creating Directory: ~/.vim/pack/plugins/opt"
+cd ~/.vim/pack/plugins
+mkdir opt
+cd opt
+
+echo "Installing Plugin: vim-coloresque"
+git clone https://github.com/Marslo/vim-coloresque.git
 echo "========================================================================="
 echo ""
 
