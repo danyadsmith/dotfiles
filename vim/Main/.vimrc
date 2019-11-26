@@ -35,66 +35,10 @@ set termencoding=utf-8
 if has('autocmd')
   augroup coloroverride
     autocmd!
-    " Override Line Number Color:
-    autocmd ColorScheme * highlight LineNr ctermfg=White guifg=#444444
-    autocmd ColorScheme * highlight LineNr ctermbg=Black guibg=#222222
-
-    " Override Cursor Color:
-    autocmd ColorScheme * highlight Cursor ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight Cursor ctermbg=190 guibg=#AFDF00
-
-    " Override Cursor Line Color:
-    autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
-
-    " Override Cursor Line Number Color:
-    autocmd ColorScheme * highlight CursorLineNr ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight CursorLineNr ctermbg=190 guibg=#AFDF00
 
     " Override Visual Mode Highlighted Text Color:
     autocmd ColorScheme * highlight Visual ctermfg=Black guifg=Black
     autocmd ColorScheme * highlight Visual ctermbg=208   guibg=#ff8700
-
-    " Override Invisibles Color:
-    autocmd ColorScheme * highlight NonText guifg=#3a3a3a
-    autocmd ColorScheme * highlight SpecialKey guifg=#3a3a3a
-
-    " Override Comments Color: (Default Comments Color #3a3a3a)
-    autocmd ColorScheme * highlight Comment NONE guifg=#3a3a3a
-
-    " Override GitGutter Colors:
-    autocmd ColorScheme * highlight SignColumn ctermbg=Black guibg=#222222
-    autocmd ColorScheme * highlight GitGutterAdd guifg=#47a628
-    autocmd ColorScheme * highlight GitGutterAdd ctermbg=Black guibg=#222222
-    autocmd ColorScheme * highlight GitGutterDelete guifg=#ff0000
-    autocmd ColorScheme * highlight GitGutterDelete ctermbg=Black guibg=#222222
-    autocmd ColorScheme * highlight GitGutterChange guifg=#31ade8
-    autocmd ColorScheme * highlight GitGutterChange ctermbg=Black guibg=#222222
-    autocmd ColorScheme * highlight GitGutterChangeDelete guifg=#c02b83
-    autocmd ColorScheme * highlight GitGutterChangeDelete ctermbg=Black guibg=#222222
-
-    " Override CriticMarkup Colors:
-    autocmd ColorScheme * highlight mdCriticAdd guifg=#47a628
-    autocmd ColorScheme * highlight mdCriticAddition guifg=#47a628
-    autocmd ColorScheme * highlight mdCriticAddStartMark guifg=#47a628
-    autocmd ColorScheme * highlight mdCriticAddEndMark guifg=#47a628
-    autocmd ColorScheme * highlight mdCriticDel guifg=#ff0000
-    autocmd ColorScheme * highlight mdCriticDeletion guifg=#4a4a4a
-    autocmd ColorScheme * highlight mdCriticDelStartMark guifg=#ff0000
-    autocmd ColorScheme * highlight mdCriticDelEndMark guifg=#ff0000
-    autocmd ColorScheme * highlight mdCriticSubRemove guifg=#4a4a4a
-    autocmd ColorScheme * highlight mdCriticSubStartMark guifg=#ff8000
-    autocmd ColorScheme * highlight mdCriticSubstitute guifg=#ff8000
-    autocmd ColorScheme * highlight mdCriticSubTransMark guifg=#ff8000
-    autocmd ColorScheme * highlight mdCriticSubEndMark guifg=#ff8000
-    autocmd ColorScheme * highlight mdCriticComment guifg=#aa66cc
-    autocmd ColorScheme * highlight mdCriticCommentStartMark guifg=#aa66cc
-    autocmd ColorScheme * highlight mdCriticCommentEndMark guifg=#aa66cc
-    autocmd ColorScheme * highlight mdCriticCom guifg=#aa66cc
-    autocmd ColorScheme * highlight mdCriticHighlight guifg=#ffc20a
-    autocmd ColorScheme * highlight mdCriticExtra guifg=#ffc20a
-
-    " Override ColorColumn Color:
-    autocmd ColorScheme * highlight ColorColumn ctermbg=Gray guibg=#222222
 
     " Override HTML Syntax Colors:
     autocmd ColorScheme * highlight htmlTag guifg=#31aed8
@@ -119,7 +63,6 @@ endif
 
 " COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
 " ------------------------------------------------
-colorscheme anotherkolor-dark
 "colorscheme base16-chalk
 "colorscheme base16-default-dark
 "colorscheme base16-google-dark
@@ -294,7 +237,6 @@ if !has('gui_running')
   set term=xterm
   set t_Co=256
   set termguicolors
-  set background=dark
   if !empty($CONEMUBUILD)
     set term=xterm
     set t_Co=256
@@ -316,7 +258,6 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set background=dark
 
   set guifont=PragmataPro-Regular:h17   " set default font on iOS
 " set guifont=PragmataPro_Mono:h10      " set default font on computer
@@ -341,30 +282,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'r'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-LIGHTLINE CONFIGURATION
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set noshowmode                          " hide duplicate mode identifier
-set laststatus=2                        " configure vim-airline
-
-" Uncomment to Set Middle Status Bar Color to Colorscheme Background
-"let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
-"let s:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'None' ] ]
-"let s:palette.inactive.middle = s:palette.normal.middle
-"let s:palette.tabline.middle = s:palette.normal.middle
-
-let g:lightline = {
-  \ 'colorscheme': 'powerline',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'fugitive#head'
-  \ },
-  \ }
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIMWIKI CONFIGURATION
@@ -401,6 +318,15 @@ let g:minisnip_trigger = '<C-e>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CheckColorScheme()
+    try
+        echo g:colors_name
+    catch /^Vim:E121/
+        echo "default
+    endtry
+endfunction
+
+
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -413,12 +339,42 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-function! SynStack()
-  if !exists("*synstack")
-    return
+
+function! SetDarkColorScheme()
+  let g:lightline = {
+    \ 'colorscheme': 'powerline',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
+  if &rtp =~ 'lightline.vim'
+    call lightline#toggle()
+    call lightline#toggle()
   endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  colorscheme anotherkolor-dark
 endfunction
+
+
+function! SetLightColorScheme()
+  let g:lightline = {
+    \ 'colorscheme': 'anotherkolor',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
+  call lightline#toggle()
+  call lightline#toggle()
+  colorscheme anotherkolor-light
+endfunction
+
 
 function! SetNormalModeCursorLineNumber()
   set updatetime=4000
@@ -428,6 +384,7 @@ function! SetNormalModeCursorLineNumber()
   highlight Cursor ctermbg=190 guibg=#AFDF00
 endfunction
 
+
 function! SetInsertModeCursorLineNumber()
   highlight CursorLineNr ctermbg=24 guibg=#005f87
   highlight CursorLineNr ctermfg=White guifg=White
@@ -435,6 +392,7 @@ function! SetInsertModeCursorLineNumber()
   highlight Cursor ctermbg=White guibg=White
   set updatetime=0
 endfunction
+
 
 function! SetReplaceModeCursorLineNumber()
   highlight CursorLineNr ctermbg=160   guibg=#d70000
@@ -444,12 +402,14 @@ function! SetReplaceModeCursorLineNumber()
   set updatetime=0
 endfunction
 
+
 function! SetVisualModeCursorLineNumber()
   set updatetime=0
   highlight CursorLineNr ctermfg=Black guifg=Black
   highlight CursorLineNr ctermbg=208   guibg=#ff8700
   return ''
 endfunction
+
 
 function! SetEditModeCursorLineNumber(mode)
   if a:mode == 'i'
@@ -458,6 +418,15 @@ function! SetEditModeCursorLineNumber(mode)
     call SetReplaceModeCursorLineNumber()
   endif
 endfunction
+
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM KEY MAPPINGS
@@ -503,6 +472,14 @@ nmap <leader>vrc :e $MYVIMRC<cr>
 "    <space>so
 "    save & source .vimrc (reload settings in current vim session)
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
+
+"    <space>dco
+"    load my default Dark colorscheme
+nmap <leader>dco :call SetDarkColorScheme()<CR>
+
+"    <space>lco
+"    load my default Light colorscheme
+nmap <leader>lco :call SetLightColorScheme()<CR>
 
 "    <space>sp
 "    spell check on
@@ -615,4 +592,14 @@ if has('autocmd')
     autocmd CursorHold * call SetNormalModeCursorLineNumber()
   augroup end
 endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-LIGHTLINE CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noshowmode                          " hide duplicate mode identifier
+set laststatus=2                        " configure vim-airline
+
+call SetDarkColorScheme()
+
 
