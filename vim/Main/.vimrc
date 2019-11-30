@@ -45,7 +45,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight htmlTagName guifg=#31aed8
     autocmd ColorScheme * highlight htmlEndTag guifg=#31a3d8
     autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
-    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
+    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 " d9d5c1 f5f2c1
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
     autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
@@ -55,42 +55,6 @@ if has('autocmd')
     autocmd ColorScheme * highlight xmlEndTag guifg=#31aed8
 
 endif
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SET COLORSCHEME
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
-" ------------------------------------------------
-"colorscheme base16-chalk
-"colorscheme base16-default-dark
-"colorscheme base16-google-dark
-"colorscheme base16-grayscale-dark
-"colorscheme base16-onedark
-"colorscheme base16-tomorrow-night
-
-
-" COLORSCHEMES WITH BLUE BACKGROUNDS
-" ----------------------------------
-"colorscheme base16-atelier-cave
-"colorscheme base16-atelier-sulphurpool
-"colorscheme base16-harmonic-dark
-"colorscheme base16-nord
-"colorscheme base16-solarflare
-
-
-" COLORSCHEMES WITH BROWN BACKGROUNDS
-" -----------------------------------
-"colorscheme base16-darktooth
-"colorscheme base16-gruvbox-dark-hard
-"colorscheme base16-monokai
-
-
-" COLORSCHEMES WITH TEAL BACKGROUNDS
-" ----------------------------------
-"colorscheme base16-materia
-"colorscheme base16-solarized-dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -388,8 +352,13 @@ endfunction
 function! SetInsertModeCursorLineNumber()
   highlight CursorLineNr ctermbg=24 guibg=#005f87
   highlight CursorLineNr ctermfg=White guifg=White
-  highlight Cursor ctermfg=Black guifg=Black
-  highlight Cursor ctermbg=White guibg=White
+  if CheckColorScheme() == 'anotherkolor-light'
+    highlight Cursor ctermfg=Black guifg=Black
+    highlight Cursor ctermbg=24 guibg=#005f87
+  else
+    highlight Cursor ctermfg=Black guifg=Black
+    highlight Cursor ctermbg=White guibg=#ffffff
+  endif
   set updatetime=0
 endfunction
 
@@ -425,6 +394,21 @@ function! SynStack()
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
+
+
+function! WordCount()
+  let s:old_status = v:statusmsg
+  let position = getpos(".")
+  exe ":silent normal g\<C-g>"
+  let stat = v:statusmsg
+  let s:word_count = 0
+  if stat != '--No lines in buffer--'
+    let s:word_count = str2nr(split(v:statusmsg)[11])
+    let v:statusmsg = s:old_status
+  end
+  call setpos('.', position)
+  return s:word_count 
 endfunction
 
 
@@ -474,11 +458,11 @@ nmap <leader>vrc :e $MYVIMRC<cr>
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
 
 "    <space>dm
-"    dark mode:load my default Dark colorscheme
+"    switch to dark mode
 nmap <leader>dm :call SetDarkColorScheme()<CR>
 
 "    <space>lm
-"    light mode: load my default Light colorscheme
+"    switch to light mode
 nmap <leader>lm :call SetLightColorScheme()<CR>
 
 "    <space>sp
@@ -585,11 +569,17 @@ nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualModeCLN
 set cursorline
 
 if has('autocmd')
-  augroup cursorlinenrcolorswap
+  augroup swapcursorlinecolors
     autocmd!
     autocmd InsertEnter * call SetEditModeCursorLineNumber(v:insertmode)
     autocmd InsertLeave * call SetNormalModeCursorLineNumber()
     autocmd CursorHold * call SetNormalModeCursorLineNumber()
+  augroup end
+
+  augroup showcursorlineinactivewindowonly
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
   augroup end
 endif
 
@@ -601,5 +591,4 @@ set noshowmode                          " hide duplicate mode identifier
 set laststatus=2                        " configure vim-airline
 
 call SetDarkColorScheme()
-
 
