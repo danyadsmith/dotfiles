@@ -11,14 +11,9 @@ echo "Last Updated: $SCRIPT_UPDATED"
 echo "========================================================================="
 echo ""
 
-echo "Installing Submodule: base16-vim"
-git submodule add https://github.com/chriskempson/base16-vim vim/iOS/.vim/pack/plugins/start/base-16-vim
 
 echo "Installing Submodule: lightline.vim"
 git submodule add https://github.com/itchyny/lightline.vim vim/iOS/.vim/pack/plugins/start/lightline.vim
-
-echo "Installing Submodule: vim-pathogen"
-git submodule add https://github.com/tpope/vim-pathogen.git vim/iOS/.vim/pack/plugins/start/vim-pathogen
 
 echo "Installing Submodule: ctrlp"
 git submodule add https://github.com/ctrlpvim/ctrlp.vim.git vim/iOS/.vim/pack/plugins/start/ctrlp.vim

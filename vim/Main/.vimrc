@@ -473,13 +473,13 @@ nmap <leader>vrc :e $MYVIMRC<cr>
 "    save & source .vimrc (reload settings in current vim session)
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
 
-"    <space>dco
-"    load my default Dark colorscheme
-nmap <leader>dco :call SetDarkColorScheme()<CR>
+"    <space>dm
+"    dark mode:load my default Dark colorscheme
+nmap <leader>dm :call SetDarkColorScheme()<CR>
 
-"    <space>lco
-"    load my default Light colorscheme
-nmap <leader>lco :call SetLightColorScheme()<CR>
+"    <space>lm
+"    light mode: load my default Light colorscheme
+nmap <leader>lm :call SetLightColorScheme()<CR>
 
 "    <space>sp
 "    spell check on
