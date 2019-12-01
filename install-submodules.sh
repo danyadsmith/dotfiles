@@ -13,7 +13,7 @@ echo ""
 
 
 echo "Installing Submodule: lightline.vim"
-git submodule add https://github.com/itchyny/lightline.vim vim/iOS/.vim/pack/plugins/start/lightline.vim
+git submodule add https://github.com/danyadsmith/lightline.vim vim/iOS/.vim/pack/plugins/start/lightline.vim
 
 echo "Installing Submodule: ctrlp"
 git submodule add https://github.com/ctrlpvim/ctrlp.vim.git vim/iOS/.vim/pack/plugins/start/ctrlp.vim

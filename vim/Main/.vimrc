@@ -116,6 +116,17 @@ set matchpairs+=<:>,«:»
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOMIZATIONS FOR WRITERS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup textobj_quote
+  autocmd!
+  autocmd FileType markdown call textobj#quote#init()
+  autocmd FileType vimwiki call textobj#quote#init()
+  autocmd FileType text call textobj#quote#init({'educate': 0})
+augroup END
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch                            " highlight search results
@@ -144,7 +155,10 @@ set wildignore+=*/.git/*                " ignore Git
 set wildignore+=*/node_modules/*        " ignore node_modules
 
 " Customize the NETRW File Browser
-let g:netrw_liststyle=3                 " Open netwr in tree view
+let g:netrw_banner=0                    " toggle the netrw banner off
+let g:netrw_liststyle=3                 " open netwr in tree view
+let g:netrw_browse_split=4              " open netrw in vertical split
+let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=wipe
 
 

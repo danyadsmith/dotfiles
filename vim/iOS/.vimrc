@@ -45,7 +45,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight htmlTagName guifg=#31aed8
     autocmd ColorScheme * highlight htmlEndTag guifg=#31a3d8
     autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
-    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 "d9d5c1 f5f2c1
+    autocmd ColorScheme * highlight htmlString guifg=#fff3b2 " d9d5c1 f5f2c1
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
     autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
 
@@ -55,42 +55,6 @@ if has('autocmd')
     autocmd ColorScheme * highlight xmlEndTag guifg=#31aed8
 
 endif
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SET COLORSCHEME
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" COLORSCHEMES WITH BLACK OR DARK GRAY BACKGROUNDS
-" ------------------------------------------------
-"colorscheme base16-chalk
-"colorscheme base16-default-dark
-"colorscheme base16-google-dark
-"colorscheme base16-grayscale-dark
-"colorscheme base16-onedark
-"colorscheme base16-tomorrow-night
-
-
-" COLORSCHEMES WITH BLUE BACKGROUNDS
-" ----------------------------------
-"colorscheme base16-atelier-cave
-"colorscheme base16-atelier-sulphurpool
-"colorscheme base16-harmonic-dark
-"colorscheme base16-nord
-"colorscheme base16-solarflare
-
-
-" COLORSCHEMES WITH BROWN BACKGROUNDS
-" -----------------------------------
-"colorscheme base16-darktooth
-"colorscheme base16-gruvbox-dark-hard
-"colorscheme base16-monokai
-
-
-" COLORSCHEMES WITH TEAL BACKGROUNDS
-" ----------------------------------
-"colorscheme base16-materia
-"colorscheme base16-solarized-dark
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,6 +116,17 @@ set matchpairs+=<:>,«:»
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOMIZATIONS FOR WRITERS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup textobj_quote
+  autocmd!
+  autocmd FileType markdown call textobj#quote#init()
+  autocmd FileType vimwiki call textobj#quote#init()
+  autocmd FileType text call textobj#quote#init({'educate': 0})
+augroup END
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch                            " highlight search results
@@ -180,7 +155,10 @@ set wildignore+=*/.git/*                " ignore Git
 set wildignore+=*/node_modules/*        " ignore node_modules
 
 " Customize the NETRW File Browser
-let g:netrw_liststyle=3                 " Open netwr in tree view
+let g:netrw_banner=0                    " toggle the netrw banner off
+let g:netrw_liststyle=3                 " open netwr in tree view
+let g:netrw_browse_split=4              " open netrw in vertical split
+let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=wipe
 
 
@@ -318,15 +296,6 @@ let g:minisnip_trigger = '<C-e>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CheckColorScheme()
-    try
-        echo g:colors_name
-    catch /^Vim:E121/
-        echo "default
-    endtry
-endfunction
-
-
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -388,8 +357,14 @@ endfunction
 function! SetInsertModeCursorLineNumber()
   highlight CursorLineNr ctermbg=24 guibg=#005f87
   highlight CursorLineNr ctermfg=White guifg=White
-  highlight Cursor ctermfg=Black guifg=Black
-  highlight Cursor ctermbg=White guibg=White
+  if g:colors_name == 'anotherkolor-light'
+    highlight Cursor ctermfg=Black guifg=Black
+    highlight Cursor ctermbg=24 guibg=#005f87
+  endif
+  if g:colors_name == 'anotherkolor-dark'
+    highlight Cursor ctermfg=Black guifg=Black
+    highlight Cursor ctermbg=White guibg=#ffffff
+  endif
   set updatetime=0
 endfunction
 
@@ -425,6 +400,21 @@ function! SynStack()
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
+
+
+function! WordCount()
+  let s:old_status = v:statusmsg
+  let position = getpos(".")
+  exe ":silent normal g\<C-g>"
+  let stat = v:statusmsg
+  let s:word_count = 0
+  if stat != '--No lines in buffer--'
+    let s:word_count = str2nr(split(v:statusmsg)[11])
+    let v:statusmsg = s:old_status
+  end
+  call setpos('.', position)
+  return s:word_count 
 endfunction
 
 
@@ -473,13 +463,13 @@ nmap <leader>vrc :e $MYVIMRC<cr>
 "    save & source .vimrc (reload settings in current vim session)
 nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
 
-"    <space>dco
-"    load my default Dark colorscheme
-nmap <leader>dco :call SetDarkColorScheme()<CR>
+"    <space>dm
+"    switch to dark mode
+nmap <leader>dm :call SetDarkColorScheme()<CR>
 
-"    <space>lco
-"    load my default Light colorscheme
-nmap <leader>lco :call SetLightColorScheme()<CR>
+"    <space>lm
+"    switch to light mode
+nmap <leader>lm :call SetLightColorScheme()<CR>
 
 "    <space>sp
 "    spell check on
@@ -585,11 +575,17 @@ nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualModeCLN
 set cursorline
 
 if has('autocmd')
-  augroup cursorlinenrcolorswap
+  augroup swapCursorLineColors
     autocmd!
     autocmd InsertEnter * call SetEditModeCursorLineNumber(v:insertmode)
     autocmd InsertLeave * call SetNormalModeCursorLineNumber()
     autocmd CursorHold * call SetNormalModeCursorLineNumber()
+  augroup end
+
+  augroup hideCursorLineOnInactiveWindows
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
   augroup end
 endif
 
@@ -601,5 +597,4 @@ set noshowmode                          " hide duplicate mode identifier
 set laststatus=2                        " configure vim-airline
 
 call SetDarkColorScheme()
-
 
