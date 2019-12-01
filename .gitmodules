@@ -73,3 +73,6 @@
 [submodule "vim/iOS/.vim/pack/plugins/start/vim-textobj-quote"]
 	path = vim/iOS/.vim/pack/plugins/start/vim-textobj-quote
 	url = https://github.com/reedes/vim-textobj-quote.git
+[submodule "vim/iOS/.vim/pack/plugins/start/lightline.vim"]
+	path = vim/iOS/.vim/pack/plugins/start/lightline.vim
+	url = https://github.com/danyadsmith/lightline.vim
