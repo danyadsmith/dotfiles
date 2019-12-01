@@ -282,15 +282,6 @@ let g:minisnip_trigger = '<C-e>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CheckColorScheme()
-    try
-        echo g:colors_name
-    catch /^Vim:E121/
-        echo "default
-    endtry
-endfunction
-
-
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -352,10 +343,11 @@ endfunction
 function! SetInsertModeCursorLineNumber()
   highlight CursorLineNr ctermbg=24 guibg=#005f87
   highlight CursorLineNr ctermfg=White guifg=White
-  if CheckColorScheme() == 'anotherkolor-light'
+  if g:colors_name == 'anotherkolor-light'
     highlight Cursor ctermfg=Black guifg=Black
     highlight Cursor ctermbg=24 guibg=#005f87
-  else
+  endif
+  if g:colors_name == 'anotherkolor-dark'
     highlight Cursor ctermfg=Black guifg=Black
     highlight Cursor ctermbg=White guibg=#ffffff
   endif
@@ -569,14 +561,14 @@ nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualModeCLN
 set cursorline
 
 if has('autocmd')
-  augroup swapcursorlinecolors
+  augroup swapCursorLineColors
     autocmd!
     autocmd InsertEnter * call SetEditModeCursorLineNumber(v:insertmode)
     autocmd InsertLeave * call SetNormalModeCursorLineNumber()
     autocmd CursorHold * call SetNormalModeCursorLineNumber()
   augroup end
 
-  augroup showcursorlineinactivewindowonly
+  augroup hideCursorLineOnInactiveWindows
     autocmd!
     autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     autocmd WinLeave * setlocal nocursorline

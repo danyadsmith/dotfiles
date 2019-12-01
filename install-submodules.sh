@@ -80,3 +80,14 @@ git submodule add	https://github.com/elzr/vim-json.git vim/iOS/.vim/pack/plugins
 
 echo "Installing Submodule: vim-minisnip"
 git submodule add https://github.com/joereynolds/vim-minisnip.git vim/iOS/.vim/pack/plugins/start/vim-minisnip
+
+echo "Installing Submodule: unicycle"
+git submodule add https://github.com/vim-scripts/UniCycle
+
+echo "Installing Submodule: vim-textobj-user"
+git submodule add https://github.com/kana/vim-textobj-user.git
+
+echo "Installing Submodule: vim-textobj-quote"
+git submodule add https://github.com/reedes/vim-textobj-quote.git
+
+
