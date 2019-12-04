@@ -38,7 +38,7 @@ if has('autocmd')
 
     " Override Visual Mode Highlighted Text Color:
     autocmd ColorScheme * highlight Visual ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight Visual ctermbg=208   guibg=#ff8700
+    autocmd ColorScheme * highlight Visual ctermbg=220   guibg=#ffd700
 
     " Override HTML Syntax Colors:
     autocmd ColorScheme * highlight htmlTag guifg=#31aed8
@@ -309,9 +309,9 @@ function! Preserve(command)
 endfunction
 
 
-function! SetDarkColorScheme()
+function! SetDarkMode()
   let g:lightline = {
-    \ 'colorscheme': 'powerline',
+    \ 'colorscheme': 'anotherkolor_dark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -328,9 +328,9 @@ function! SetDarkColorScheme()
 endfunction
 
 
-function! SetLightColorScheme()
+function! SetLightMode()
   let g:lightline = {
-    \ 'colorscheme': 'anotherkolor',
+    \ 'colorscheme': 'anotherkolor_light',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -348,18 +348,18 @@ endfunction
 function! SetNormalModeCursorLineNumber()
   set updatetime=4000
   highlight CursorLineNr ctermfg=Black guifg=Black
-  highlight CursorLineNr ctermbg=190 guibg=#AFDF00
+  highlight CursorLineNr ctermbg=190 guibg=#31aed8
   highlight Cursor ctermfg=Black guifg=Black
-  highlight Cursor ctermbg=190 guibg=#AFDF00
+  highlight Cursor ctermbg=190 guibg=#31aed8
 endfunction
 
 
 function! SetInsertModeCursorLineNumber()
-  highlight CursorLineNr ctermbg=24 guibg=#005f87
+  highlight CursorLineNr ctermbg=24 guibg=#31ad38
   highlight CursorLineNr ctermfg=White guifg=White
   if g:colors_name == 'anotherkolor-light'
     highlight Cursor ctermfg=Black guifg=Black
-    highlight Cursor ctermbg=24 guibg=#005f87
+    highlight Cursor ctermbg=24 guibg=#31ad38
   endif
   if g:colors_name == 'anotherkolor-dark'
     highlight Cursor ctermfg=Black guifg=Black
@@ -381,7 +381,7 @@ endfunction
 function! SetVisualModeCursorLineNumber()
   set updatetime=0
   highlight CursorLineNr ctermfg=Black guifg=Black
-  highlight CursorLineNr ctermbg=208   guibg=#ff8700
+  highlight CursorLineNr ctermbg=208   guibg=#ffcc00
   return ''
 endfunction
 
@@ -465,11 +465,11 @@ nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcin
 
 "    <space>dm
 "    switch to dark mode
-nmap <leader>dm :call SetDarkColorScheme()<CR>
+nmap <leader>dm :call SetDarkMode()<CR>
 
 "    <space>lm
 "    switch to light mode
-nmap <leader>lm :call SetLightColorScheme()<CR>
+nmap <leader>lm :call SetLightMode()<CR>
 
 "    <space>sp
 "    spell check on
@@ -567,7 +567,7 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
-vnoremap <silent> <expr> <SID>SetVisualModeCLN SetVisualModeCursorLineNumber() 
+vnoremap <silent> <expr> <SID>SetVisualModeCLN SetVisualModeCursorLineNumber()
 nnoremap <silent> <script> v v<SID>SetVisualModeCLN <right><left>
 nnoremap <silent> <script> V V<SID>SetVisualModeCLN <right><left>
 nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualModeCLN
@@ -596,5 +596,6 @@ endif
 set noshowmode                          " hide duplicate mode identifier
 set laststatus=2                        " configure vim-airline
 
-call SetDarkColorScheme()
+call SetDarkMode()
+
 
