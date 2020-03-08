@@ -13,7 +13,7 @@ echo ""
 
 
 echo "Installing Submodule: lightline.vim"
-git submodule add https://github.com/itchyny/lightline.vim vim/iOS/.vim/pack/plugins/start/lightline.vim
+git submodule add https://github.com/danyadsmith/lightline.vim vim/iOS/.vim/pack/plugins/start/lightline.vim
 
 echo "Installing Submodule: ctrlp"
 git submodule add https://github.com/ctrlpvim/ctrlp.vim.git vim/iOS/.vim/pack/plugins/start/ctrlp.vim
@@ -80,3 +80,14 @@ git submodule add	https://github.com/elzr/vim-json.git vim/iOS/.vim/pack/plugins
 
 echo "Installing Submodule: vim-minisnip"
 git submodule add https://github.com/joereynolds/vim-minisnip.git vim/iOS/.vim/pack/plugins/start/vim-minisnip
+
+echo "Installing Submodule: unicycle"
+git submodule add https://github.com/vim-scripts/UniCycle vim/iOS/.vim/pack/plugins/start/unicycle
+
+echo "Installing Submodule: vim-textobj-user"
+git submodule add https://github.com/kana/vim-textobj-user.git vim/iOS/.vim/pack/plugins/start/vim-textobj-user
+
+echo "Installing Submodule: vim-textobj-quote"
+git submodule add https://github.com/reedes/vim-textobj-quote.git vim/iOS/.vim/pack/plugins/start/vim-textobj-quote
+
+
