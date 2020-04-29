@@ -28,6 +28,7 @@ PATH=/Applications/MacVim.app/Contents/bin:$PATH
 PATH=~/Development/Configuration/dotfiles/scripts:$PATH
 
 export PATH
+export VISUAL='mvim -f'
 
 export DISPLAY=:0
 
@@ -137,7 +138,7 @@ alias emacs='emacs --no-window-system'
 #alias vim=nvim
 alias vim.config='vim ~/.config/nvim/init.vim'
 alias vimdiff='nvim -d'
-export EDITOR=nvim
+export EDITOR=gvim
 
 # visual studio code
 alias code='code-insiders'
