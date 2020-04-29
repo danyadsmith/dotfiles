@@ -12,6 +12,7 @@
 " ADD WINDOWS RUNTIME PATH
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath+=$HOME/vimfiles
+source $VIMRUNTIME/defaults.vim
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -38,7 +39,7 @@ if has('autocmd')
 
     " Override Visual Mode Highlighted Text Color:
     autocmd ColorScheme * highlight Visual ctermfg=Black guifg=Black
-    autocmd ColorScheme * highlight Visual ctermbg=220   guibg=#ffd700
+    autocmd ColorScheme * highlight Visual ctermbg=220   guibg=#f9fb8c
 
     " Override HTML Syntax Colors:
     autocmd ColorScheme * highlight htmlTag guifg=#31aed8
@@ -58,6 +59,12 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" WORKSPACE CUSTOMIZATIONS 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set scrolloff=1                         " no. lines to retain above/below cursor
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZATIONS FOR PROGRAMMERS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlighting
@@ -65,7 +72,7 @@ syntax enable                           " enable syntax highlighting
 filetype on                             " automatically detect file type
 filetype plugin on                      " auto load filetype plugins
 filetype indent on                      " auto load file indent settings
-set redrawtime=10000                     " time allowed to redraw syntax coloring
+set redrawtime=20000                    " time allowed to redraw syntax coloring
 
 " Tab vs. Space Customizations
 set tabstop=2                           " number of visual spaces per tab
@@ -157,8 +164,6 @@ set wildignore+=*/node_modules/*        " ignore node_modules
 " Customize the NETRW File Browser
 let g:netrw_banner=0                    " toggle the netrw banner off
 let g:netrw_liststyle=3                 " open netwr in tree view
-let g:netrw_browse_split=4              " open netrw in vertical split
-let g:netrw_winsize=25
 autocmd FileType netrw setl bufhidden=wipe
 
 
@@ -237,7 +242,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
 
-  set guifont=PragmataPro-Regular:h17   " set default font on iOS
+  set guifont=PragmataPro-Regular:h16   " set default font on iOS
 " set guifont=PragmataPro_Mono:h10      " set default font on computer
 
   set guioptions-=m                     " remove menu bar
@@ -319,6 +324,10 @@ function! SetDarkMode()
     \ 'component_function': {
     \   'gitbranch': 'fugitive#head'
     \ },
+		\ 'separator': { 'left': '', 'right': '' },
+		\ 'subseparator': { 'left': '', 'right': '' },
+		\ 'tabline_separator': { 'left': ' ', 'right': ' ' },
+    \ 'tabline_subseparator': { 'left': ' ', 'right': ' ' }
     \ }
   if &rtp =~ 'lightline.vim'
     call lightline#toggle()
@@ -338,9 +347,15 @@ function! SetLightMode()
     \ 'component_function': {
     \   'gitbranch': 'fugitive#head'
     \ },
+		\ 'separator': { 'left': '', 'right': '' },
+		\ 'subseparator': { 'left': '', 'right': '' },
+		\ 'tabline_separator': { 'left': ' ', 'right': ' ' },
+		\ 'tabline_subseparator': { 'left': ' ', 'right': ' ' }
     \ }
-  call lightline#toggle()
-  call lightline#toggle()
+  if &rtp =~ 'lightline.vim'
+    call lightline#toggle()
+    call lightline#toggle()
+  endif
   colorscheme anotherkolor-light
 endfunction
 
@@ -381,7 +396,7 @@ endfunction
 function! SetVisualModeCursorLineNumber()
   set updatetime=0
   highlight CursorLineNr ctermfg=Black guifg=Black
-  highlight CursorLineNr ctermbg=208   guibg=#ffcc00
+  highlight CursorLineNr ctermbg=208   guibg=#f9fb8c
   return ''
 endfunction
 
@@ -470,6 +485,10 @@ nmap <leader>dm :call SetDarkMode()<CR>
 "    <space>lm
 "    switch to light mode
 nmap <leader>lm :call SetLightMode()<CR>
+
+"    <space>tg
+"    toggle Goyo - distraction-free writing mode
+nmap <leader>tg :Goyo<cr><bar>:noh<cr><bar>:echom ""<cr>
 
 "    <space>sp
 "    spell check on
