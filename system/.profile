@@ -178,6 +178,10 @@ alias unlock-files='find . -type f -print0 | xargs -0 chflags nouchg'
 alias lock-dirs='find . -type d -print0 | xargs -0 chflags uchg'
 alias lock-files='find . -type f -print0 | xargs -0 chflags uchg'
 
+# Automatically Rename Files Numerically With Zero Index
+alias auto-rename-zero='ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n-1).${f#*.}"; done'
+alias auto-rename-one='ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n).${f#*.}"; done'
+
 # Apache
 alias start-apache='sudo apachectl start'
 alias restart-apache='sudo apachectl restart'
