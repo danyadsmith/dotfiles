@@ -32,13 +32,13 @@ export VISUAL='mvim -f'
 
 export DISPLAY=:0
 
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 ################################################################################
 #  Z COMMAND INSTALLATION
 ################################################################################
 
-. `brew --prefix`/etc/profile.d/z.sh
+#. `brew --prefix`/etc/profile.d/z.sh
 
 ################################################################################
 #  ALIASES
