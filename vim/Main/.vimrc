@@ -59,7 +59,7 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" WORKSPACE CUSTOMIZATIONS 
+" WORKSPACE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=1                         " no. lines to retain above/below cursor
 
@@ -132,6 +132,7 @@ augroup textobj_quote
   autocmd FileType text call textobj#quote#init({'educate': 0})
 augroup END
 
+let g:marked_filetypes = ["markdown", "mkd", "ghmarkdown", "vimwiki", "mmd"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH CUSTOMIZATIONS
@@ -429,7 +430,7 @@ function! WordCount()
     let v:statusmsg = s:old_status
   end
   call setpos('.', position)
-  return s:word_count 
+  return s:word_count
 endfunction
 
 
@@ -469,6 +470,10 @@ nmap <silent> <LEFT><LEFT>   :cpfile<CR><C-G>
 " LEADER MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<space>"
+
+"    <space>
+"    trigger vim-which-key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 "    <space>vrc
 "    edit .vimrc
@@ -544,7 +549,7 @@ nmap <leader>. :CtrlPTag<cr>
 
 "    <space>dc
 "    set DrawIt default characters
-nmap <leader>dc :call SetDrawIt('│', '─', '┼', '╲', '╱', '╳', '*')
+nmap <leader>dc :call SetDrawIt('│', '─', '┼', '╲', '╱', '╳', '*')<CR>
 
 "    <space>$
 "    remove trailing whitespace from end of lines

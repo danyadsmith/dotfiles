@@ -25,6 +25,9 @@ ln -s ~/Development/Configuration/dotfiles/vim/Main/pathogen.vim ~/.vim/autoload
 echo "Deleting Directory: ~/.vim/bundle"
 trash ~/.vim/bundle
 
+echo "Deleting Directory: ~/.vim/pack"
+trash ~/.vim/pack
+
 echo "Creating Directory: ~/.vim/pack/plugins/start"
 mkdir ~/.vim/pack
 cd ~/.vim/pack
@@ -134,7 +137,7 @@ echo "========================================================================="
 echo ""
 
 echo "Installing Plugin: vim-markdown-enhancements"
-git clone https://github.com/mattly/vim-markdown-enhancements
+git clone https://github.com/danyadsmith/vim-markdown-enhancements
 echo "========================================================================="
 echo ""
 
@@ -145,6 +148,11 @@ echo ""
 
 echo "Installing Plugin: vim-minisnip"
 git clone https://github.com/joereynolds/vim-minisnip
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: vim-peekaboo"
+git clone https://github.com/junegunn/vim-peekaboo
 echo "========================================================================="
 echo ""
 
@@ -193,6 +201,12 @@ git clone https://github.com/reedes/vim-textobj-quote.git
 echo "========================================================================="
 echo ""
 
+echo "Installing Plugin: vim-which-key"
+git clone https://github.com/liuchengxu/vim-which-key
+echo "========================================================================="
+echo ""
+
+https://github.com/liuchengxu/vim-which-key
 echo "Creating Directory: ~/.vim/pack/plugins/opt"
 cd ~/.vim/pack/plugins
 mkdir opt

@@ -212,6 +212,10 @@ alias empty-trash='sudo rm -rf ~/.Trash'
 # GREP
 alias grep='grep --color=auto'
 
+# iCloud Drive
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/'
+alias notebooks='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/MyDocuments/notebooks'
+
 # MongoDB
 alias start-mongo='mongod --fork --logpath ~/logs/mongo/mongodb.log --logappend'
 
@@ -235,6 +239,9 @@ alias trash-nm='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'
 # Postgres
 alias start-postgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias stop-postgres="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+# VirtualBox
+alias start-vbx="VirtualBoxVM --startvm 'Windows 8'"
 
 # Power Controls
 alias mac-shutdown='sudo shutdown -h now'

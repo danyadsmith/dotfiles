@@ -112,3 +112,7 @@ export TERM=xterm-256color
  export HISTCONTROL=ignoreboth			# ignoredups:ignorespace
  export HISTSIZE=500
 
+
+# Set typewritten ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt typewritten
