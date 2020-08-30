@@ -22,7 +22,12 @@ My basic organizational structure is as follows:
     ├── vim
     └── README.md
 
- I group like things into topical subfolders. 
+I group like things into topical subfolders. 
 
 Like my `.vimrc` and other Vim customizations, I expect this repository to grow
 and evolve bit by bit over time. Every journey begins with a single step.
+
+Configuration file headings are generated using `figlet` and the **fender** font:
+
+    figlet -f fender .vimrc > header.txt
+    
