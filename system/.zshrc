@@ -1,3 +1,14 @@
+# 
+#                                   '||                  
+#                                    ||                  
+#                        '''/ (''''  ||''|, '||''| .|'', 
+#                         //   `'')  ||  ||  ||    ||    
+#                     .. /... `...' .||  || .||.   `|..' 
+#
+#                     z shell configuration file (.zshrc)
+#
+################################################################################
+#
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/danyadsmith/.oh-my-zsh
 
@@ -5,7 +16,7 @@ export ZSH=/Users/danyadsmith/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="danya"
+# ZSH_THEME="danya"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,11 +60,34 @@ ZSH_THEME="danya"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(npm git osx brew history extract z)
+
+plugins=(
+  npm 
+  git 
+  osx 
+  brew 
+  colorize 
+  compleat 
+  history 
+  extract 
+  zsh-syntax-highlighting 
+  z
+)
+
 
 # User configuration
 
 setopt histignorespace
+setopt NO_CASE_GLOB
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt CORRECT
+setopt CORRECT_ALL
 
 precmd() { print "" }
 
@@ -86,6 +120,7 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 ################################################################################
 #  LOAD ALL CUSTOMIZATIONS FROM ~/.profile
 ################################################################################
@@ -96,6 +131,8 @@ fi
 if [ -f ~/.secrets ]; then
 	source ~/.secrets
 fi
+
+
 ################################################################################
 #  COLORS
 ################################################################################
@@ -105,13 +142,22 @@ export LSCOLORS=exfxcxdxbxagadabBbacad
 export GREP_COLOR='1;32;49'
 export TERM=xterm-256color
 
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
+
+
 ################################################################################
 #  HISTORY CUSTOMIZATIONS
 ################################################################################
 
- export HISTCONTROL=ignoreboth			# ignoredups:ignorespace
- export HISTSIZE=500
+export HISTCONTROL=ignoreboth			# ignoredups:ignorespace
+export HISTSIZE=500
 
+
+################################################################################
+#  THEME CUSTOMIZATIONS
+################################################################################
 
 # Set typewritten ZSH as a prompt
 autoload -U promptinit; promptinit
