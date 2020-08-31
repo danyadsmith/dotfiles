@@ -132,7 +132,7 @@ augroup textobj_quote
   autocmd FileType text call textobj#quote#init({'educate': 0})
 augroup END
 
-let g:marked_filetypes = ["markdown", "mkd", "ghmarkdown", "vimwiki", "mmd"]
+let g:marked_filetypes = ["markdown", "mkd", "ghmarkdown", "vimwiki", "md",  "mmd"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH CUSTOMIZATIONS
@@ -620,6 +620,17 @@ endif
 set noshowmode                          " hide duplicate mode identifier
 set laststatus=2                        " configure vim-airline
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HELP DOCUMENTATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+packloadall
+silent! helptags ALL
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET COLORSCHEME
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call SetDarkMode()
 
 
