@@ -1,9 +1,9 @@
 #!/bin/sh
 # Create Symlinks for Dotfiles under Source Control
 
-SCRIPT_NAME="symlink_sys_files.sh"
+SCRIPT_NAME="install-dotfiles.sh"
 SCRIPT_AUTHOR="Danya D. Smith"
-SCRIPT_UPDATED="Friday 17 August 2018 @ 6:54 PM"
+SCRIPT_UPDATED="Wednesday 02 September 2020 @ 12:50 AM"
 
 echo "Executing: $SCRIPT_NAME"
 echo "By: $SCRIPT_AUTHOR"
@@ -24,6 +24,10 @@ ln -s ~/Development/Configuration/dotfiles/system/.profile ~/.profile
 echo "Adding .tmux.conf"
 trash ~/.tmux.conf
 ln -s ~/Development/Configuration/dotfiles/system/.tmux.conf ~/.tmux.conf
+
+echo "Installing tmux Package Manager"
+trash ~/.tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "Adding .zshrc"
 trash ~/.zshrc
