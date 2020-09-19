@@ -71,6 +71,12 @@ git clone https://github.com/mattn/emmet-vim.git
 echo "========================================================================="
 echo ""
 
+echo "Installing Plugin: fzf.vim"
+git clone https://github.com/junegunn/fzf
+git clone https://github.com/junegunn/fzf.vim
+echo "========================================================================="
+echo ""
+
 echo "Installing Plugin: lightline"
 git clone https://github.com/danyadsmith/lightline.vim
 echo "========================================================================="

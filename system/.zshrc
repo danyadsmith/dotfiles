@@ -162,3 +162,5 @@ export HISTSIZE=500
 # Set typewritten ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt typewritten
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

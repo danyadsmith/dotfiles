@@ -59,3 +59,5 @@ export PS1
  export HISTIGNORE='history:pwd:exit:df:ls:ls -la:ls -lah:ls -lahG:ll:la:lynda:home:root:web:..:cd:cd ..'
  export HISTSIZE=500
 #export HISTTIMEFORMAT='%b %d %I:%M %p '
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
