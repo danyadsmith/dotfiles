@@ -267,6 +267,26 @@ endif
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'r'
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FZF CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'DoveFg'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'GreenFg'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'OrangeFg'],
+  \ 'marker':  ['fg', 'VeridianFg'],
+  \ 'spinner': ['fg', 'ChartreuseFg'],
+  \ 'header':  ['fg', 'Comment'] }
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIMWIKI CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -546,6 +566,35 @@ nmap <leader>cc :CtrlPClearCache<cr>
 "    <space>ct
 "    ctrl-p search tags
 nmap <leader>. :CtrlPTag<cr>
+
+"    <space>fb
+"    launch fzf with focus on Buffers
+nmap <leader>fb :Buffers<cr>
+
+"    <space>ff
+"    launch fzf with focus on Files in current directory
+nmap <leader>ff :Files<cr>
+
+"    <space>fg
+"    launch fzf focusing on git files
+nmap <leader>fg :GFiles<cr>
+
+"    <space>fgs
+"    launch fzf focusing on git status
+nmap <leader>fs :GFiles?<cr>
+
+"    <space>ft
+"    launch fzf focusing on tags
+nmap <leader>ft :Tags<cr>
+
+"    <space>fc
+"    launch fzf focusing on git commits
+nmap <leader>fc :Commits<cr>
+
+"    <space>fy
+"    launch fzf focusing on file types
+nmap <leader>fy :Filetypes<cr>
+
 
 "    <space>dc
 "    set DrawIt default characters
