@@ -15,6 +15,18 @@
   diff = always
   branch = auto
   showbranch = auto
+[color "diff-highlight"]
+  oldNormal = red
+  oldHighlight = red bold reverse
+  newNormal = green
+  newHighlight = green bold reverse
+[color "diff"]
+  meta = blue
+  frag = magenta bold
+  commit = blue
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 [commit]
   template = ~/.gitmessage
 [core]
@@ -22,6 +34,7 @@
 	autocrlf = false
 	safecrlf = true
 	excludesfile = ~/.gitignore_global
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [filter "media"]
 	required = true
 	clean = git media clean %f
