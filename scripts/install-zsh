@@ -18,4 +18,5 @@ npm install -g typewritten
 echo "Install zsh-syntax-highlighting"
 brew install zsh-syntax-highlighting
 
-
+echo "Install fzf-tab"
+git clone https://github.com/Aloxaf/fzf-tab ~ZSH_CUSTOM/plugins/fzf-tab
