@@ -282,7 +282,7 @@ let g:fzf_colors =
   \ 'border':  ['fg', 'Ignore'],
   \ 'prompt':  ['fg', 'Conditional'],
   \ 'pointer': ['fg', 'OrangeFg'],
-  \ 'marker':  ['fg', 'VeridianFg'],
+  \ 'marker':  ['fg', 'ChartreuseFg'],
   \ 'spinner': ['fg', 'ChartreuseFg'],
   \ 'header':  ['fg', 'Comment'] }
 
