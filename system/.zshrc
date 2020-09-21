@@ -70,6 +70,7 @@ plugins=(
   compleat 
   history 
   extract 
+  fzf-tab
   zsh-syntax-highlighting 
   z
 )
@@ -132,6 +133,9 @@ if [ -f ~/.secrets ]; then
 	source ~/.secrets
 fi
 
+if [ -f ~/.zsh_profile ]; then
+	source ~/.zsh_profile
+fi
 
 ################################################################################
 #  COLORS
