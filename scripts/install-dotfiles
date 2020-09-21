@@ -21,6 +21,10 @@ echo "Adding .profile"
 trash ~/.profile
 ln -s ~/Development/Configuration/dotfiles/system/.profile ~/.profile
 
+echo "Adding .zsh_profile"
+trash ~/.zsh_profile
+ln -s ~/Development/Configuration/dotfiles/system/.zsh_profile ~/.zsh_profile
+
 echo "Adding .tmux.conf"
 trash ~/.tmux.conf
 ln -s ~/Development/Configuration/dotfiles/system/.tmux.conf ~/.tmux.conf
