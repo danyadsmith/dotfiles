@@ -1,4 +1,4 @@
-gcbr () {
+gcop () {
   local commit
   pbcopy < /dev/null
   git log \

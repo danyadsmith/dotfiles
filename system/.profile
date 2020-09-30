@@ -119,6 +119,7 @@ alias ghist="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 alias glatest="git log --oneline -n20"
 alias grm="touch README.md"
 alias gwatch="watch -n 10 --color git log --oneline --color"
+alias gcmt="gcop"
 
 # launchpad
 alias launchpad-reset='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
