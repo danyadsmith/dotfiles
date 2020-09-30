@@ -143,6 +143,9 @@ set noincsearch                         " do not highlight incremental search
 " Search for visually-selected text
 vnoremap // y/<C-r>=escape(@",'/\')<CR><CR>
 
+nnoremap <silent> n   n:call HLNext(0.4)<cr>
+nnoremap <silent> N   N:call HLNext(0.4)<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -322,6 +325,14 @@ let g:minisnip_trigger = '<C-e>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! HLNext (blinktime)
+  set invcursorline
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  set invcursorline
+  redraw
+endfunction
+
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
