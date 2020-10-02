@@ -28,7 +28,7 @@ _viewGitLogLine="echo {} |
                  grep -o '[a-f0-9]\{7\}' | 
                  head -1 | 
                  xargs -I % sh -c 'git show --color=always %' | 
-                 diff-so-fancy"
+                 delta"
 
 _gitLogLineToHash="echo {} |
                    grep -o '[a-f0-9]\{7\}' |
