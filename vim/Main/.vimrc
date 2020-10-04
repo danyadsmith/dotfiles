@@ -151,6 +151,7 @@ nnoremap <silent> N   N:call HLNext(0.4)<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf8
 set termencoding=utf8                   " set default encoding to utf-8
+set backupcopy=yes                      " preserve created date and time
 
 set path+=**
 
