@@ -126,6 +126,10 @@ alias launchpad-reset='defaults write com.apple.dock ResetLaunchPad -bool true; 
 alias launchpad-purge='cd /private/var/folders/6d/3cgcz6b50672jn0ph7_m2xbw0000gn/0/com.apple.dock.launchpad/db; sqlite3 db "delete from apps"; killall Dock'
 alias launchpad-deleteapp='cd /private/var/folders/6d/3cgcz6b50672jn0ph7_m2xbw0000gn/0/com.apple.dock.launchpad/db; sqlite3 db "delete from apps where title = 'Skype'"; killall Dock'
 
+#stat
+alias stat=stat -f "%n   Filename: %SN %n       Type: %ST %n      Inode: %Di %n   Symlinks: %Dl%n %nPermissions: %Sp %n       User: %Su %n      Group: %Sg%n %n   Accessed: %Sa %n   Modified: %Sm %n    Changed: %Sc %n    Created: %SB"
+
+
 #tree
 alias t='tree -C -I node_modules --dirsfirst'
 alias t1='tree -L 1 -C -I node_modules --dirsfirst'
