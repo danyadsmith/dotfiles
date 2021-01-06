@@ -124,19 +124,24 @@ export LANG=en_US.UTF-8
 
 
 ################################################################################
-#  LOAD ALL CUSTOMIZATIONS FROM ~/.profile
+#  LOAD ALIASES AND CUSTOMIZATIONS FROM ~/.profile and ~/.zsh_profile
 ################################################################################
 if [ -f ~/.profile ]; then
 	source ~/.profile
 fi
 
+if [ -f ~/.zsh_profile ]; then
+	source ~/.zsh_profile
+fi
+
+
+################################################################################
+#  LOAD SECRETS FROM ~/.secrets
+################################################################################
 if [ -f ~/.secrets ]; then
 	source ~/.secrets
 fi
 
-if [ -f ~/.zsh_profile ]; then
-	source ~/.zsh_profile
-fi
 
 ################################################################################
 #  COLORS
@@ -161,6 +166,13 @@ export HISTSIZE=500
 
 
 ################################################################################
+#  FZF CUSTOMIZATIONS
+################################################################################
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+################################################################################
 #  THEME CUSTOMIZATIONS
 ################################################################################
 
@@ -168,4 +180,3 @@ export HISTSIZE=500
 autoload -U promptinit; promptinit
 prompt typewritten
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

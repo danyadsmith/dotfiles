@@ -1,3 +1,13 @@
+
+_viewGitLogLine="echo {} | 
+                 grep -o '[a-f0-9]\{7\}' | 
+                 head -1 | 
+                 xargs -I % sh -c 'git show --color=always %' | 
+                 delta"
+
+_gitLogLineToHash="echo {} |
+                   grep -o '[a-f0-9]\{7\}' |
+                   head -1"
 gcop () {
   local commit
   pbcopy < /dev/null
@@ -24,12 +34,7 @@ gcop () {
   print $(pbpaste)
 }
 
-_viewGitLogLine="echo {} | 
-                 grep -o '[a-f0-9]\{7\}' | 
-                 head -1 | 
-                 xargs -I % sh -c 'git show --color=always %' | 
-                 delta"
+file-info () {
+    stat -f "%n   Filename: %SN %n       Type: %ST %n      Inode: %Di %n   Symlinks: %Dl%n %nPermissions: %Sp %n       User: %Su %n      Group: %Sg%n %n   Accessed: %Sa %n   Modified: %Sm %n    Changed: %Sc %n    Created: %SB" $1
+}
 
-_gitLogLineToHash="echo {} |
-                   grep -o '[a-f0-9]\{7\}' |
-                   head -1"
