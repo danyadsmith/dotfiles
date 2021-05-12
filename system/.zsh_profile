@@ -38,3 +38,8 @@ file-info () {
     stat -f "%n   Filename: %SN %n       Type: %ST %n      Inode: %Di %n   Symlinks: %Dl%n %nPermissions: %Sp %n       User: %Su %n      Group: %Sg%n %n   Accessed: %Sa %n   Modified: %Sm %n    Changed: %Sc %n    Created: %SB" $1
 }
 
+find-alias () {
+    found_alias=$(alias | fzf -i | awk -F"=" '{print $1}')
+    print -z $found_alias
+}
+
