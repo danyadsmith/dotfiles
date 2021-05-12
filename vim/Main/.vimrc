@@ -72,7 +72,7 @@ syntax enable                           " enable syntax highlighting
 filetype on                             " automatically detect file type
 filetype plugin on                      " auto load filetype plugins
 filetype indent on                      " auto load file indent settings
-set redrawtime=20000                    " time allowed to redraw syntax coloring
+set redrawtime=40000                    " time allowed to redraw syntax coloring
 
 " Tab vs. Space Customizations
 set tabstop=2                           " number of visual spaces per tab
