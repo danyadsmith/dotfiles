@@ -165,7 +165,7 @@ alias preview-man='xargs -I {} man -t {} | open -fa Preview'
 alias edit-welcome='sudo nano /etc/motd'
 
 # Save Current Environment Variables
-alias check-env='printenv | sort | subl'
+alias check-env='printenv | sort | less'
 
 # Set File and Folder Permssions
 alias chmod-webdir='find . -type d -print0 | xargs -0 chmod 755'
