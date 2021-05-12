@@ -1,0 +1,29 @@
+#!/bin/sh
+# Rename Image Files
+
+SCRIPT_NAME="deck-setup"
+SCRIPT_AUTHOR="Danya D. Smith"
+SCRIPT_UPDATED="Sunday 02 May 2021 @ 6:35 PM"
+
+echo "Executing: $SCRIPT_NAME"
+echo "By: $SCRIPT_AUTHOR"
+echo "Last Updated: $SCRIPT_UPDATED"
+
+echo "Renaming Image Files"
+cd 00-front-matter
+ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n-1).${f#*.}"; done
+cd ../01-smith-waite-tarot-chromati
+ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n-1).${f#*.}"; done
+cd ../02-tarot-esoterica
+ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n-1).${f#*.}"; done
+cd ../03-summa-esoterica
+ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n-1).${f#*.}"; done
+cd ../04-summa-chromati
+ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n-1).${f#*.}"; done
+cd ../05-smith-waite-tarot-atramento
+ls -1prt | grep -v "/$" | cat -n | while read n f; do mv -n "${f}" "$(printf "%02d" $n-1).${f#*.}"; done
+
+tree -d
+
+
+
