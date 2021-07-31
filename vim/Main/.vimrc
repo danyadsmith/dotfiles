@@ -692,6 +692,11 @@ silent! helptags ALL
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SET COLORSCHEME
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup lightline_hl | au!
+    " Fix issue lightline loads without colorscheme
+    au Colorscheme * call lightline#disable() | call lightline#enable()
+augroup END
+
 call SetDarkMode()
 
 
