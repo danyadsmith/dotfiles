@@ -25,7 +25,8 @@ PATH=~/.rbenv/shims:$PATH
 PATH=/usr/local/bin/yarn:$PATH
 PATH=/usr/local/bin/mosh-server:$PATH
 PATH=/Applications/MacVim.app/Contents/bin:$PATH
-PATH=~/Development/Configuration/dotfiles/scripts:$PATH
+PATH=~$PATH:/Users/danyadsmith/Development/Configuration/dotfiles/scripts
+PATH=~$PATH:/Users/danyadsmith/.dotnet/tools
 
 export PATH
 export VISUAL='mvim -f'
