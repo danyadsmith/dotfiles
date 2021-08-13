@@ -1,6 +1,6 @@
 [user]
 	name = Danya D. Smith
-	email = dsmith04@lear.com
+	email = danya.smith@triskelle.solutions
 [filter "media"]
 	required = true
 	clean = git media clean %f
