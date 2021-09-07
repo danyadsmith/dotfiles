@@ -27,6 +27,7 @@ PATH=/usr/local/bin/mosh-server:$PATH
 PATH=/Applications/MacVim.app/Contents/bin:$PATH
 PATH=~$PATH:/Users/danyadsmith/Development/Configuration/dotfiles/scripts
 PATH=~$PATH:/Users/danyadsmith/.dotnet/tools
+PATH=~$PATH:/Applications/MacVim.app/Contents/bin
 
 export PATH
 export VISUAL='mvim -f'
