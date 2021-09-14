@@ -66,23 +66,19 @@ Use the keyboard combination `⌃s :` to display the prompt then enter `rename-s
 
 | Shortcut | Description               | Action                            |
 |----------|---------------------------|-----------------------------------|
-| ⌥ ⇧ \    | `Option/Alt + Shift + \`  | Create a Vertical Pane            |
-| ⌥  -     | `Option/Alt + -`          | Create a Horizontal Pane          |
+| ⌥  v     | `Option/Alt + Shift + \`  | Create a Vertical Pane            |
+| ⌥  h     | `Option/Alt + -`          | Create a Horizontal Pane          |
 
 ### Close Pane
 
 | Shortcut | Description               | Action                            |
 |----------|---------------------------|-----------------------------------|
-| ⌥  x     | `Option/Alt + x`          | Close the active pane             |
+| ^ x     | `Option/Alt + x`          | Close the active pane             |
 
 ### Navigate Between Panes
 
 | Shortcut | Description               | Action                            |
 |----------|---------------------------|-----------------------------------|
-| ⌥  h     | `Option/Alt + h`          | Navigate to the pane on the left  |
-| ⌥  l     | `Option/Alt + l`          | Navigate to the pane on the right |
-| ⌥  k     | `Option/Alt + k`          | Navigate to the pane above        |
-| ⌥  j     | `Option/Alt + j`          | Navigate to the pane below        |
 | ←        | `Left`                    | Navigate to the pane on the left  |
 | →        | `Right`                   | Navigate to the pane on the right |
 | ↑        | `Up`                      | Navigate to the pane above        |
@@ -110,8 +106,8 @@ Use the keyboard combination `⌃s :` to display the prompt then enter `rename-s
 
 | Shortcut | Description               | Action                          |
 |----------|---------------------------|---------------------------------|
-| ⌃s ⇧ + } | `Option/Alt + s` then `}` | Swap with the pane on the right |
-| ⌃s ⇧ + { | `Option/Alt + s` then `{` | Swap with the pane on the right |
+| ⌃s }     | `Option/Alt + s` then `}` | Swap with the pane on the right |
+| ⌃s {     | `Option/Alt + s` then `{` | Swap with the pane on the right |
 
 ### Toggle Zoom in/Zoom out on Current Pane
 
@@ -125,35 +121,35 @@ Use the keyboard combination `⌃s :` to display the prompt then enter `rename-s
 
 | Shortcut | Description      | Action                        |
 |----------|------------------|-------------------------------|
-| ⌥  n     | `Option/Alt + n` | Create a new window           |
+| ^ n      | `Option/Alt + n` | Create a new window           |
 
 ### Rename Window
 
 | Shortcut | Description              | Action                   |
 |----------|--------------------------|--------------------------|
-| ⌥ ⇧ r    | `Option/Alt + Shift + r` | Rename the active window |
+| ⌥  r     | `Option/Alt r`           | Rename the active window |
 
 ### Navigate Between Windows
 
 | Shortcut | Description      | Action                          |
 |----------|------------------|---------------------------------|
-| ⌥  >     | `Option/Alt + >` | Navigate to the next window     |
-| ⌥  <     | `Option/Alt + <` | Navigate to the previous window |
-| ⌥  1     | `Option/Alt + 1` | Navigate to window number 1     |
-| ⌥  2     | `Option/Alt + 2` | Navigate to window number 2     |
-| ⌥  3     | `Option/Alt + 3` | Navigate to window number 3     |
-| ⌥  4     | `Option/Alt + 4` | Navigate to window number 4     |
-| ⌥  5     | `Option/Alt + 5` | Navigate to window number 5     |
-| ⌥  6     | `Option/Alt + 6` | Navigate to window number 6     |
-| ⌥  7     | `Option/Alt + 7` | Navigate to window number 7     |
-| ⌥  8     | `Option/Alt + 8` | Navigate to window number 8     |
-| ⌥  9     | `Option/Alt + 9` | Navigate to window number 9     |
+| ^s >     | `Option/Alt + >` | Navigate to the next window     |
+| ^s <     | `Option/Alt + <` | Navigate to the previous window |
+| ^s 1     | `Option/Alt + 1` | Navigate to window number 1     |
+| ^s 2     | `Option/Alt + 2` | Navigate to window number 2     |
+| ^s 3     | `Option/Alt + 3` | Navigate to window number 3     |
+| ^s 4     | `Option/Alt + 4` | Navigate to window number 4     |
+| ^s 5     | `Option/Alt + 5` | Navigate to window number 5     |
+| ^s 6     | `Option/Alt + 6` | Navigate to window number 6     |
+| ^s 7     | `Option/Alt + 7` | Navigate to window number 7     |
+| ^s 8     | `Option/Alt + 8` | Navigate to window number 8     |
+| ^s 9     | `Option/Alt + 9` | Navigate to window number 9     |
 
 ### Delete Active Window
 
 | Shortcut | Description              | Action                   |
 |----------|--------------------------|--------------------------|
-| ⌥ ⇧ x    | `Option/Alt + Shift + x` | Delete the active window |
+| ⌥  x    | `Option/Alt + Shift + x` | Delete the active window |
 
 ### Clear Active Window
 
