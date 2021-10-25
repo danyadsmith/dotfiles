@@ -70,3 +70,5 @@
 	enabled = true
 [init]
 	defaultBranch = dev
+[pull]
+	rebase = true
