@@ -1,0 +1,56 @@
+body {
+    font-family: 'Century Supra A Tab' !important;
+    font-size: 16pt;
+    color: rgba(26, 26, 26, 1.000);
+    line-height: 1.25em;
+}
+
+h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6,
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p{
+    page-break-before: avoid;
+}
+
+code {
+  font-family: 'PragmataPro Liga' !important;
+  font-size: .9em;
+  color: rgba(26, 26, 26, .5);
+}
+
+ins {
+  color: #00BC71;
+  text-decoration: none;
+}
+
+del {
+  color: #F22636;
+  text-decoration: strikethrough;
+}
+
+mark {
+  background-color: rgba(251, 231, 87, .700);
+}
+
+.critic {
+  font-family: '' !important;
+}
+
+.comment {
+  color: rgba(46, 170, 221, 1.000);
+  background-color: rgba(46, 170, 221, .20);
+  font-family: 'Century Supra A Caps' !important;
+  text-transform: lowercase;
+}
+
+.comment::before {
+  content: '  comment:  ';
+  font-family: 'Century Supra A Caps' !important;
+  font-weight: bold;
+}
+
+.comment::after {
+  content: '  ';
+}
+
+h1 {
+  line-height: 1em;
+}
