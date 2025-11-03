@@ -46,10 +46,10 @@ git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-pl
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: apiblueprint.vim"
-git clone https://github.com/kylef/apibluprint.vim
-echo "========================================================================="
-echo ""
+#echo "Installing Plugin: apiblueprint.vim"
+#git clone https://github.com/kylef/apibluprint.vim
+#echo "========================================================================="
+#echo ""
 
 echo "Installing Plugin: base16-vim"
 git clone https://github.com/chriskempson/base16-vim
@@ -63,6 +63,11 @@ echo ""
 
 echo "Installing Plugin: ctrlp"
 git clone https://github.com/ctrlpvim/ctrlp.vim
+echo "========================================================================="
+echo ""
+
+echo "Installing Plugin: CriticMarkup"
+git clone https://github.com/danyadsmith/vim-criticmarkup
 echo "========================================================================="
 echo ""
 
@@ -82,13 +87,13 @@ git clone https://github.com/junegunn/fzf.vim
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: lightline"
-git clone https://github.com/danyadsmith/lightline.vim
+echo "Installing Plugin: goyo"
+git clone https://github.com/junegunn/goyo.vim
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: my-vim-snippets"
-git clone https://github.com/danyadsmith/my-vim-snippets
+echo "Installing Plugin: lightline"
+git clone https://github.com/danyadsmith/lightline.vim
 echo "========================================================================="
 echo ""
 
@@ -192,11 +197,6 @@ git clone https://github.com/vimwiki/vimwiki
 echo "========================================================================="
 echo ""
 
-echo "Installing Plugin: typescript-vim"
-git clone https://github.com/leafgarland/typescript-vim.git
-echo "========================================================================="
-echo ""
-
 echo "Installing Plugin: vim-json"
 git clone https://github.com/elzr/vim-json.git
 echo "========================================================================="
@@ -232,7 +232,6 @@ git clone https://github.com/liuchengxu/vim-which-key
 echo "========================================================================="
 echo ""
 
-https://github.com/liuchengxu/vim-which-key
 echo "Creating Directory: ~/.vim/pack/plugins/opt"
 cd ~/.vim/pack/plugins
 mkdir opt

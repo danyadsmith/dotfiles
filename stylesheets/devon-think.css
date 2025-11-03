@@ -54,3 +54,42 @@ mark {
 h1 {
   line-height: 1em;
 }
+
+pre {
+  font-family: 'Century Supra A Tab' !important;
+  font-size: 16pt;
+  color: rgba(26, 26, 26, 1.000);
+  line-height: 1.25em;
+}
+
+blockquote {
+  font-family: 'Century Supra A Tab' !important;
+  font-size: 14pt;
+  color: rgba(26, 26, 26, 1.000);
+  line-height: 1.1em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-end: 1.5em;
+  margin-inline-start: 1em;
+  margin-inline-end: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-end: 1.5em;
+  margin-inline-start: 1em;
+  margin-inline-end: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

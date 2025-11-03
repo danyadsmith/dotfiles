@@ -3,7 +3,7 @@
 
 SCRIPT_NAME="deck_setup.sh"
 SCRIPT_AUTHOR="Danya D. Smith"
-SCRIPT_UPDATED="Sunday 02 May 2021 @ 6:35 PM"
+SCRIPT_UPDATED="Tuesday, December 26, 2023 3:34 AM"
 
 echo "Executing: $SCRIPT_NAME"
 echo "By: $SCRIPT_AUTHOR"
@@ -11,11 +11,19 @@ echo "Last Updated: $SCRIPT_UPDATED"
 
 echo "Adding Folders"
 mkdir 00-front-matter
-mkdir 01-smith-waite-tarot-chromati
-mkdir 02-tarot-esoterica
+mkdir 01-tarot-atramento
+mkdir 02-tarot-chromati
 mkdir 03-summa-esoterica
-mkdir 04-summa-chromati
-mkdir 05-smith-waite-tarot-atramento
+mkdir 04-tarot-esoterica
+mkdir 05-summa-chromati
+mkdir 06-tarot-meditatio
+mkdir 07-tarot-kabbalah
+mkdir 08-summa-kabbalah
+mkdir 09-tarot-pictura
+mkdir 10-waite-smith-tarot
+
+mkdir 00-front-matter/pocket
+mkdir 00-front-matter/poker
 
 tree -d
 

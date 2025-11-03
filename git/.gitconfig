@@ -29,10 +29,9 @@
   whitespace = red reverse
 [core]
 	editor = vim
-	autocrlf = false
+	autocrlf = input
 	safecrlf = true
 	excludesfile = ~/.gitignore_global
-  pager = delta
 [interactive]
   diffFilter = delta --color-only
 [delta]
@@ -72,3 +71,5 @@
 	defaultBranch = dev
 [pull]
 	rebase = true
+[credential]
+	helper = osxkeychain

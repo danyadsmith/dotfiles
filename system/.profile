@@ -28,9 +28,12 @@ PATH=/Applications/MacVim.app/Contents/bin:$PATH
 PATH=~$PATH:/Users/danyadsmith/Development/Configuration/dotfiles/scripts
 PATH=~$PATH:/Users/danyadsmith/.dotnet/tools
 PATH=~$PATH:/Applications/MacVim.app/Contents/bin
+PATH=~$PATH:/Applications/Racket\ v8.10/bin
 
 export PATH
 export VISUAL='mvim -f'
+export KEY_PATH=./localhost-key.pem
+export CERT_PATH=./localhost.pem
 
 export DISPLAY=:0
 

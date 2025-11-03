@@ -1,4 +1,5 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 "                             ''
 "                     \\  //  ||  '||),,(|,  '||''| .|'',
 "                      \\//   ||   || || ||   ||    ||
@@ -7,7 +8,20 @@
 "                      vim configuration file (.vimrc)
 "
 "
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET ENVIRONMENT VARIABlES
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let $MYVIMRC = expand('~/.vimrc')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SET VIM MODE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:vim_mode = 'default'
+ let g:vim_mode = 'desktop'
+"let g:vim_mode = 'continuity'
+"let g:vim_mode = 'writing'
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ADD WINDOWS RUNTIME PATH
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,13 +62,13 @@ if has('autocmd')
     autocmd ColorScheme * highlight htmlArg guifg=#90c9d3
     autocmd ColorScheme * highlight htmlString guifg=#fff3b2 " d9d5c1 f5f2c1
     autocmd ColorScheme * highlight htmlSpecialTagName guifg=#31aed8
-    autocmd ColorScheme * highlight htmlH1 guifg=#ffaf44
+    autocmd ColorScheme * highlight htmlH1 guifg=#ffffff cterm=bold term=bold gui=bold
 
     " Override XML Syntax Colors:
     autocmd ColorScheme * highlight xmlTag guifg=#31aed8
     autocmd ColorScheme * highlight xmlTagName guifg=#31aed8
     autocmd ColorScheme * highlight xmlEndTag guifg=#31aed8
-
+     
 endif
 
 
@@ -62,6 +76,40 @@ endif
 " WORKSPACE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=1                         " no. lines to retain above/below cursor
+
+let g:coloresque_filetypes = ['css', 'scss', 'sass', 'less', 'vim', 'javascript']
+
+" load coloresque for specific filetypes
+autocmd FileType css,scss,sass,less,vim,javascript packadd vim-coloresque
+
+
+" Disable coloresque for specific filetypes where you don't want it
+autocmd FileType markdown let b:coloresque_disabled = 1
+autocmd FileType html let b:coloresque_disabled = 1
+autocmd FileType vimwiki let b:coloresque_disabled = 1
+
+" Line Number Customization
+set number                              " show line numbers
+set relativenumber                      " show relative line numbers
+augroup numbertoggle                    " auto toggle line numbers by mode
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup end
+
+" Text Width, Rule & Word Wrap Customizations
+set colorcolumn=81                      " show ruler at column 81
+set columns=80
+set textwidth=0                         " set wrap width
+set wrap                                " word wrap visually
+set nolinebreak                         " only break lines when pressing Enter
+set nolist
+set formatoptions-=t                    " auto wrap lines
+set showbreak=└─⯈                       " prefix wrapped lines
+
+" Goyo custmizations
+
+let g:goyo_width = 87                   " set width to 85 columns
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -72,34 +120,13 @@ syntax enable                           " enable syntax highlighting
 filetype on                             " automatically detect file type
 filetype plugin on                      " auto load filetype plugins
 filetype indent on                      " auto load file indent settings
-set redrawtime=40000                    " time allowed to redraw syntax coloring
+set redrawtime=90000                    " time allowed to redraw syntax coloring
 
 " Tab vs. Space Customizations
 set tabstop=2                           " number of visual spaces per tab
 set softtabstop=2                       " number of spaces in tab when editing
 set shiftwidth=2                        " number of spaces to indent/unindent
 set expandtab                           " tabs are spaces
-
-
-" Line Number Customizations
-set number                              " show line numbers
-set relativenumber                      " show relative line numbers
-augroup numbertoggle                    " auto toggle line numbers by mode
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup end
-
-
-" Text Width, Rule & Word Wrap Customizations
-set colorcolumn=81                      " show ruler at column 81
-set textwidth=0                         " set wrap width
-set wrap                                " word wrap visually
-set linebreak                           " only break lines when pressing Enter
-set nolist
-"set formatoptions+=t                   " auto wrap lines
-set formatoptions-=t                    " don't auto wrap lines
-set showbreak=└─⯈                       " prefix wrapped lines
 
 
 " Bracket and Block Customizations
@@ -125,20 +152,47 @@ set matchpairs+=<:>,«:»
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZATIONS FOR WRITERS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:textobj#quote#pairs = ['"\"', "''", '“”', '‘’']
+
 augroup textobj_quote
   autocmd!
-  autocmd FileType markdown call textobj#quote#init()
-  autocmd FileType vimwiki call textobj#quote#init()
+  autocmd FileType markdown,vimwiki call textobj#quote#init({'educate': 1})
   autocmd FileType text call textobj#quote#init({'educate': 0})
+augroup END
+
+augroup unicycle
+  autocmd!
+  autocmd FileType markdown,text,mkd,ghmarkdown,vimwiki,md,mmd UniCycleOn
 augroup END
 
 let g:marked_filetypes = ["markdown", "mkd", "ghmarkdown", "vimwiki", "md",  "mmd"]
 
+" clean markdown table
+command! CleanMD call CleanMarkdownTable()
+
+" vim-surround customizations for Markdown
+let g:surround_42 = "**\r**"    " 42 is ASCII for '*'
+let g:surround_95 = "_\r_"      " 95 is ASCII for '_' 
+let g:surround_96 = "`\r`"      " 96 is ASCII for '`'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SPLIT CUSTOMIZATIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Easier split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l 
+
+set splitright
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set hlsearch                            " highlight search results
+set hlsearch                            " highlight search results with yellow highlights
 set noincsearch                         " do not highlight incremental search
+set shortmess-=S                        " Show search position and count in the status line (accurate up to 99 results)
 
 " Search for visually-selected text
 vnoremap // y/<C-r>=escape(@",'/\')<CR><CR>
@@ -146,6 +200,7 @@ vnoremap // y/<C-r>=escape(@",'/\')<CR><CR>
 nnoremap <silent> n   n:call HLNext(0.4)<cr>
 nnoremap <silent> N   N:call HLNext(0.4)<cr>
 
+ 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -194,12 +249,14 @@ map <C-ScrollWheelRight> <nop>
 " CLIPBOARD CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set clipboard=unnamed                   " yank to os clipboard
-
+xnoremap p pgvy                         " do not overwrite the clipboard 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SPELL CHECK OVERRIDES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spelllang=en_us
+set spellfile=~/.vim/spell/en.utf-8.add
+
 if has('nvim')
   autocmd ColorScheme * hi SpellBad cterm=underline guifg=#FB9FB1
   autocmd ColorScheme * hi SpellCap guifg=#70C2EF
@@ -246,14 +303,34 @@ endif
 " GUI CONFIGURATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
+    if has('ios')
+  			set guifont=PragmataPro\ Mono\ Liga:h16   " set default font on iOS
+    elseif has('gui_macvim')
+      if g:vim_mode == 'default'
+  		  set guifont=PragmataPro\ Liga:h18         " set default font on computer
+      endif
+      if g:vim_mode == 'desktop'
+  		  set guifont=PragmataPro\ Liga:h28         " set default font on computer
+      endif
+      if g:vim_mode == 'continuity'
+  		  set guifont=PragmataPro\ Liga:h20         " set smaller font on computer
+      endif
+      if g:vim_mode == 'writing'
+  		  set guifont=Pitch:h18                     " set writing font on computer
+      endif
+    else
+      " Other GUI Vim (rare on macOS)
+    endif
+else
+    " terminal Vim (on macOS, no GUI)
+    " leave guifont unset
+endif
 
-  set guifont=PragmataPro-Regular:h16   " set default font on iOS
-" set guifont=PragmataPro_Mono:h10      " set default font on computer
-
-  set guioptions-=m                     " remove menu bar
-  set guioptions-=T                     " remove toolbar
-  set guioptions-=r                     " remove right-hand scroll bar
-  set guioptions-=L                     " remove left-hand scroll bar
+if has('gui_running')
+  set guioptions-=m                           " remove menu bar
+  set guioptions-=T                           " remove toolbar
+  set guioptions-=r                           " remove right-hand scroll bar
+  set guioptions-=L                           " remove left-hand scroll bar
 endif
 
 
@@ -300,12 +377,29 @@ let g:vimwiki_list = [{
   \ 'template_path': '~/vimwiki/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.tpl',
+  \ 'diary_rel_path': 'diary/',
+  \ 'diary_index': 'diary',
+  \ 'auto_diary_index': 1,
   \ 'ext': '.md'}]
 
 if has('autocmd')
-  autocmd FileType vimwiki set syntax=markdown
+  autocmd FileType vimwiki setlocal foldlevel=99
+  autocmd FileType vimwiki setlocal textwidth=80 formatoptions-=l
+  autocmd FileType vimwiki setlocal concealcursor=""
+  autocmd FileType vimwiki setlocal conceallevel=2
 endif
 
+command! SearchVimwikiFiles call fzf#run(fzf#wrap({
+  \ 'source': 'find ' . g:vimwiki_list[0].path . ' -name "*.md" -type f',
+  \ 'sink': function('InsertVimwikiLinkWithPath')
+  \ }))
+
+command! SearchVimwikiFilesFilenameOnly call fzf#run(fzf#wrap({
+  \ 'source': 'find ' . g:vimwiki_list[0].path . ' -name "*.md" -type f',
+  \ 'sink': function('InsertVimwikiLinkFilenameOnly')
+  \ }))
+
+autocmd FileType vimwiki syntax match VimwikiPreDelim /```/ conceal
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-MINISNIP CONFIGURATION
@@ -324,8 +418,160 @@ let g:minisnip_trigger = '<C-e>'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-WHICH-KEY CONFIGURATION 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup WhichKeyGit
+  autocmd!
+  autocmd FileType gitcommit let g:which_key_disable = 1
+augroup END
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COMMANDS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable coloresque
+command! EnableColoresque call coloresque#init()
+
+" Show the syntax ID of the text under the cursor
+command! SynID echo 'hi<' . synIDattr(synID(line('.'), col('.'), 1), 'name') . '> trans<' . synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name') . '>'
+
+" Define the :TestColor command
+command! -nargs=* TestColor call TestColor(<f-args>)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! CleanMarkdownTable()
+  " Remove padding added by VimWiki
+  :%s/  \+/ /g  
+endfunction
+
+
+function! CountSearchMatches() abort
+  if empty(@/)
+    echo "No active search pattern. Please search first (/pattern)"
+    return
+  endif
+
+  " Save cursor and shortmess
+  let l:save_cursor = getpos(".")
+  let l:save_shortmess = &shortmess
+  set shortmess+=S
+
+  let l:pattern = @/
+  let l:count = 0
+  let l:current = 0
+
+  " Start at top of file
+  normal! gg
+  while search(l:pattern, 'W') > 0
+    let l:count += 1
+    " If the current match is before or at the original cursor
+    if getpos('.')[1] < l:save_cursor[1] || (getpos('.')[1] == l:save_cursor[1] && getpos('.')[2] <= l:save_cursor[2])
+      let l:current = l:count
+    endif
+  endwhile
+
+  " Restore shortmess and cursor
+  let &shortmess = l:save_shortmess
+  call setpos('.', l:save_cursor)
+
+  if l:count > 0
+    if l:current == 0
+      let l:current = l:count
+    endif
+    echo "Matches for '" . l:pattern . "': " . l:count . " (Viewing " . l:current . "/" . l:count . ")"
+  else
+    echo "No matches found."
+  endif
+endfunction
+
+function! InsertVimwikiLinkFilenameOnly(file)
+  let filename = fnamemodify(a:file, ':t:r')
+  execute "normal! a[[" . filename . "]]"
+endfunction
+
+
+function! InsertVimwikiLinkWithPath(file)
+  try
+    echo "File received: " . a:file
+    
+    " Hardcode the wiki path to eliminate config issues
+    let wiki_root = expand('~/vimwiki/')
+    echo "Using wiki root: " . wiki_root
+    
+    " Simple path manipulation
+    let relative_path = substitute(a:file, wiki_root, '', '')
+    
+    echo "Relative path: " . relative_path
+    
+    let title = fnamemodify(a:file, ':t:r')
+    echo "Title: " . title
+    
+    " Insert the link
+    execute "normal! a[" . title . "](../" . relative_path . ")"
+    echo "Link inserted successfully!"
+    
+  catch
+    echo "ERROR CAUGHT: " . v:exception
+    echo "Error occurred at line: " . v:throwpoint
+  endtry
+endfunction
+
+
+function! SearchMatchStatusline() abort
+  if empty(@/)
+    return ''
+  endif
+
+  " If searchcount() exists, use it
+  if exists('*searchcount')
+    let l:sc = searchcount({'timeout': 50})
+    if l:sc.total > 0
+      " If we want (current/total) display:
+      if l:sc.current == l:sc.total
+        return printf('Last (%d/%d)', l:sc.current, l:sc.total)
+      else
+        return printf('(%d/%d)', l:sc.current, l:sc.total)
+      endif
+    else
+      return ''
+    endif
+  endif
+
+  " Otherwise, fallback to manual safe counting
+  let l:pattern = @/
+  let l:view = winsaveview()
+  let l:count = 0
+  let l:lnum = 1
+
+  while l:lnum <= line('$')
+    let l:line = getline(l:lnum)
+    let l:startcol = 0
+    while 1
+      let l:matchcol = match(l:line, l:pattern, l:startcol)
+      if l:matchcol == -1
+        break
+      endif
+      let l:count += 1
+      let l:startcol = l:matchcol + 1
+    endwhile
+    let l:lnum += 1
+  endwhile
+
+  call winrestview(l:view)
+
+  if l:count > 0
+    return printf('Matches: %d', l:count)
+  else
+    return ''
+  endif
+endfunction
+
+
 function! HLNext (blinktime)
   set invcursorline
   redraw
@@ -334,6 +580,7 @@ function! HLNext (blinktime)
   redraw
 endfunction
 
+
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -341,27 +588,44 @@ function! Preserve(command)
   let c = col(".")
   " Do the business:
   execute a:command
+
   " Clean up: restore previous search history, and cursor position
   let @/=_s
   call cursor(l, c)
 endfunction
 
-
 function! SetDarkMode()
+  if has('ios') || g:vim_mode == 'writing'
+    " iVim: fallback to simple ASCII separators
+    let l:left_sep  = ''
+    let l:right_sep = ''
+    let l:left_sub  = '|'
+    let l:right_sub = '|'
+  else
+    " MacVim or other GUI: use Powerline glyphs
+    let l:left_sep  = ''
+    let l:right_sep = ''
+    let l:left_sub  = ''
+    let l:right_sub = ''
+  endif
+
   let g:lightline = {
     \ 'colorscheme': 'anotherkolor_dark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+    \             [ 'searchmatch'] ],
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
+    \   'gitbranch': 'fugitive#head',
+    \   'searchmatch': 'SearchMatchStatusline'
     \ },
-		\ 'separator': { 'left': '', 'right': '' },
-		\ 'subseparator': { 'left': '', 'right': '' },
-		\ 'tabline_separator': { 'left': ' ', 'right': ' ' },
+    \ 'separator': { 'left': l:left_sep, 'right': l:right_sep },
+    \ 'subseparator': { 'left': l:left_sub, 'right': l:right_sub },
+    \ 'tabline_separator': { 'left': ' ', 'right': ' ' },
     \ 'tabline_subseparator': { 'left': ' ', 'right': ' ' }
     \ }
+
   if &rtp =~ 'lightline.vim'
     call lightline#toggle()
     call lightline#toggle()
@@ -369,22 +633,39 @@ function! SetDarkMode()
   colorscheme anotherkolor-dark
 endfunction
 
-
 function! SetLightMode()
+  if has('ios')
+    " iVim: fallback to simple ASCII separators
+    let l:left_sep  = ''
+    let l:right_sep = ''
+    let l:left_sub  = '|'
+    let l:right_sub = '|'
+  else
+    " MacVim or other GUI: use Powerline glyphs
+    let l:left_sep  = ''
+    let l:right_sep = ''
+    let l:left_sub  = ''
+    let l:right_sub = ''
+  endif
+
   let g:lightline = {
     \ 'colorscheme': 'anotherkolor_light',
+
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+    \             [ 'searchmatch'] ],
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
+    \   'gitbranch': 'fugitive#head',
+    \   'searchmatch': 'SearchMatchStatusline'
     \ },
-		\ 'separator': { 'left': '', 'right': '' },
-		\ 'subseparator': { 'left': '', 'right': '' },
-		\ 'tabline_separator': { 'left': ' ', 'right': ' ' },
-		\ 'tabline_subseparator': { 'left': ' ', 'right': ' ' }
+    \ 'separator': { 'left': l:left_sep, 'right': l:right_sep },
+    \ 'subseparator': { 'left': l:left_sub, 'right': l:right_sub },
+    \ 'tabline_separator': { 'left': ' ', 'right': ' ' },
+    \ 'tabline_subseparator': { 'left': ' ', 'right': ' ' }
     \ }
+
   if &rtp =~ 'lightline.vim'
     call lightline#toggle()
     call lightline#toggle()
@@ -449,20 +730,32 @@ function! SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
+"
 
+" :TestColor [fg] [bg] [style]
+" Use '-' to skip a position; use 'NONE' to clear it.
+command! -nargs=* TestColor call TestColor(<f-args>)
 
-function! WordCount()
-  let s:old_status = v:statusmsg
-  let position = getpos(".")
-  exe ":silent normal g\<C-g>"
-  let stat = v:statusmsg
-  let s:word_count = 0
-  if stat != '--No lines in buffer--'
-    let s:word_count = str2nr(split(v:statusmsg)[11])
-    let v:statusmsg = s:old_status
-  end
-  call setpos('.', position)
-  return s:word_count
+function! TestColor(...) abort
+  let fg    = a:0 >= 1 ? a:1 : ''
+  let bg    = a:0 >= 2 ? a:2 : ''
+  let style = a:0 >= 3 ? a:3 : ''
+
+  let group = synIDattr(synID(line('.'), col('.'), 1), 'name')
+  let parts = ['highlight', group]
+
+  if fg != '' && fg != '-'
+    call add(parts, 'guifg=' . fg)
+  endif
+  if bg != '' && bg != '-'
+    call add(parts, 'guibg=' . bg)
+  endif
+  if style != '' && style != '-'
+    call add(parts, 'gui='   . style)
+  endif
+
+  execute join(parts, ' ')
+  echom 'Recolored ' . group . ' with: ' . (len(parts) > 2 ? join(parts[2:], ' ') : '[no changes]')
 endfunction
 
 
@@ -503,17 +796,160 @@ nmap <silent> <LEFT><LEFT>   :cpfile<CR><C-G>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<space>"
 
+" which-key menu labels
+let g:which_key_map = {}
+
+let g:which_key_map.m    = 'count search matches'
+let g:which_key_map.vrc  = 'edit .vimrc'
+let g:which_key_map.so   = 'source .vimrc'
+let g:which_key_map.dm   = 'set dark mode'
+let g:which_key_map.lm   = 'set light mode'
+let g:which_key_map.tg   = 'toggle Goyo'
+let g:which_key_map.sp   = 'spell check on'
+let g:which_key_map.ns   = 'spell check off'
+let g:which_key_map.pw   = 'previous misspelling'
+let g:which_key_map.nw   = 'next misspelling'
+let g:which_key_map.ch   = 'clear search highlight'
+let g:which_key_map.cs   = 'correct spelling'
+let g:which_key_map.dwc   = 'word count'
+let g:which_key_map.si   = 'toggle invisible chars'
+let g:which_key_map.ac   = 'align center'
+let g:which_key_map.al   = 'align left'
+let g:which_key_map.ar   = 'align right'
+
+" ctrlp/fzf
+let g:which_key_map.cp   = 'ctrl-p'
+let g:which_key_map.cc   = 'ctrl-p clear cache'
+let g:which_key_map.ct   = 'ctrl-p search tags'
+
+let g:which_key_map.fb   = 'fzf buffers'
+let g:which_key_map.ff   = 'fzf files'
+let g:which_key_map.fg   = 'fzf git files'
+let g:which_key_map.fs   = 'fzf git status'
+let g:which_key_map.ft   = 'fzf tags'
+let g:which_key_map.fc   = 'fzf commits'
+let g:which_key_map.fy   = 'fzf filetypes'
+
+" drawit
+let g:which_key_map.dc   = 'set DrawIt characters'
+
+" maintenance
+let g:which_key_map['$'] = 'remove trailing whitespace'
+let g:which_key_map['='] = 'reindent file'
+
+" edit split
+let g:which_key_map.ew   = 'edit in same window'
+let g:which_key_map.es   = 'edit in split'
+let g:which_key_map.ev   = 'edit in vertical split'
+let g:which_key_map.et   = 'edit in tab'
+
+" syntax
+let g:which_key_map.ss   = 'show syntax groups'
+
+" titlecase
+let g:which_key_map.ct   = 'change to title case'
+
+" vimwiki toggles
+let g:which_key_map.fx  = 'vimwiki table format off'
+let g:which_key_map.fo  = 'vimwiki table format on'
+let g:which_key_map.wh  = 'open link in horizontal split'
+let g:which_key_map.wv  = 'open link in vertical split'
+let g:which_key_map.wf  = 'insert vimwiki file name'
+let g:which_key_map.wl  = 'insert vimwiki link'
+let g:which_key_map.nl   = 'next hyperlink'
+let g:which_key_map.pl   = 'previous hyperlink'
+let g:which_key_map.tn   = 'new task'
+let g:which_key_map.ts   = 'task started'
+let g:which_key_map.td   = 'task deleted'
+let g:which_key_map.tf   = 'task forwarded'
+let g:which_key_map.tc   = 'task complete'
+
+let g:which_key_map.h = {
+  \ 'name' : '+hebrew',
+  \ 'a' : 'Insert Aleph',
+  \ 'b' : 'Insert Bet',
+  \ 'g' : 'Insert Gimel',
+  \ 'd' : 'Insert Dalet',
+  \ 'h' : 'Insert He',
+  \ 'v' : 'Insert Vav',
+  \ 'z' : 'Insert Zayin',
+  \ 'ch' : 'Insert Chet',
+  \ 't' : 'Insert Tet',
+  \ 'y' : 'Insert Yod',
+  \ 'k' : 'Insert Kaf',
+  \ 'ks' : 'Insert final Kaf',
+  \ 'l' : 'Insert Lamed',
+  \ 'm' : 'Insert Mem',
+  \ 'ms' : 'Insert final Mem',
+  \ 'n' : 'Insert Nun',
+  \ 'ns' : 'Insert final Nun',
+  \ 's' : 'Insert Samekh',
+  \ 'ay' : 'Insert Ayin',
+  \ 'p' : 'Insert Pe',
+  \ 'ps' : 'Insert final Pe',
+  \ 'tz' : 'Insert Tsadi',
+  \ 'tzs' : 'Insert final Tsadi',
+  \ 'q' : 'Insert Qof',
+  \ 'r' : 'Insert Resh',
+  \ 'sh' : 'Insert Shin',
+  \ 'tv' : 'Insert Tav'
+  \ }
+
+let g:which_key_map.z = {
+  \ 'name' : '+zodiac',
+  \ 'a' : 'Insert Aries',
+  \ 't' : 'Insert Taurus',
+  \ 'g' : 'Insert Gemini',
+  \ 'cn' : 'Insert Cancer',
+  \ 'le' : 'Insert Leo',
+  \ 'v' : 'Insert Virgo',
+  \ 'lb' : 'Insert Libra',
+  \ 'sc' : 'Insert Scorpio',
+  \ 'sg' : 'Insert Sagittarius',
+  \ 'cp' : 'Insert Capricorn',
+  \ 'aq' : 'Insert Aquarius',
+  \ 'p' : 'Insert Pisces'
+  \ }
+
+let g:which_key_map.p = {
+  \ 'name' : '+planets',
+  \ 's' : 'Insert Sun',
+  \ 'mn' : 'Insert Moon',
+  \ 'mr' : 'Insert Mercury',
+  \ 'v' : 'Insert Venus',
+  \ 'r' : 'Insert Mars',
+  \ 'j' : 'Insert Jupiter',
+  \ 't' : 'Insert Saturn',
+  \ 'u' : 'Insert Uranus',
+  \ 'n' : 'Insert Neptune',
+  \ 'p' : 'Insert Pluto'
+  \ }
+
+let g:which_key_map.m = {
+  \ 'name' : '+moon phases',
+  \ 'nm' : 'Insert New Moon',
+  \ 'xc' : 'Insert Waxing Crescent',
+  \ 'fq' : 'Insert First Quarter',
+  \ 'xg' : 'Insert Waxing Gibbous',
+  \ 'fm' : 'Insert Full Moon',
+  \ 'wg' : 'Insert Waning Gibbous',
+  \ 'tq' : 'Insert Third Quarter',
+  \ 'wc' : 'Insert Waning Crescent'
+  \ }
+
+call which_key#register('<Space>', 'g:which_key_map')
+
 "    <space>
 "    trigger vim-which-key
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+ nnoremap <silent> <C-w> :WhichKey '<Space>'<CR>
 
 "    <space>vrc
 "    edit .vimrc
-nmap <leader>vrc :e $MYVIMRC<cr>
+nmap <leader>vrc :e $MYVIMRC<CR>
 
 "    <space>so
 "    save & source .vimrc (reload settings in current vim session)
-nmap <leader>so :w<cr><bar>:source $MYVIMRC<cr><bar>:noh<cr><bar>:echom "sourcing .vimrc"<cr>
+nmap <leader>so :w<CR>:source $MYVIMRC<CR>:noh<CR>:echom "sourcing .vimrc"<CR>
 
 "    <space>dm
 "    switch to dark mode
@@ -523,10 +959,14 @@ nmap <leader>dm :call SetDarkMode()<CR>
 "    switch to light mode
 nmap <leader>lm :call SetLightMode()<CR>
 
+"    <space>m
+"    count and display search matches
+nnoremap <leader>m :call CountSearchMatches()<cr>
+ 
 "    <space>tg
 "    toggle Goyo - distraction-free writing mode
 nmap <leader>tg :Goyo<cr><bar>:noh<cr><bar>:echom ""<cr>
-
+ 
 "    <space>sp
 "    spell check on
 nmap <leader>sp :setlocal spell<cr>
@@ -539,17 +979,21 @@ nmap <leader>ns :setlocal nospell<cr>
 "    jump to previous misspelled word
 nmap <leader>pw [s
 
-"    <space>pn
+"    <space>nw
 "    jump to next misspelled word
 nmap <leader>nw ]s
+
+"    <space>ch
+"    clear highlights
+nmap <leader>ch :let @/ = ""<cr>
 
 "    <space>cs
 "    correct spelling
 nmap <leader>cs 1z=
 
-"    <space>wc
+"    <space>dwc
 "    display word count
-nmap <leader>wc g<C-g>
+nmap <leader>dwc<cr>
 
 "    <space>si
 "    show invisible characters
@@ -615,7 +1059,7 @@ nmap <leader>dc :call SetDrawIt('│', '─', '┼', '╲', '╱', '╳', '*')<C
 "    <space>$
 "    remove trailing whitespace from end of lines
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
-
+"
 "    <space>=
 "    reindent file
 nmap <leader>= :call Preserve("normal gg=G")<CR>
@@ -640,9 +1084,293 @@ map  <leader>et :tabe %%
 "    Show highlighting groups for the word beneath the cursor
 nmap <leader>ss :call SynStack()<CR>
 
-"    <space>tc
+"    <space>ct
 "    change line to title case
-nmap <leader>tc :call Preserve("s/\\<\\(\\w\\)\\(\\w*\\)\\>/\\u\\1\\L\\2/g")<CR>
+nmap <leader>ct :call Preserve("s/\\<\\(\\w\\)\\(\\w*\\)\\>/\\u\\1\\L\\2/g")<CR>
+ 
+"    <space>fx
+"    Toggle off table auto-formatting in VimWiki
+nnoremap <leader>fx :let g:vimwiki_table_auto_fmt = 0<CR>
+
+"    <space>fo
+"    Toggle on table auto-formatting in VimWiki
+nnoremap <leader>fo :let g:vimwiki_table_auto_fmt = 1<CR>
+
+"    <space>nl
+"    Navigate to the next hyperlink in VimWiki
+nnoremap <leader>nl /\[<CR>:let @/ = ""<CR>
+
+"    <space>pl
+"    Navigate to the previous hyperlink in VimWiki
+nnoremap <leader>pl ?\[<CR>:let @/ = ""<CR>
+
+" <space>wh
+" Open Vimwiki link in horizontal split
+autocmd FileType vimwiki nmap <buffer> <Leader>wh <Plug>VimwikiSplitLink
+
+" <space>wv
+" Open Vimwiki link in vertical split
+autocmd FileType vimwiki nmap <buffer> <Leader>wv <Plug>VimwikiVSplitLink
+
+" <space>wl
+" Insert Vimwiki link
+nnoremap <leader>wl :SearchVimwikiFiles<CR>
+
+" <space>wf
+" Insert Vimwiki Filename
+nnoremap <leader>wf :SearchVimwikiFilesFilenameOnly<CR>"
+
+"    <space>tn
+"    Create a new Task in VimWiki
+nnoremap <leader>tn o[ ] <Esc>A
+
+"    <space>tc
+"    Mark Focused Task Complete
+nnoremap <leader>tc :s/\v\[\s*[·]?\s*\]/[✔]/g<CR>:let @/ = ""<CR>
+
+"    <space>ts
+"    Mark Focused Task Started (In Progress)
+nnoremap <leader>ts :s/\[\s\]/[·]/<CR>:let @/ = ""<CR>
+
+"    <space>td
+"    Mark Focused Task Deleted 
+nnoremap <leader>td :s/\[\s\]/[✘]/<CR>:let @/ = ""<CR>
+
+"    <space>tf
+"    Mark Focused Task Forwarded
+nnoremap <leader>tf :s/\[\s\]/[￫]/<CR>:let @/ = ""<CR>
+
+" <space>rtl
+" Enter Unicode Character to Force Right-to-Left Text Rendering
+nmap <leader>rtl i ‮<Esc>
+
+"    <space>h.a
+"    Enter Hebrew Letter Alef
+nmap <leader>h.a iא<Esc>
+
+"    <space>h.b
+"    Enter Hebrew Letter Bet
+nmap <leader>h.b iב<Esc>
+
+"    <space>h.g
+"    Enter Hebrew Letter Gimel
+nmap <leader>h.g iג<Esc>
+
+"    <space>h.d
+"    Enter Hebrew Letter Dalet
+nmap <leader>h.d iד<Esc>
+
+"    <space>h.h
+"    Enter Hebrew Letter He
+nmap <leader>h.h iה<Esc>
+
+"    <space>h.v
+"    Enter Hebrew Letter Vav
+nmap <leader>h.v iו<Esc>
+
+"    <space>h.z
+"    Enter Hebrew Letter Zayin
+nmap <leader>h.z iז<Esc>
+
+"    <space>h.ch
+"    Enter Hebrew Letter Chet
+nmap <leader>h.x iח<Esc>
+
+"    <space>h.t
+"    Enter Hebrew Letter Tet
+nmap <leader>h.t iט<Esc>
+
+"    <space>h.y
+"    Enter Hebrew Letter Yod
+nmap <leader>h.y iי<Esc>
+
+"    <space>h.k
+"    Enter Hebrew Letter Kaf
+nmap <leader>h.k iכ<Esc>
+
+"    <space>h.l
+"    Enter Hebrew Letter Lamed
+nmap <leader>h.l iל<Esc>
+
+"    <space>h.m
+"    Enter Hebrew Letter Mem
+nmap <leader>h.m iמ<Esc>
+
+"    <space>h.n
+"    Enter Hebrew Letter Nun
+nmap <leader>h.n iנ<Esc>
+
+"    <space>h.s
+"    Enter Hebrew Letter Samekh
+nmap <leader>h.s iס<Esc>
+
+"    <space>h.ay
+"    Enter Hebrew Letter Ayin
+nmap <leader>h.ay iע<Esc>
+
+"    <space>h.p
+"    Enter Hebrew Letter Pe
+nmap <leader>h.p iפ<Esc>
+
+"    <space>h.tz
+"    Enter Hebrew Letter Tsadi
+nmap <leader>h.ts iצ<Esc>
+
+"    <space>h.q
+"    Enter Hebrew Letter Qof
+nmap <leader>h.q iק<Esc>
+
+"    <space>h.r
+"    Enter Hebrew Letter Resh
+nmap <leader>h.r iר<Esc>
+
+"    <space>h.sh
+"    Enter Hebrew Letter Shin
+nmap <leader>h.sh iש<Esc>
+
+"    <space>h.tv
+"    Enter Hebrew Letter Tav
+nmap <leader>h.tv iת<Esc>
+
+"    <space>h.ks
+"    Enter Hebrew Letter Kaf Sofit
+nmap <leader>h.ks iך<Esc>
+
+"    <space>h.ms
+"    Enter Hebrew Letter Mem Sofit
+nmap <leader>h.ms iם<Esc>
+
+"    <space>h.ns
+"    Enter Hebrew Letter Nun Sofit
+nmap <leader>h.ns iן<Esc>
+
+"    <space>h.ps
+"    Enter Hebrew Letter Pe Sofit
+nmap <leader>h.ps iף<Esc>
+
+"    <space>h.tzs
+"    Enter Hebrew Letter Tsadi Sofit
+nmap <leader>h.tcs iץ<Esc>
+
+"    <space>z.a
+"    Enter Zodiac Sign Aries
+nmap <leader>z.a i♈︎<Esc>
+
+"    <space>z.t
+"    Enter Zodiac Sign Taurus
+nmap <leader>z.t i♉︎<Esc>
+
+"    <space>z.g
+"    Enter Zodiac Sign Gemini
+nmap <leader>z.g i♊︎<Esc>
+
+"    <space>z.cn
+"    Enter Zodiac Sign Cancer
+nmap <leader>z.c i♋︎<Esc>
+
+"    <space>z.le
+"    Enter Zodiac Sign Leo
+nmap <leader>z.l i♌︎<Esc>
+
+"    <space>z.v
+"    Enter Zodiac Sign Virgo
+nmap <leader>z.v i♍︎<Esc>
+
+"    <space>z.lb
+"    Enter Zodiac Sign Libra
+nmap <leader>z.b i♎︎<Esc>
+
+"    <space>z.sc
+"    Enter Zodiac Sign Scorpio
+nmap <leader>z.sc i♏︎<Esc>
+
+"    <space>z.sg
+"    Enter Zodiac Sign Sagittarius
+nmap <leader>z.sg i♐︎<Esc>
+
+"    <space>z.ca
+"    Enter Zodiac Sign Capricorn
+nmap <leader>z.cp i♑︎<Esc>
+
+"    <space>z.aq
+"    Enter Zodiac Sign Aquarius
+nmap <leader>z.aq i♒︎<Esc>
+
+"    <space>z.p
+"    Enter Zodiac Sign Pisces
+nmap <leader>z.p i♓︎<Esc>
+
+"    <space>p.s
+"    Enter Planet The Sun
+nmap <leader>p.s i☉<Esc>
+
+"    <space>p.mn
+"    Enter Planet The Moon
+nmap <leader>p.mn i☽<Esc>
+
+"    <space>p.mr
+"    Enter Planet Mercury
+nmap <leader>p.mr i☿<Esc>
+
+"    <space>p.v
+"    Enter Planet Venus
+nmap <leader>p.v i♀<Esc>
+
+"    <space>p.m
+"    Enter Planet Mars
+nmap <leader>p.r i♂<Esc>
+
+"    <space>p.j
+"    Enter Planet Jupiter
+nmap <leader>p.j i♃<Esc>
+
+"    <space>p.s
+"    Enter Planet Saturn
+nmap <leader>p.t i♄<Esc>
+
+"    <space>p.u
+"    Enter Planet Uranus
+nmap <leader>p.u i♅<Esc>
+
+"    <space>p.n
+"    Enter Planet Neptune
+nmap <leader>p.n i♆<Esc>
+
+"    <space>p.p
+"    Enter Planet Pluto
+nmap <leader>p.p i♇<Esc>
+
+"    <space>m.nm
+"    Enter New Moon
+nmap <leader>m.nm i<Esc>
+
+"    <space>m.xc
+"    Enter Waxing Crescent Moon
+nmap <leader>m.xc i<Esc>
+
+"    <space>m.fq
+"    Enter First Quarter Moon
+nmap <leader>m.fq i<Esc>
+
+"    <space>m.xg
+"    Enter Waxing Gibbous Moon
+nmap <leader>m.xg i<Esc>
+
+"    <space>m.wd
+"    Enter Full Moon
+nmap <leader>m.fm i<Esc>
+
+"    <space>m.wg
+"    Enter Waning Gibbous Moon
+nmap <leader>m.wg i<Esc>
+
+"    <space>m.tq
+"    Enter Waning Third Quarter Moon
+nmap <leader>m.tq i<Esc>
+
+"    <space>m.wc
+"    Enter Waning Crescent Moon
+nmap <leader>m.wc i<Esc>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -698,5 +1426,4 @@ augroup lightline_hl | au!
 augroup END
 
 call SetDarkMode()
-
 

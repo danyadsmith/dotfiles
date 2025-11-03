@@ -65,7 +65,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(
   npm 
   git 
-  osx 
+  macos 
   brew 
   colorize 
   compleat 
@@ -180,3 +180,7 @@ export HISTSIZE=500
 autoload -U promptinit; promptinit
 prompt typewritten
 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
