@@ -418,15 +418,6 @@ let g:minisnip_trigger = '<C-e>'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-WHICH-KEY CONFIGURATION 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup WhichKeyGit
-  autocmd!
-  autocmd FileType gitcommit let g:which_key_disable = 1
-augroup END
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COMMANDS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -796,146 +787,6 @@ nmap <silent> <LEFT><LEFT>   :cpfile<CR><C-G>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<space>"
 
-" which-key menu labels
-let g:which_key_map = {}
-
-let g:which_key_map.m    = 'count search matches'
-let g:which_key_map.vrc  = 'edit .vimrc'
-let g:which_key_map.so   = 'source .vimrc'
-let g:which_key_map.dm   = 'set dark mode'
-let g:which_key_map.lm   = 'set light mode'
-let g:which_key_map.tg   = 'toggle Goyo'
-let g:which_key_map.sp   = 'spell check on'
-let g:which_key_map.ns   = 'spell check off'
-let g:which_key_map.pw   = 'previous misspelling'
-let g:which_key_map.nw   = 'next misspelling'
-let g:which_key_map.ch   = 'clear search highlight'
-let g:which_key_map.cs   = 'correct spelling'
-let g:which_key_map.dwc   = 'word count'
-let g:which_key_map.si   = 'toggle invisible chars'
-let g:which_key_map.ac   = 'align center'
-let g:which_key_map.al   = 'align left'
-let g:which_key_map.ar   = 'align right'
-
-" ctrlp/fzf
-let g:which_key_map.cp   = 'ctrl-p'
-let g:which_key_map.cc   = 'ctrl-p clear cache'
-let g:which_key_map.ct   = 'ctrl-p search tags'
-
-let g:which_key_map.fb   = 'fzf buffers'
-let g:which_key_map.ff   = 'fzf files'
-let g:which_key_map.fg   = 'fzf git files'
-let g:which_key_map.fs   = 'fzf git status'
-let g:which_key_map.ft   = 'fzf tags'
-let g:which_key_map.fc   = 'fzf commits'
-let g:which_key_map.fy   = 'fzf filetypes'
-
-" drawit
-let g:which_key_map.dc   = 'set DrawIt characters'
-
-" maintenance
-let g:which_key_map['$'] = 'remove trailing whitespace'
-let g:which_key_map['='] = 'reindent file'
-
-" edit split
-let g:which_key_map.ew   = 'edit in same window'
-let g:which_key_map.es   = 'edit in split'
-let g:which_key_map.ev   = 'edit in vertical split'
-let g:which_key_map.et   = 'edit in tab'
-
-" syntax
-let g:which_key_map.ss   = 'show syntax groups'
-
-" titlecase
-let g:which_key_map.ct   = 'change to title case'
-
-" vimwiki toggles
-let g:which_key_map.fx  = 'vimwiki table format off'
-let g:which_key_map.fo  = 'vimwiki table format on'
-let g:which_key_map.wh  = 'open link in horizontal split'
-let g:which_key_map.wv  = 'open link in vertical split'
-let g:which_key_map.wf  = 'insert vimwiki file name'
-let g:which_key_map.wl  = 'insert vimwiki link'
-let g:which_key_map.nl   = 'next hyperlink'
-let g:which_key_map.pl   = 'previous hyperlink'
-let g:which_key_map.tn   = 'new task'
-let g:which_key_map.ts   = 'task started'
-let g:which_key_map.td   = 'task deleted'
-let g:which_key_map.tf   = 'task forwarded'
-let g:which_key_map.tc   = 'task complete'
-
-let g:which_key_map.h = {
-  \ 'name' : '+hebrew',
-  \ 'a' : 'Insert Aleph',
-  \ 'b' : 'Insert Bet',
-  \ 'g' : 'Insert Gimel',
-  \ 'd' : 'Insert Dalet',
-  \ 'h' : 'Insert He',
-  \ 'v' : 'Insert Vav',
-  \ 'z' : 'Insert Zayin',
-  \ 'ch' : 'Insert Chet',
-  \ 't' : 'Insert Tet',
-  \ 'y' : 'Insert Yod',
-  \ 'k' : 'Insert Kaf',
-  \ 'ks' : 'Insert final Kaf',
-  \ 'l' : 'Insert Lamed',
-  \ 'm' : 'Insert Mem',
-  \ 'ms' : 'Insert final Mem',
-  \ 'n' : 'Insert Nun',
-  \ 'ns' : 'Insert final Nun',
-  \ 's' : 'Insert Samekh',
-  \ 'ay' : 'Insert Ayin',
-  \ 'p' : 'Insert Pe',
-  \ 'ps' : 'Insert final Pe',
-  \ 'tz' : 'Insert Tsadi',
-  \ 'tzs' : 'Insert final Tsadi',
-  \ 'q' : 'Insert Qof',
-  \ 'r' : 'Insert Resh',
-  \ 'sh' : 'Insert Shin',
-  \ 'tv' : 'Insert Tav'
-  \ }
-
-let g:which_key_map.z = {
-  \ 'name' : '+zodiac',
-  \ 'a' : 'Insert Aries',
-  \ 't' : 'Insert Taurus',
-  \ 'g' : 'Insert Gemini',
-  \ 'cn' : 'Insert Cancer',
-  \ 'le' : 'Insert Leo',
-  \ 'v' : 'Insert Virgo',
-  \ 'lb' : 'Insert Libra',
-  \ 'sc' : 'Insert Scorpio',
-  \ 'sg' : 'Insert Sagittarius',
-  \ 'cp' : 'Insert Capricorn',
-  \ 'aq' : 'Insert Aquarius',
-  \ 'p' : 'Insert Pisces'
-  \ }
-
-let g:which_key_map.p = {
-  \ 'name' : '+planets',
-  \ 's' : 'Insert Sun',
-  \ 'mn' : 'Insert Moon',
-  \ 'mr' : 'Insert Mercury',
-  \ 'v' : 'Insert Venus',
-  \ 'r' : 'Insert Mars',
-  \ 'j' : 'Insert Jupiter',
-  \ 't' : 'Insert Saturn',
-  \ 'u' : 'Insert Uranus',
-  \ 'n' : 'Insert Neptune',
-  \ 'p' : 'Insert Pluto'
-  \ }
-
-let g:which_key_map.m = {
-  \ 'name' : '+moon phases',
-  \ 'nm' : 'Insert New Moon',
-  \ 'xc' : 'Insert Waxing Crescent',
-  \ 'fq' : 'Insert First Quarter',
-  \ 'xg' : 'Insert Waxing Gibbous',
-  \ 'fm' : 'Insert Full Moon',
-  \ 'wg' : 'Insert Waning Gibbous',
-  \ 'tq' : 'Insert Third Quarter',
-  \ 'wc' : 'Insert Waning Crescent'
-  \ }
 
 call which_key#register('<Space>', 'g:which_key_map')
 
@@ -1258,47 +1109,47 @@ nmap <leader>z.a i♈︎<Esc>
 
 "    <space>z.t
 "    Enter Zodiac Sign Taurus
-nmap <leader>z.t i♉︎<Esc>
+nmap <leader>z.b i♉︎<Esc>
 
 "    <space>z.g
 "    Enter Zodiac Sign Gemini
-nmap <leader>z.g i♊︎<Esc>
+nmap <leader>z.c i♊︎<Esc>
 
 "    <space>z.cn
 "    Enter Zodiac Sign Cancer
-nmap <leader>z.c i♋︎<Esc>
+nmap <leader>z.d i♋︎<Esc>
 
 "    <space>z.le
 "    Enter Zodiac Sign Leo
-nmap <leader>z.l i♌︎<Esc>
+nmap <leader>z.e i♌︎<Esc>
 
 "    <space>z.v
 "    Enter Zodiac Sign Virgo
-nmap <leader>z.v i♍︎<Esc>
+nmap <leader>z.f i♍︎<Esc>
 
 "    <space>z.lb
 "    Enter Zodiac Sign Libra
-nmap <leader>z.b i♎︎<Esc>
+nmap <leader>z.g i♎︎<Esc>
 
 "    <space>z.sc
 "    Enter Zodiac Sign Scorpio
-nmap <leader>z.sc i♏︎<Esc>
+nmap <leader>z.h i♏︎<Esc>
 
 "    <space>z.sg
 "    Enter Zodiac Sign Sagittarius
-nmap <leader>z.sg i♐︎<Esc>
+nmap <leader>z.i i♐︎<Esc>
 
 "    <space>z.ca
 "    Enter Zodiac Sign Capricorn
-nmap <leader>z.cp i♑︎<Esc>
+nmap <leader>z.j i♑︎<Esc>
 
 "    <space>z.aq
 "    Enter Zodiac Sign Aquarius
-nmap <leader>z.aq i♒︎<Esc>
+nmap <leader>z.k i♒︎<Esc>
 
 "    <space>z.p
 "    Enter Zodiac Sign Pisces
-nmap <leader>z.p i♓︎<Esc>
+nmap <leader>z.l i♓︎<Esc>
 
 "    <space>p.s
 "    Enter Planet The Sun
@@ -1371,6 +1222,173 @@ nmap <leader>m.tq i<Esc>
 "    <space>m.wc
 "    Enter Waning Crescent Moon
 nmap <leader>m.wc i<Esc>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-WHICH-KEY CONFIGURATION 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Only run if the plugin is installed
+if exists('*which_key#register')
+  " Define your keymap dictionary
+" which-key menu labels
+let g:which_key_map = {}
+
+let g:which_key_map.m    = 'count search matches'
+let g:which_key_map.vrc  = 'edit .vimrc'
+let g:which_key_map.so   = 'source .vimrc'
+let g:which_key_map.dm   = 'set dark mode'
+let g:which_key_map.lm   = 'set light mode'
+let g:which_key_map.tg   = 'toggle Goyo'
+let g:which_key_map.sp   = 'spell check on'
+let g:which_key_map.ns   = 'spell check off'
+let g:which_key_map.pw   = 'previous misspelling'
+let g:which_key_map.nw   = 'next misspelling'
+let g:which_key_map.ch   = 'clear search highlight'
+let g:which_key_map.cs   = 'correct spelling'
+let g:which_key_map.dwc   = 'word count'
+let g:which_key_map.si   = 'toggle invisible chars'
+let g:which_key_map.ac   = 'align center'
+let g:which_key_map.al   = 'align left'
+let g:which_key_map.ar   = 'align right'
+
+" ctrlp/fzf
+let g:which_key_map.cp   = 'ctrl-p'
+let g:which_key_map.cc   = 'ctrl-p clear cache'
+let g:which_key_map.ct   = 'ctrl-p search tags'
+
+let g:which_key_map.fb   = 'fzf buffers'
+let g:which_key_map.ff   = 'fzf files'
+let g:which_key_map.fg   = 'fzf git files'
+let g:which_key_map.fs   = 'fzf git status'
+let g:which_key_map.ft   = 'fzf tags'
+let g:which_key_map.fc   = 'fzf commits'
+let g:which_key_map.fy   = 'fzf filetypes'
+
+" drawit
+let g:which_key_map.dc   = 'set DrawIt characters'
+
+" maintenance
+let g:which_key_map['$'] = 'remove trailing whitespace'
+let g:which_key_map['='] = 'reindent file'
+
+" edit split
+let g:which_key_map.ew   = 'edit in same window'
+let g:which_key_map.es   = 'edit in split'
+let g:which_key_map.ev   = 'edit in vertical split'
+let g:which_key_map.et   = 'edit in tab'
+
+" syntax
+let g:which_key_map.ss   = 'show syntax groups'
+
+" titlecase
+let g:which_key_map.ct   = 'change to title case'
+
+" vimwiki toggles
+let g:which_key_map.fx  = 'vimwiki table format off'
+let g:which_key_map.fo  = 'vimwiki table format on'
+let g:which_key_map.wh  = 'open link in horizontal split'
+let g:which_key_map.wv  = 'open link in vertical split'
+let g:which_key_map.wf  = 'insert vimwiki file name'
+let g:which_key_map.wl  = 'insert vimwiki link'
+let g:which_key_map.nl   = 'next hyperlink'
+let g:which_key_map.pl   = 'previous hyperlink'
+let g:which_key_map.tn   = 'new task'
+let g:which_key_map.ts   = 'task started'
+let g:which_key_map.td   = 'task deleted'
+let g:which_key_map.tf   = 'task forwarded'
+let g:which_key_map.tc   = 'task complete'
+
+let g:which_key_map.h = {
+  \ 'name' : '+h',
+  \'.': {
+  \   'name': 'Hebrew Letters',
+  \   'a' : 'Insert Alef',
+  \   'b' : 'Insert Bet',
+  \   'g' : 'Insert Gimel',
+  \   'd' : 'Insert Dalet',
+  \   'h' : 'Insert He',
+  \   'v' : 'Insert Vav',
+  \   'z' : 'Insert Zayin',
+  \   'ch' : 'Insert Chet',
+  \   't' : 'Insert Tet',
+  \   'y' : 'Insert Yod',
+  \   'k' : 'Insert Kaf',
+  \   'ks' : 'Insert final Kaf',
+  \   'l' : 'Insert Lamed',
+  \   'm' : 'Insert Mem',
+  \   'ms' : 'Insert final Mem',
+  \   'n' : 'Insert Nun',
+  \   'ns' : 'Insert final Nun',
+  \   's' : 'Insert Samekh',
+  \   'ay' : 'Insert Ayin',
+  \   'p' : 'Insert Pe',
+  \   'ps' : 'Insert final Pe',
+  \   'tz' : 'Insert Tsadi',
+  \   'tzs' : 'Insert final Tsadi',
+  \   'q' : 'Insert Qof',
+  \   'r' : 'Insert Resh',
+  \   'sh' : 'Insert Shin',
+  \   'tv' : 'Insert Tav'
+  \   },
+  \ }
+
+let g:which_key_map.z = {
+  \ 'name' : '+z',
+  \   '.': {
+  \   'name': 'Zodiac Signs',
+  \   'a' : 'Insert Aries',
+  \   'b' : 'Insert Taurus',
+  \   'c' : 'Insert Gemini',
+  \   'd' : 'Insert Cancer',
+  \   'e' : 'Insert Leo',
+  \   'f' : 'Insert Virgo',
+  \   'g' : 'Insert Libra',
+  \   'h' : 'Insert Scorpio',
+  \   'i' : 'Insert Sagittarius',
+  \   'j' : 'Insert Capricorn',
+  \   'k' : 'Insert Aquarius',
+  \   'l' : 'Insert Pisces'
+  \   },
+  \ }
+
+let g:which_key_map.p = {
+  \ 'name' : '+p',
+  \   '.': {
+  \   'name': 'Planets',
+  \   's' : 'Insert Sun',
+  \   'mn' : 'Insert Moon',
+  \   'mr' : 'Insert Mercury',
+  \   'v' : 'Insert Venus',
+  \   'r' : 'Insert Mars',
+  \   'j' : 'Insert Jupiter',
+  \   't' : 'Insert Saturn',
+  \   'u' : 'Insert Uranus',
+  \   'n' : 'Insert Neptune',
+  \   'p' : 'Insert Pluto'
+  \   },
+  \ }
+
+let g:which_key_map.m = {
+  \ 'name' : '+m',
+  \   '.': {
+  \   'name': 'Moon Phases',
+  \   'nm' : 'Insert New Moon',
+  \   'xc' : 'Insert Waxing Crescent',
+  \   'fq' : 'Insert First Quarter',
+  \   'xg' : 'Insert Waxing Gibbous',
+  \   'fm' : 'Insert Full Moon',
+  \   'wg' : 'Insert Waning Gibbous',
+  \   'tq' : 'Insert Third Quarter',
+  \   'wc' : 'Insert Waning Crescent'
+  \   },
+  \ }
+
+  " Register the leader key with WhichKey
+  call which_key#register('<Leader>', 'g:which_key_map')
+
+  " Show WhichKey when you press <Space>
+  nnoremap <silent> <Leader> :WhichKey '<Leader>'<CR>
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
