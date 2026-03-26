@@ -68,7 +68,7 @@ if has('autocmd')
     autocmd ColorScheme * highlight xmlTag guifg=#31aed8
     autocmd ColorScheme * highlight xmlTagName guifg=#31aed8
     autocmd ColorScheme * highlight xmlEndTag guifg=#31aed8
-     
+
 endif
 
 
@@ -172,7 +172,7 @@ command! CleanMD call CleanMarkdownTable()
 
 " vim-surround customizations for Markdown
 let g:surround_42 = "**\r**"    " 42 is ASCII for '*'
-let g:surround_95 = "_\r_"      " 95 is ASCII for '_' 
+let g:surround_95 = "_\r_"      " 95 is ASCII for '_'
 let g:surround_96 = "`\r`"      " 96 is ASCII for '`'
 
 
@@ -183,7 +183,7 @@ let g:surround_96 = "`\r`"      " 96 is ASCII for '`'
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l 
+nnoremap <C-l> <C-w>l
 
 set splitright
 
@@ -200,7 +200,7 @@ vnoremap // y/<C-r>=escape(@",'/\')<CR><CR>
 nnoremap <silent> n   n:call HLNext(0.4)<cr>
 nnoremap <silent> N   N:call HLNext(0.4)<cr>
 
- 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -248,8 +248,16 @@ map <C-ScrollWheelRight> <nop>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CLIPBOARD CUSTOMIZATIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set clipboard=unnamed                   " yank to os clipboard
-xnoremap p pgvy                         " do not overwrite the clipboard 
+" vim-oscyank plugin configuration
+set clipboard=unnamed,unnamedplus
+
+" Automatically sync yanks to system clipboard via OSC 52
+" Requires plugin vim-oscyank
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankRegister "' | endif
+
+" do not overwrite the clipboard
+xnoremap p pgvy                         
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SPELL CHECK OVERRIDES
@@ -437,7 +445,7 @@ command! -nargs=* TestColor call TestColor(<f-args>)
 
 function! CleanMarkdownTable()
   " Remove padding added by VimWiki
-  :%s/  \+/ /g  
+  :%s/  \+/ /g
 endfunction
 
 
@@ -480,6 +488,13 @@ function! CountSearchMatches() abort
   endif
 endfunction
 
+
+function! FixLastSpellingError()
+  normal! mm[s1z=`m"
+endfunction
+nnoremap <leader>sp :call FixLastSpellingError()<cr>
+
+
 function! InsertVimwikiLinkFilenameOnly(file)
   let filename = fnamemodify(a:file, ':t:r')
   execute "normal! a[[" . filename . "]]"
@@ -489,23 +504,23 @@ endfunction
 function! InsertVimwikiLinkWithPath(file)
   try
     echo "File received: " . a:file
-    
+
     " Hardcode the wiki path to eliminate config issues
     let wiki_root = expand('~/vimwiki/')
     echo "Using wiki root: " . wiki_root
-    
+
     " Simple path manipulation
     let relative_path = substitute(a:file, wiki_root, '', '')
-    
+
     echo "Relative path: " . relative_path
-    
+
     let title = fnamemodify(a:file, ':t:r')
     echo "Title: " . title
-    
+
     " Insert the link
     execute "normal! a[" . title . "](../" . relative_path . ")"
     echo "Link inserted successfully!"
-    
+
   catch
     echo "ERROR CAUGHT: " . v:exception
     echo "Error occurred at line: " . v:throwpoint
@@ -625,7 +640,7 @@ function! SetDarkMode()
 endfunction
 
 function! SetLightMode()
-  if has('ios')
+  if has('ios') || g:vim_mode == 'writing'
     " iVim: fallback to simple ASCII separators
     let l:left_sep  = ''
     let l:right_sep = ''
@@ -641,7 +656,6 @@ function! SetLightMode()
 
   let g:lightline = {
     \ 'colorscheme': 'anotherkolor_light',
-
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
@@ -785,14 +799,7 @@ nmap <silent> <LEFT><LEFT>   :cpfile<CR><C-G>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = "\<space>"
-
-
-call which_key#register('<Space>', 'g:which_key_map')
-
-"    <space>
-"    trigger vim-which-key
- nnoremap <silent> <C-w> :WhichKey '<Space>'<CR>
+let mapleader = " "
 
 "    <space>vrc
 "    edit .vimrc
@@ -812,12 +819,12 @@ nmap <leader>lm :call SetLightMode()<CR>
 
 "    <space>m
 "    count and display search matches
-nnoremap <leader>m :call CountSearchMatches()<cr>
- 
+nnoremap <leader>csm :call CountSearchMatches()<cr>
+
 "    <space>tg
 "    toggle Goyo - distraction-free writing mode
 nmap <leader>tg :Goyo<cr><bar>:noh<cr><bar>:echom ""<cr>
- 
+
 "    <space>sp
 "    spell check on
 nmap <leader>sp :setlocal spell<cr>
@@ -834,6 +841,10 @@ nmap <leader>pw [s
 "    jump to next misspelled word
 nmap <leader>nw ]s
 
+"    <space>fw
+"    fix last misspelled word
+nnoremap <leader>fw :call FixLastSpellingError()<cr>
+
 "    <space>ch
 "    clear highlights
 nmap <leader>ch :let @/ = ""<cr>
@@ -844,7 +855,7 @@ nmap <leader>cs 1z=
 
 "    <space>dwc
 "    display word count
-nmap <leader>dwc<cr>
+nnoremap <leader>dwc :echo 'Word count: ' . wordcount().words<cr>
 
 "    <space>si
 "    show invisible characters
@@ -868,11 +879,11 @@ nmap <leader>cp :CtrlP<cr>
 
 "    <space>cc
 "    ctrl-p clear cache
-nmap <leader>cc :CtrlPClearCache<cr>
+nmap <leader>cpcc :CtrlPClearCache<cr>
 
 "    <space>ct
 "    ctrl-p search tags
-nmap <leader>. :CtrlPTag<cr>
+nmap <leader>cpct :CtrlPTag<cr>
 
 "    <space>fb
 "    launch fzf with focus on Buffers
@@ -937,8 +948,8 @@ nmap <leader>ss :call SynStack()<CR>
 
 "    <space>ct
 "    change line to title case
-nmap <leader>ct :call Preserve("s/\\<\\(\\w\\)\\(\\w*\\)\\>/\\u\\1\\L\\2/g")<CR>
- 
+nmap <leader>ctc :call Preserve("s/\\<\\(\\w\\)\\(\\w*\\)\\>/\\u\\1\\L\\2/g")<CR>
+
 "    <space>fx
 "    Toggle off table auto-formatting in VimWiki
 nnoremap <leader>fx :let g:vimwiki_table_auto_fmt = 0<CR>
@@ -957,11 +968,11 @@ nnoremap <leader>pl ?\[<CR>:let @/ = ""<CR>
 
 " <space>wh
 " Open Vimwiki link in horizontal split
-autocmd FileType vimwiki nmap <buffer> <Leader>wh <Plug>VimwikiSplitLink
+autocmd FileType vimwiki nmap <buffer> <leader>wh <Plug>VimwikiSplitLink
 
 " <space>wv
 " Open Vimwiki link in vertical split
-autocmd FileType vimwiki nmap <buffer> <Leader>wv <Plug>VimwikiVSplitLink
+autocmd FileType vimwiki nmap <buffer> <leader>wv <Plug>VimwikiVSplitLink
 
 " <space>wl
 " Insert Vimwiki link
@@ -984,7 +995,7 @@ nnoremap <leader>tc :s/\v\[\s*[·]?\s*\]/[✔]/g<CR>:let @/ = ""<CR>
 nnoremap <leader>ts :s/\[\s\]/[·]/<CR>:let @/ = ""<CR>
 
 "    <space>td
-"    Mark Focused Task Deleted 
+"    Mark Focused Task Deleted
 nnoremap <leader>td :s/\[\s\]/[✘]/<CR>:let @/ = ""<CR>
 
 "    <space>tf
@@ -1225,132 +1236,138 @@ nmap <leader>m.wc i<Esc>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-WHICH-KEY CONFIGURATION 
+" VIM-WHICH-KEY CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Only run if the plugin is installed
-if exists('*which_key#register')
-  " Define your keymap dictionary
-" which-key menu labels
+
+" Define your keymap dictionary
 let g:which_key_map = {}
 
-let g:which_key_map.m    = 'count search matches'
-let g:which_key_map.vrc  = 'edit .vimrc'
-let g:which_key_map.so   = 'source .vimrc'
-let g:which_key_map.dm   = 'set dark mode'
-let g:which_key_map.lm   = 'set light mode'
-let g:which_key_map.tg   = 'toggle Goyo'
-let g:which_key_map.sp   = 'spell check on'
-let g:which_key_map.ns   = 'spell check off'
-let g:which_key_map.pw   = 'previous misspelling'
-let g:which_key_map.nw   = 'next misspelling'
-let g:which_key_map.ch   = 'clear search highlight'
-let g:which_key_map.cs   = 'correct spelling'
-let g:which_key_map.dwc   = 'word count'
-let g:which_key_map.si   = 'toggle invisible chars'
-let g:which_key_map.ac   = 'align center'
-let g:which_key_map.al   = 'align left'
-let g:which_key_map.ar   = 'align right'
 
-" ctrlp/fzf
-let g:which_key_map.cp   = 'ctrl-p'
-let g:which_key_map.cc   = 'ctrl-p clear cache'
-let g:which_key_map.ct   = 'ctrl-p search tags'
-
-let g:which_key_map.fb   = 'fzf buffers'
-let g:which_key_map.ff   = 'fzf files'
-let g:which_key_map.fg   = 'fzf git files'
-let g:which_key_map.fs   = 'fzf git status'
-let g:which_key_map.ft   = 'fzf tags'
-let g:which_key_map.fc   = 'fzf commits'
-let g:which_key_map.fy   = 'fzf filetypes'
-
-" drawit
-let g:which_key_map.dc   = 'set DrawIt characters'
-
-" maintenance
+" ── General, single-step leaves (keep these as-is) ──────────────────────────
+let g:which_key_map.dm  = 'set dark mode'
+let g:which_key_map.lm  = 'set light mode'
+let g:which_key_map.tg  = 'toggle Goyo'
+let g:which_key_map.sp  = 'spell check on'
+let g:which_key_map.ns  = 'spell check off'
+let g:which_key_map.pw  = 'previous misspelling'
+let g:which_key_map.nw  = 'next misspelling'
+let g:which_key_map.fw  = 'fix last misspelled word'
+let g:which_key_map.dwc = 'word count'
+let g:which_key_map.si  = 'toggle invisible chars'
+let g:which_key_map.ac  = 'align center'
+let g:which_key_map.al  = 'align left'
+let g:which_key_map.ar  = 'align right'
+let g:which_key_map.dc  = 'set DrawIt characters'
 let g:which_key_map['$'] = 'remove trailing whitespace'
 let g:which_key_map['='] = 'reindent file'
+let g:which_key_map.ew  = 'edit in same window'
+let g:which_key_map.es  = 'edit in split'
+let g:which_key_map.ev  = 'edit in vertical split'
+let g:which_key_map.et  = 'edit in tab'
+let g:which_key_map.ss  = 'show syntax groups'
 
-" edit split
-let g:which_key_map.ew   = 'edit in same window'
-let g:which_key_map.es   = 'edit in split'
-let g:which_key_map.ev   = 'edit in vertical split'
-let g:which_key_map.et   = 'edit in tab'
+" ── c group (c → …) ─────────────────────────────────────────────────────
+let g:which_key_map.c = {
+\ 'name': '+c',
+\ 'p' : 'ctrl-p',
+\ 'pcc' : 'ctrl-p clear cache',
+\ 'pt' : 'ctrl-p search tags',
+\ 'tc' : 'convert to title case',
+\ 'h' : 'clear search highlight',
+\ }
 
-" syntax
-let g:which_key_map.ss   = 'show syntax groups'
+" ── fzf group (f → …) ────────────────────────────────────────────────────────
+let g:which_key_map.f = {
+\ 'name': '+fzf',
+\ 'b' : 'fzf buffers',
+\ 'f' : 'fzf files',
+\ 'g' : 'fzf git files',
+\ 's' : 'fzf git status',
+\ 't' : 'fzf tags',
+\ 'c' : 'fzf commits',
+\ 'y' : 'fzf filetypes',
+\ }
 
-" titlecase
-let g:which_key_map.ct   = 'change to title case'
+" ── Vim config group (v → …) ─────────────────────────────────────────────────
+let g:which_key_map.v = {
+\ 'name': '+vim',
+\ 'r' : { 'name': '+rc', 'c': 'edit .vimrc' },
+\ 's' : { 'name': '+source', 'o': 'source .vimrc' },
+\ }
 
-" vimwiki toggles
-let g:which_key_map.fx  = 'vimwiki table format off'
-let g:which_key_map.fo  = 'vimwiki table format on'
-let g:which_key_map.wh  = 'open link in horizontal split'
-let g:which_key_map.wv  = 'open link in vertical split'
-let g:which_key_map.wf  = 'insert vimwiki file name'
-let g:which_key_map.wl  = 'insert vimwiki link'
-let g:which_key_map.nl   = 'next hyperlink'
-let g:which_key_map.pl   = 'previous hyperlink'
-let g:which_key_map.tn   = 'new task'
-let g:which_key_map.ts   = 'task started'
-let g:which_key_map.td   = 'task deleted'
-let g:which_key_map.tf   = 'task forwarded'
-let g:which_key_map.tc   = 'task complete'
+" ── Vimwiki group (w → …) ────────────────────────────────────────────────────
+let g:which_key_map.w = {
+\ 'name': '+vimwiki',
+\ 'x' : 'vimwiki table format off',
+\ 'o' : 'vimwiki table format on',
+\ 'h' : 'open link in horizontal split',
+\ 'v' : 'open link in vertical split',
+\ 'f' : 'insert vimwiki file name',
+\ 'l' : 'insert vimwiki link',
+\ 'n' : 'next hyperlink',
+\ 'p' : 'previous hyperlink',
+\ 't' : { 'name': '+task', 'n': 'new task', 's':'task started', 'd':'task deleted', 'f':'task forwarded', 'c':'task complete' },
+\ }
 
+" ── Hebrew letters (h → '.' → …) ──────────────────────────────────────────────
 let g:which_key_map.h = {
-  \ 'name' : '+h',
-  \'.': {
-  \   'name': 'Hebrew Letters',
-  \   'a' : 'Insert Alef',
-  \   'b' : 'Insert Bet',
-  \   'g' : 'Insert Gimel',
-  \   'd' : 'Insert Dalet',
-  \   'h' : 'Insert He',
-  \   'v' : 'Insert Vav',
-  \   'z' : 'Insert Zayin',
-  \   'ch' : 'Insert Chet',
-  \   't' : 'Insert Tet',
-  \   'y' : 'Insert Yod',
-  \   'k' : 'Insert Kaf',
-  \   'ks' : 'Insert final Kaf',
-  \   'l' : 'Insert Lamed',
-  \   'm' : 'Insert Mem',
-  \   'ms' : 'Insert final Mem',
-  \   'n' : 'Insert Nun',
-  \   'ns' : 'Insert final Nun',
-  \   's' : 'Insert Samekh',
-  \   'ay' : 'Insert Ayin',
-  \   'p' : 'Insert Pe',
-  \   'ps' : 'Insert final Pe',
-  \   'tz' : 'Insert Tsadi',
-  \   'tzs' : 'Insert final Tsadi',
-  \   'q' : 'Insert Qof',
-  \   'r' : 'Insert Resh',
-  \   'sh' : 'Insert Shin',
-  \   'tv' : 'Insert Tav'
-  \   },
-  \ }
+\ 'name' : '+h',
+\ 'p' : 'git gutter: hunk preview',
+\ 's' : 'git gutter: stage hunk',
+\ 'u' : 'git gutter: undo hunk',
+\ '.' : {
+\   'name': 'Hebrew Letters',
+\   'a' : 'Insert Alef',
+\   'b' : 'Insert Bet',
+\   'g' : 'Insert Gimel',
+\   'd' : 'Insert Dalet',
+\   'h' : 'Insert He',
+\   'v' : 'Insert Vav',
+\   'z' : 'Insert Zayin',
+\   'ch' : 'Insert Chet',
+\   't' : 'Insert Tet',
+\   'y' : 'Insert Yod',
+\   'k' : 'Insert Kaf',
+\   'ks' : 'Insert final Kaf',
+\   'l' : 'Insert Lamed',
+\   'm' : 'Insert Mem',
+\   'ms' : 'Insert final Mem',
+\   'n' : 'Insert Nun',
+\   'ns' : 'Insert final Nun',
+\   's' : 'Insert Samekh',
+\   'ay' : 'Insert Ayin',
+\   'p' : 'Insert Pe',
+\   'ps' : 'Insert final Pe',
+\   'tz' : 'Insert Tsadi',
+\   'tzs' : 'Insert final Tsadi',
+\   'q' : 'Insert Qof',
+\   'r' : 'Insert Resh',
+\   'sh' : 'Insert Shin',
+\   'tv' : 'Insert Tav'
+\ },
+\ }
 
+" ── Zodiac (z → '.' → …) ─────────────────────────────────────────────────────
 let g:which_key_map.z = {
-  \ 'name' : '+z',
-  \   '.': {
-  \   'name': 'Zodiac Signs',
-  \   'a' : 'Insert Aries',
-  \   'b' : 'Insert Taurus',
-  \   'c' : 'Insert Gemini',
-  \   'd' : 'Insert Cancer',
-  \   'e' : 'Insert Leo',
-  \   'f' : 'Insert Virgo',
-  \   'g' : 'Insert Libra',
-  \   'h' : 'Insert Scorpio',
-  \   'i' : 'Insert Sagittarius',
-  \   'j' : 'Insert Capricorn',
-  \   'k' : 'Insert Aquarius',
-  \   'l' : 'Insert Pisces'
-  \   },
-  \ }
+\ 'name' : '+z',
+\ '.' : {
+\   'name': 'Zodiac Signs',
+\   'a' : 'Insert Aries',
+\   'b' : 'Insert Taurus',
+\   'c' : 'Insert Gemini',
+\   'd' : 'Insert Cancer',
+\   'e' : 'Insert Leo',
+\   'f' : 'Insert Virgo',
+\   'g' : 'Insert Libra',
+\   'h' : 'Insert Scorpio',
+\   'i' : 'Insert Sagittarius',
+\   'j' : 'Insert Capricorn',
+\   'k' : 'Insert Aquarius',
+\   'l' : 'Insert Pisces'
+\ },
+\ }
 
+" ── Planets (p → '.' → …) ────────────────────────────────────────────────────
 let g:which_key_map.p = {
   \ 'name' : '+p',
   \   '.': {
@@ -1383,13 +1400,8 @@ let g:which_key_map.m = {
   \   },
   \ }
 
-  " Register the leader key with WhichKey
-  call which_key#register('<Leader>', 'g:which_key_map')
-
-  " Show WhichKey when you press <Space>
-  nnoremap <silent> <Leader> :WhichKey '<Leader>'<CR>
-endif
-
+call which_key#register('<Space>', 'g:which_key_map')
+nnoremap <silent> <Leader> :WhichKey '<Leader>'<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOMIZE CURSORS

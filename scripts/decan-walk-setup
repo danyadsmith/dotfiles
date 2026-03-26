@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# =============================================================================
+# create-decan-walk.sh
+# Creates 36 Decan Walk files in the directory where the script is executed.
+# Planetary rulers follow the traditional Chaldean face system:
+#   Mars → Sun → Venus → Mercury → Moon → Saturn → Jupiter (then repeat)
+# starting from Mars for Aries decan 1.
+# =============================================================================
+
+# Format: "sequence|decan-within-sign|sign|planet"
+declare -a DECANS=(
+  "01|01|aries|mars"
+  "02|02|aries|sun"
+  "03|03|aries|venus"
+  "04|01|taurus|mercury"
+  "05|02|taurus|moon"
+  "06|03|taurus|saturn"
+  "07|01|gemini|jupiter"
+  "08|02|gemini|mars"
+  "09|03|gemini|sun"
+  "10|01|cancer|venus"
+  "11|02|cancer|mercury"
+  "12|03|cancer|moon"
+  "13|01|leo|saturn"
+  "14|02|leo|jupiter"
+  "15|03|leo|mars"
+  "16|01|virgo|sun"
+  "17|02|virgo|venus"
+  "18|03|virgo|mercury"
+  "19|01|libra|moon"
+  "20|02|libra|saturn"
+  "21|03|libra|jupiter"
+  "22|01|scorpio|mars"
+  "23|02|scorpio|sun"
+  "24|03|scorpio|venus"
+  "25|01|sagittarius|mercury"
+  "26|02|sagittarius|moon"
+  "27|03|sagittarius|saturn"
+  "28|01|capricorn|jupiter"
+  "29|02|capricorn|mars"
+  "30|03|capricorn|sun"
+  "31|01|aquarius|venus"
+  "32|02|aquarius|mercury"
+  "33|03|aquarius|moon"
+  "34|01|pisces|saturn"
+  "35|02|pisces|jupiter"
+  "36|03|pisces|mars"
+)
+
+created=0
+skipped=0
+
+for entry in "${DECANS[@]}"; do
+  IFS='|' read -r seq decan_num sign planet <<< "$entry"
+  filename="${seq}-${decan_num}-${sign}-${planet}-in-${sign}.md"
+
+  if [ -f "$filename" ]; then
+    echo "  skipped  →  $filename  (already exists)"
+    ((skipped++))
+  else
+    cat > "$filename" <<EOF
+---
+decan: $seq
+sign: $sign
+decan-number: $decan_num
+planet: $planet
+tags:
+  - decan-walk
+  - $sign
+  - $planet
+---
+
+EOF
+    echo "  created  →  $filename"
+    ((created++))
+  fi
+done
+
+echo ""
+echo "Done — $created file(s) created, $skipped skipped."

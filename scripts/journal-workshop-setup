@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Intensive Journal Workshop Folder Structure
+# Creates the four-dimension structure with subsections
+
+# Set base directory (change this to your Obsidian vault path)
+BASE_DIR="${1:-.}"
+JOURNAL_ROOT="$BASE_DIR/journal-workshop"
+
+echo "Creating Intensive Journal folder structure in: $JOURNAL_ROOT"
+
+# Create root directory
+mkdir -p "$JOURNAL_ROOT"
+
+# 1. Life/Time Dimension
+mkdir -p "$JOURNAL_ROOT/01-life-time/period-log"
+mkdir -p "$JOURNAL_ROOT/01-life-time/daily-log"
+mkdir -p "$JOURNAL_ROOT/01-life-time/steppingstones"
+mkdir -p "$JOURNAL_ROOT/01-life-time/intersections"
+
+# 2. Dialogue Dimension
+mkdir -p "$JOURNAL_ROOT/02-dialogue/dialogue-with-persons"
+mkdir -p "$JOURNAL_ROOT/02-dialogue/dialogue-with-works"
+mkdir -p "$JOURNAL_ROOT/02-dialogue/dialogue-with-society-groups"
+mkdir -p "$JOURNAL_ROOT/02-dialogue/dialogue-with-events-situations-circumstances"
+mkdir -p "$JOURNAL_ROOT/02-dialogue/dialogue-with-body"
+
+# 3. Depth Dimension
+mkdir -p "$JOURNAL_ROOT/03-depth/dream-log"
+mkdir -p "$JOURNAL_ROOT/03-depth/dream-enlargements"
+mkdir -p "$JOURNAL_ROOT/03-depth/twilight-imagery-log"
+mkdir -p "$JOURNAL_ROOT/03-depth/imagery-extensions"
+mkdir -p "$JOURNAL_ROOT/03-depth/inner-wisdom-dialogue"
+
+# 4. Meaning Dimension
+mkdir -p "$JOURNAL_ROOT/04-meaning/testament"
+mkdir -p "$JOURNAL_ROOT/04-meaning/now-the-open-moment"
+mkdir -p "$JOURNAL_ROOT/04-meaning/intersections-roads-taken-and-not-taken"
+mkdir -p "$JOURNAL_ROOT/04-meaning/connections-life-history-log)"
+
+echo "Folder structure created successfully!"
+echo ""
+echo "Structure created:"
+tree -L 2 "$JOURNAL_ROOT" 2>/dev/null || find "$JOURNAL_ROOT" -type d | sort

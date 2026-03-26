@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# Function to validate deck name format
+validate_deck_name() {
+    # Check if name contains only lowercase letters, numbers, and dashes
+    if [[ "$1" =~ ^[a-z0-9-]+$ ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Prompt for deck name
+echo "Enter the deck name (use lowercase letters and dashes only):"
+echo "Example: waite-smith-tarot"
+read -r DECK_NAME
+
+# Validate the deck name
+while ! validate_deck_name "$DECK_NAME"; do
+    echo "Invalid format. Please use only lowercase letters, numbers, and dashes."
+    echo "Example: waite-smith-tarot"
+    read -r DECK_NAME
+done
+
+echo "Creating cards for: ${DECK_NAME}"
+echo "----------------------------------------"
+
+# Card counter
+CARD_NUM=0
+
+# Major Arcana cards (0-21)
+declare -a MAJOR_ARCANA=(
+    "the-fool"
+    "the-magician"
+    "the-high-priestess"
+    "the-empress"
+    "the-emperor"
+    "the-hierophant"
+    "the-lovers"
+    "the-chariot"
+    "strength"
+    "the-hermit"
+    "wheel-of-fortune"
+    "justice"
+    "the-hanged-man"
+    "death"
+    "temperance"
+    "the-devil"
+    "the-tower"
+    "the-star"
+    "the-moon"
+    "the-sun"
+    "judgement"
+    "the-world"
+)
+
+# Minor Arcana suits (in specified order)
+declare -a SUITS=("wands" "cups" "swords" "pentacles")
+
+# Minor Arcana cards
+declare -a MINOR_CARDS=(
+    "ace"
+    "two"
+    "three"
+    "four"
+    "five"
+    "six"
+    "seven"
+    "eight"
+    "nine"
+    "ten"
+    "page"
+    "knight"
+    "queen"
+    "king"
+)
+
+# Create Major Arcana files (0-21)
+echo "Creating Major Arcana cards for ${DECK_NAME}..."
+for card in "${MAJOR_ARCANA[@]}"; do
+    # Format card number with leading zero if needed
+    if [ $CARD_NUM -lt 10 ]; then
+        num="0${CARD_NUM}"
+    else
+        num="${CARD_NUM}"
+    fi
+    filename="${DECK_NAME}-${num}-${card}.md"
+    touch "$filename"
+    echo "Created: $filename"
+    ((CARD_NUM++))
+done
+
+# Create Minor Arcana files (22-77)
+echo "Creating Minor Arcana cards for ${DECK_NAME}..."
+for suit in "${SUITS[@]}"; do
+    for card in "${MINOR_CARDS[@]}"; do
+        # Format card number with leading zero if needed
+        if [ $CARD_NUM -lt 10 ]; then
+            num="0${CARD_NUM}"
+        else
+            num="${CARD_NUM}"
+        fi
+        filename="${DECK_NAME}-${num}-${card}-of-${suit}.md"
+        touch "$filename"
+        echo "Created: $filename"
+        ((CARD_NUM++))
+    done
+done
+
+echo "----------------------------------------"
+echo "All 78 cards created successfully for ${DECK_NAME}!"
+echo "Card numbers range from 00 to 77"

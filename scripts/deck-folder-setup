@@ -24,6 +24,11 @@ mkdir 10-waite-smith-tarot
 
 mkdir 00-front-matter/pocket
 mkdir 00-front-matter/poker
+mkdir 03-summa-esoterica/01-volume-01
+mkdir 03-summa-esoterica/01-volume-02
+mkdir 06-tarot-meditatio/01-volume-01
+mkdir 06-tarot-meditatio/01-volume-02
+
 
 tree -d
 
